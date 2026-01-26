@@ -2120,46 +2120,43 @@ img, video { max-width: 100%; height: auto; display: block; }
     padding: 6px 10px;
   }
 
-  /* ===== NAVBAR ===== */
-  .navbar{ padding: 8px 12px; }
+ /* ===== NAVBAR ===== */
+.navbar{
+  padding: 8px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
+/* ===== MOBILE NAVBAR ===== */
 @media (max-width: 768px){
 
-  /* ปรับ nav-inner ให้เรียงเป็นแนวตั้ง */
+  /* จัด layout รวมให้เรียงลง */
   .nav-inner{
+    display: flex;
     flex-direction: column;
-    height: auto;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 10px 12px;
+    height: auto;
+    padding: 10px 0;
   }
 
-  /* โลโก้ไม่ดันสูง */
+  /* โลโก้ (ไม่ให้ดัน navbar) */
   .logo{
     width: 100%;
     display: flex;
     justify-content: center;
-  }
-  .logo img{
-    height: 70px !important;
-    width: auto !important;
-    padding-top: 0 !important;
-  }
-
-  /* เมนูเรียงเป็น 2 แถว */
-  .menu{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 ช่องต่อแถว = 2 แถวพอดี (6 เมนู) */
-    gap: 8px 10px;
-    justify-items: center;
     align-items: center;
+    height: 60px;           /* ✅ ล็อกพื้นที่โลโก้ */
+    overflow: hidden;       /* ✅ กันล้น */
   }
 
-  .menu a{
-    padding: 10px 8px;
-    font-size: 14px;
-    text-align: center;
-    white-space: nowrap;
+  .logo img{
+    height: 90px !important;    /* ✅ ขยายโลโก้ */
+    width: auto !important;
+    padding-top: 0 !important;  /* ✅ กัน inline style */
+    display: block;
   }
 
   /* dropdown ให้แสดงกลางและไม่เพี้ยน */
