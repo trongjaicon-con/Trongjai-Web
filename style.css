@@ -2123,40 +2123,53 @@ img, video { max-width: 100%; height: auto; display: block; }
   /* ===== NAVBAR ===== */
   .navbar{ padding: 8px 12px; }
 
-.navbar {
-  position: relative;      /* สำคัญมาก */
-  height: 110px;           /* 🔒 ล็อกความสูง navbar */
-}
+@media (max-width: 768px){
 
-/* กล่องโลโก้ */
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;    /* กันโลโก้บังการกดเมนู */
-}
+  /* ปรับ nav-inner ให้เรียงเป็นแนวตั้ง */
+  .nav-inner{
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding: 10px 12px;
+  }
 
-/* ตัวรูป */
-.logo img {
-  height: 150px;           /* 👈 ขยายโลโก้ได้ตามใจ */
-  width: auto;
-  display: block;
-}
+  /* โลโก้ไม่ดันสูง */
+  .logo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .logo img{
+    height: 70px !important;
+    width: auto !important;
+    padding-top: 0 !important;
+  }
 
-
-  /* เมนูให้ขึ้นบรรทัดได้ ไม่ล้น */
+  /* เมนูเรียงเป็น 2 แถว */
   .menu{
     width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 ช่องต่อแถว = 2 แถวพอดี (6 เมนู) */
+    gap: 8px 10px;
+    justify-items: center;
+    align-items: center;
   }
 
   .menu a{
-    padding: 8px 10px;
+    padding: 10px 8px;
     font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
   }
+
+  /* dropdown ให้แสดงกลางและไม่เพี้ยน */
+  .menu li{ width: 100%; text-align:center; }
+  .dropdown{
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 180px;
+  }
+}
 
   /* ===== DROPDOWN บนมือถือ: ให้แสดงเป็นบล็อก (ไม่ absolute) ===== */
   .dropdown{
