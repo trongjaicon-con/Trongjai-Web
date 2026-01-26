@@ -260,6 +260,7 @@ header {
 .logo img {
   height: 170px;
   width: 170px;
+   margin-top: 30px;  
 }
 
 /* เมนูหลัก */
