@@ -2080,15 +2080,11 @@ header {
 
 
 /* ============================================================
-   MOBILE RESPONSIVE FIX (เพิ่มเติมสำหรับมือถือ)
-   ============================================================ */
-
-/* ============================================================
-   MOBILE FULL-WIDTH & HEADER OPTIMIZATION (ชุดสมบูรณ์)
+   MOBILE FULL-WIDTH & HEADER OPTIMIZATION (ปรับโลโก้ใหญ่พิเศษ)
    ============================================================ */
 
 @media (max-width: 768px) {
-    /* 1. บังคับให้หน้าเว็บกว้างเต็มจอพอดี (แก้ปัญหาขอบขาวด้านขวา) */
+    /* 1. บังคับหน้าเว็บเต็มจอ */
     html, body {
         overflow-x: hidden;
         width: 100%;
@@ -2097,20 +2093,20 @@ header {
         box-sizing: border-box;
     }
 
-    /* 2. ย่อส่วนหัว (Header) ให้บางและกว้างเต็มพื้นที่ */
+    /* 2. ย่อส่วนหัวชื่อบริษัท (แถบดำ) */
     header {
-        padding: 10px 15px !important;
+        padding: 8px 15px !important;
         width: 100% !important;
         box-sizing: border-box;
     }
     header h1 {
-        font-size: 18px !important; /* ย่อชื่อ TRONGJAI ไม่ให้ดันจอ */
+        font-size: 18px !important;
         margin: 0;
     }
 
-    /* 3. จัดการ Navbar และ Logo (ส่วนสีน้ำตาล) */
+    /* 3. จัดการ Navbar (แถบสีน้ำตาล) และขยายโลโก้ให้เด่น */
     .navbar {
-        padding: 10px !important;
+        padding: 5px 10px !important; /* ลด Padding แถบน้ำตาลให้เหลือน้อยที่สุด */
         width: 100% !important;
         box-sizing: border-box;
     }
@@ -2118,73 +2114,66 @@ header {
     .nav-inner {
         flex-direction: column !important;
         height: auto !important;
-        padding: 5px 0 !important;
-        gap: 8px !important;
+        padding: 0 !important;
+        gap: 2px !important; /* ลดช่องว่างระหว่างโลโก้กับเมนู */
         width: 100% !important;
     }
 
     .logo img {
-        height: 55px !important; /* ย่อโลโก้ให้กะทัดรัด */
+        height: 85px !important; /* <--- เพิ่มขนาดโลโก้ให้ใหญ่ขึ้นตามต้องการ */
         width: auto !important;
-        padding-top: 0 !important;
-        margin: 0 auto;
+        padding: 0 !important;
+        /* ใช้ margin ติดลบ เพื่อให้รูปใหญ่ขึ้นโดยไม่ดึงให้แถบสีน้ำตาลหนาตาม */
+        margin-top: -5px !important; 
+        margin-bottom: -5px !important;
+        display: block;
     }
 
-    /* 4. ปรับเมนู Navbar ให้เรียงสวย ไม่หลุดขอบ */
+    /* 4. ปรับเมนู Navbar ให้เรียงสวย */
     .menu {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 5px !important;
+        gap: 4px !important;
         width: 100% !important;
-        padding: 0 !important;
+        padding: 5px 0 !important;
     }
 
     .menu a {
         font-size: 13px !important;
-        padding: 6px 8px !important;
-        white-space: nowrap; /* ป้องกันตัวหนังสือตัดบรรทัดเอง */
+        padding: 5px 8px !important;
+        white-space: nowrap;
     }
 
     /* 5. ส่วน Hero และวิดีโอ (แถบสีทอง) */
     .hero {
-        padding: 20px 15px !important;
+        padding: 15px 10px !important;
         width: 100% !important;
         box-sizing: border-box;
     }
-
-    .hero h1 {
-        font-size: 18px !important;
-    }
+    .hero h1 { font-size: 18px !important; }
 
     .about-image {
         width: 100% !important;
         height: auto !important;
-        aspect-ratio: 16 / 9; /* ปรับรูป/วิดีโอให้เต็มหน้าจอพอดี */
+        aspect-ratio: 16 / 9;
         margin: 0 !important;
     }
 
-    /* 6. ปุ่ม Social (เหลือแต่ไอคอนวงกลม) */
+    /* 6. ปุ่ม Social */
     .social {
         width: 100% !important;
         justify-content: center !important;
         gap: 15px !important;
         padding: 10px !important;
-        margin: 15px 0 !important;
+        margin: 10px 0 !important;
         box-sizing: border-box;
     }
+    .social-btn span { display: none !important; }
+    .social-btn i { width: 44px !important; height: 44px !important; }
 
-    .social-btn span {
-        display: none !important; /* ซ่อนชื่อ เหลือแต่ไอคอน */
-    }
-
-    .social-btn i {
-        width: 44px !important;
-        height: 44px !important;
-    }
-
-    /* 7. ปรับเนื้อหาทุกส่วนให้เป็น 1 คอลัมน์กว้างเต็มจอ */
+    /* 7. ปรับเนื้อหาทุกส่วนให้เป็น 1 คอลัมน์ */
     .about-content, 
     .footer-container, 
     .about-selection-grid,
@@ -2201,7 +2190,7 @@ header {
         box-sizing: border-box;
     }
 
-    /* 8. จัดการรูปภาพในเนื้อหาไม่ให้ล้น */
+    /* 8. จัดการรูปภาพในเนื้อหา */
     .about-text, .about-image1, .about-image1 img {
         width: 100% !important;
         max-width: 100% !important;
@@ -2224,7 +2213,6 @@ header {
         justify-content: center !important;
         gap: 10px !important;
     }
-
     .thumb-item {
         width: calc(50% - 10px) !important;
         height: 85px !important;
@@ -2234,6 +2222,6 @@ header {
 /* ปรับเพิ่มสำหรับจอขนาดจิ๋ว */
 @media (max-width: 480px) {
     header h1 { font-size: 16px !important; }
-    .hero h1 { font-size: 16px !important; }
+    .logo img { height: 75px !important; } /* เล็กลงนิดนึงสำหรับจอแคบพิเศษ */
     .menu a { font-size: 12px !important; padding: 4px 6px !important; }
 }
