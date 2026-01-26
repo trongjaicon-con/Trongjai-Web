@@ -2103,3 +2103,210 @@ header {
   --brown-bg: #4a3728;
   --cream-bg: #d8cfc2;
 }
+
+/* ทำให้เปิดในมือถือได้ */
+
+/* =========================
+   ✅ MOBILE FIX (ALL PAGES)
+   วางท้ายไฟล์ CSS เท่านั้น
+========================= */
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+img, video{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body{
+  overflow-x: hidden;  /* กันล้นจอแนวนอน */
+}
+
+/* กัน container กว้างเกินจอ */
+header, .navbar, .hero,
+.about-content, .services-container, .portfolio-grid,
+.footer-container, .contact-container,
+.project-detail-container, .alternating-section,
+.gallery-section, .company-info-container,
+.company-history-container, .team-grid, .about-selection-grid{
+  max-width: 100%;
+}
+
+/* =========================
+   ✅ NAV / LOGO (มือถือ)
+========================= */
+@media (max-width: 768px){
+  .nav-inner{
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logo img{
+    width: 120px;
+    height: 120px;
+  }
+
+  .menu{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+/* =========================
+   ✅ HERO (มือถือ)
+========================= */
+@media (max-width: 768px){
+  .hero{
+    padding: 18px 12px;
+  }
+  .hero h1{
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .hero p{
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   ✅ ABOUT (text + image) มือถือ
+   (แก้เพี้ยนเพราะ .about-content ซ้ำหลายชุด)
+========================= */
+@media (max-width: 992px){
+  .about-content{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .about-text{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .about-image1{
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 auto;
+    justify-content: center;
+  }
+
+  .about-image1 img{
+    max-width: 100%;
+    height: 320px;
+    object-fit: cover;
+  }
+}
+
+/* =========================
+   ✅ ABOUT HERO VIDEO + SOCIAL (หน้าแรก)
+   ทำให้ปุ่มอยู่ "ใต้วิดีโอ" ชัดๆ ไม่ทับ
+========================= */
+.about-image{
+  position: relative;
+}
+
+@media (max-width: 992px){
+  .about-image{
+    aspect-ratio: auto;      /* กันบังคับสัดส่วนจนเพี้ยน */
+  }
+
+  .about-image .about-hero-video{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .social{
+    position: static !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 18px auto 0;
+    padding: 0 12px;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .social-btn span{
+    font-size: 16px;
+    white-space: normal;   /* ✅ มือถือให้ขึ้นบรรทัดได้ กันล้น */
+  }
+}
+
+/* =========================
+   ✅ SERVICES / PORTFOLIO (มือถือ)
+========================= */
+@media (max-width: 992px){
+  .services-container{
+    grid-template-columns: 1fr;
+  }
+  .portfolio-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   ✅ FOOTER (มือถือ)
+========================= */
+@media (max-width: 768px){
+  .footer-container{
+    flex-direction: column;
+    gap: 18px;
+  }
+  .footer-column{
+    min-width: 0;
+  }
+}
+
+/* =========================
+   ✅ PROJECT DETAIL (มือถือ)
+========================= */
+@media (max-width: 768px){
+  .project-header{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .info-row1{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .value1{
+    padding-left: 0;
+  }
+
+  .thumbnail-grid{
+    flex-wrap: wrap;
+  }
+
+  .random-projects-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   ✅ CONTACT (มือถือ)
+========================= */
+@media (max-width: 900px){
+  .contact-container{
+    grid-template-columns: 1fr;
+  }
+
+  .social-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .social-pill span,
+  .social-pill small{
+    white-space: normal; /* กันข้อความล้น */
+  }
+}
