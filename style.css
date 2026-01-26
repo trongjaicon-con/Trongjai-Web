@@ -2105,3 +2105,126 @@ header {
 }
 
 /* ทำให้เปิดในมือถือได้ */
+/* ===== GLOBAL FIX (ทุกหน้า) ===== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { width: 100%; overflow-x: hidden; }
+
+img, video, iframe { max-width: 100%; height: auto; display: block; }
+
+/* กันข้อความ/ปุ่มล้นจอ */
+a, p, span { word-break: break-word; }
+
+/* ===== NAV / HEADER (มือถือไม่ล้น) ===== */
+@media (max-width: 992px){
+  .nav-inner{
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logo img{
+    width: 84px;
+    height: 84px;
+  }
+
+  .menu{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .menu a{
+    padding: 8px 10px;
+  }
+}
+
+/* ===== HERO (ตัวอักษรไม่ใหญ่เกิน) ===== */
+@media (max-width: 768px){
+  .hero{ padding: 16px 12px; }
+  .hero h1{ font-size: 20px; line-height: 1.35; }
+  .hero p{ font-size: 14px; }
+}
+
+/* ===== ABOUT IMAGE/VIDEO + SOCIAL (กันทับ/กันล้น) ===== */
+.about-image{
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.about-image .about-hero-video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ปุ่ม social: บังคับให้อยู่ "ใต้" รูป/วิดีโอ และไม่ล้นจอ */
+.social{
+  position: static !important;
+  width: 100%;
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+
+  display: flex;
+  flex-wrap: wrap;           /* ✅ สำคัญ กันล้น */
+  gap: 16px;
+  justify-content: center;
+}
+
+/* ยกเลิก nowrap บนมือถือ (ของเดิมทำให้ล้น) */
+.social-btn span{
+  white-space: normal;       /* ✅ จาก nowrap -> normal */
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+/* ===== ABOUT CONTENT (Text + รูป) ===== */
+@media (max-width: 992px){
+  .about-content{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .about-text{
+    padding: 18px;
+  }
+
+  .about-image1{
+    justify-content: center;
+  }
+
+  .about-image1 img{
+    width: 100%;
+    max-width: 520px;
+    height: 320px;
+    object-fit: cover;
+  }
+}
+
+/* ===== SERVICES / PORTFOLIO GRID ===== */
+@media (max-width: 992px){
+  .services-container{
+    grid-template-columns: 1fr;
+  }
+  .portfolio-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .service-image2{ height: 200px; }
+  .portfolio-item img{ height: 220px; }
+}
+
+/* ===== FOOTER (ไม่เพี้ยนในมือถือ) ===== */
+@media (max-width: 768px){
+  .footer-container{
+    flex-direction: column;
+    gap: 24px;
+  }
+  .footer-column{
+    min-width: 0;
+  }
+}
