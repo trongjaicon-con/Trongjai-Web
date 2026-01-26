@@ -2083,36 +2083,51 @@ header {
    MOBILE RESPONSIVE FIX (เพิ่มเติมสำหรับมือถือ)
    ============================================================ */
 
+/* ============================================================
+   MOBILE RESPONSIVE (วางไว้ท้ายสุดของไฟล์)
+   ============================================================ */
+
 @media (max-width: 768px) {
-    /* 1. ปรับส่วนหัวและโลโก้ */
-    .logo img {
-        height: 100px; /* ลดขนาดโลโก้ลง */
-        width: auto;
-        padding-top: 10px;
+    /* 1. ย่อส่วนหัว (Header) และแถบ Navbar ให้บางที่สุด */
+    header {
+        padding: 5px 10px !important;
+    }
+
+    .navbar {
+        padding: 5px 15px !important;
     }
 
     .nav-inner {
-        flex-direction: column; /* เรียงโลโก้กับเมนูเป็นแนวตั้ง */
-        height: auto;
-        padding: 10px 0;
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 5px 0 !important;
+        gap: 5px !important;
     }
 
-    /* 2. ปรับเมนู Navbar ให้คลิกง่ายขึ้น */
+    /* 2. ย่อโลโก้ให้กะทัดรัด (จุดสำคัญ) */
+    .logo img {
+        height: 60px !important; /* ย่อจาก 100px เหลือ 60px */
+        width: auto !important;
+        padding-top: 0 !important; /* ตัดช่องว่างด้านบนทิ้ง */
+        margin-top: 5px;
+    }
+
+    /* 3. ปรับเมนู Navbar ให้ชิดกันและตัวเล็กลง */
     .menu {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
-        margin-top: 15px;
+        gap: 5px !important; /* ลดระยะห่างระหว่างคำเมนู */
+        margin-top: 5px !important;
         width: 100%;
     }
 
     .menu a {
-        font-size: 14px;
-        padding: 8px 12px;
+        font-size: 13px !important; /* ย่อตัวอักษรเมนู */
+        padding: 5px 8px !important; /* ลดความหนาของปุ่มเมนู */
     }
 
-    /* ซ่อน Dropdown หรือปรับให้แสดงผลแบบกด (ในที่นี้ปรับให้ใช้ง่ายขึ้น) */
+    /* 4. ส่วน Dropdown */
     .has-dropdown:hover .dropdown {
         position: static;
         display: block;
@@ -2120,41 +2135,46 @@ header {
         box-shadow: none;
     }
 
-    /* 3. ส่วน Hero และวิดีโอ */
+    /* 5. ส่วน Hero และวิดีโอ (ย่อความสูงลง) */
+    .hero {
+        padding: 15px 10px !important;
+    }
+
     .hero h1 {
-        font-size: 24px; /* ลดขนาดหัวข้อ */
+        font-size: 20px !important; /* หัวข้อเล็กลง */
     }
 
     .about-image {
         aspect-ratio: auto;
-        height: 250px; /* คุมความสูงวิดีโอไม่ให้ยาวเกินไป */
+        height: 180px !important; /* ย่อความสูงวิดีโอ/รูป Hero */
     }
 
-    /* 4. ปรับปุ่ม Social ให้เรียงตัวสวยงาม */
+    /* 6. ปรับปุ่ม Social ให้เหลือแต่ไอคอนเพื่อประหยัดที่ */
     .social {
         justify-content: center;
         gap: 15px;
         padding: 0 15px;
+        margin-top: 10px !important;
     }
 
     .social-btn span {
-        display: none; /* ซ่อนตัวอักษร เหลือแต่ไอคอนเพื่อให้ประหยัดพื้นที่ */
+        display: none; /* ซ่อนชื่อโซเชียล เหลือแค่ไอคอนวงกลม */
     }
 
     .social-btn i {
-        width: 50px;
-        height: 50px;
+        width: 44px; /* ขนาดไอคอนกำลังพอดีนิ้วกด */
+        height: 44px;
     }
 
-    /* 5. ปรับเนื้อหา About และ Column ต่างๆ */
+    /* 7. ปรับเนื้อหา Column ต่างๆ ให้เรียงเป็นแถวเดียว */
     .about-content, 
     .footer-container, 
     .about-selection-grid,
     .team-grid,
     .portfolio-grid,
     .services-container {
-        display: flex;
-        flex-direction: column !important; /* บังคับเรียงเป็นแนวตั้ง 1 คอลัมน์ */
+        display: flex !important;
+        flex-direction: column !important;
         align-items: center;
         gap: 20px;
     }
@@ -2166,16 +2186,15 @@ header {
 
     .about-image1 img {
         height: auto;
-        max-height: 300px;
+        max-height: 280px;
     }
 
-    /* 6. ตารางข้อมูล (Company Info / Project Detail) */
+    /* 8. ตารางข้อมูล (Stack เป็นแนวตั้ง) */
     .company-table th, 
     .company-table td,
     .info-row1 {
-        display: block;
+        display: block !important;
         width: 100% !important;
-        grid-template-columns: 1fr; /* ยกเลิก Grid 2 คอลัมน์ */
         padding: 8px 0;
     }
 
@@ -2183,44 +2202,31 @@ header {
         width: 100%;
     }
 
-    .label1 {
-        font-weight: bold;
-        color: #1a4d2e;
-    }
-
-    /* 7. ส่วน Gallery และรูปภาพเพิ่มเติม */
+    /* 9. ส่วน Gallery 2 รูปต่อแถว */
     .thumbnail-grid {
+        display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        gap: 10px;
     }
 
     .thumb-item {
-        width: calc(50% - 10px); /* แสดง 2 รูปต่อแถว */
+        width: calc(50% - 10px);
         height: 80px;
     }
 
-    /* 8. หน้า Contact */
-    .contact-container {
-        grid-template-columns: 1fr !important;
-    }
-
-    .social-grid {
+    /* 10. หน้า Contact */
+    .contact-container, .social-grid {
         grid-template-columns: 1fr !important;
     }
 
     .qr-img {
-        max-width: 200px;
-    }
-
-    /* 9. ปรับระยะขอบทั่วไป */
-    section, .about-section, .portfolio-preview, .footer-blocks {
-        padding: 40px 15px !important;
+        max-width: 180px;
     }
 }
 
-/* ปรับแต่งสำหรับมือถือจอเล็กเป็นพิเศษ (iPhone SE/ขนาดเล็ก) */
+/* สำหรับมือถือหน้าจอเล็กมาก (เช่น iPhone SE) */
 @media (max-width: 480px) {
-    .hero h1 { font-size: 20px; }
-    .hero p { font-size: 16px; }
-    .btn-portfolio, .btn-primary { width: 100%; text-align: center; }
+    .hero h1 { font-size: 18px !important; }
+    .hero p { font-size: 14px !important; }
 }
