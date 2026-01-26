@@ -2134,15 +2134,15 @@ header {
 
     .logo img {
         /* ปรับความสูงให้ใหญ่ขึ้น (ลองปรับจาก 100px-130px ตามความชอบ) */
-        height: 110px !important; 
+        height: 150px !important; 
         width: auto !important;
         padding: 0 !important;
         display: block;
         margin: 0 auto !important;
         
         /* เทคนิคสำคัญ: margin ติดลบจะช่วยให้รูปใหญ่ขึ้นโดยไม่ทำให้แถบสีน้ำตาลขยายกว้างตาม */
-        margin-top: -10px !important; 
-        margin-bottom: -10px !important;
+        margin-top: -45px !important; 
+        margin-bottom: -45px !important;
         
         position: relative;
         z-index: 5;
