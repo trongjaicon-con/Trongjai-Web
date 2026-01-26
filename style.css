@@ -236,7 +236,7 @@ header {
   text-align: center;
 }
 
-.navbar {
+.navbar{
   background: linear-gradient(to right, #4a3728, #4a3728);
   padding: 10px 20px;
   position: sticky;
@@ -244,39 +244,41 @@ header {
   z-index: 1000;
 }
 
-.nav-inner {
+/* PC: ทำให้แถบเมนูสูงพอดี และยืดหยุ่น */
+.nav-inner{
   display: flex;
-  align-items: center;
+  align-items: center;              /* ✅ จัดกลางแนวตั้ง */
   justify-content: space-between;
-  height: 50px;
-  /* ค่า sweet spot */
-  width: auto;
-  /* รักษาสัดส่วนเดิม */
-  object-fit: contain;
-  /* กันภาพยืด */
+  min-height: 80px;                 /* ✅ ให้สูงพอรองรับโลโก้ */
+  height: auto;                     /* ✅ เลิกล็อก 50px */
 }
 
-/* โลโก้ */
-.logo img {
-  height: 170px;
-  width: 170px;
-   margin-top: 30px;  
+/* โลโก้: เอา margin-top ออก แล้วจัดกลางในแถบ */
+.logo{
+  display: flex;
+  align-items: center;              /* ✅ ให้โลโก้อยู่กลางแถบ */
+}
+
+.logo img{
+  height: 130px;                    /* ✅ แนะนำลดลงเพื่อไม่ดันแถบ */
+  width: auto;                      /* ✅ กันยืด */
+  margin-top: 0;                    /* ✅ สำคัญ: ห้ามดันลงด้วย margin */
+  display: block;
 }
 
 /* เมนูหลัก */
-.menu {
+.menu{
   list-style: none;
   display: flex;
   gap: 20px;
   margin: 0;
   padding: 0;
+  align-items: center;              /* ✅ ให้ตัวหนังสือเมนูอยู่กลาง */
 }
 
-.menu li {
-  position: relative;
-}
+.menu li{ position: relative; }
 
-.menu a {
+.menu a{
   color: #ffffff;
   text-decoration: none;
   padding: 10px;
@@ -284,7 +286,7 @@ header {
 }
 
 /* Dropdown */
-.dropdown {
+.dropdown{
   display: none;
   position: absolute;
   top: 100%;
@@ -294,21 +296,18 @@ header {
   list-style: none;
   padding: 0;
   margin: 0;
+  z-index: 2000;
 }
 
-.dropdown li a {
+.dropdown li a{
   padding: 10px;
   color: #ffffff;
 }
 
-.dropdown li a:hover {
-  background: #8b6344;
-}
+.dropdown li a:hover{ background: #8b6344; }
 
-/* ชี้แล้วเมนูย่อยโผล่ */
-.has-dropdown:hover .dropdown {
-  display: block;
-}
+.has-dropdown:hover .dropdown{ display: block; }
+
 
 .hero {
   color: #000000;
@@ -2106,195 +2105,90 @@ header {
 }
 
 /* ทำให้เปิดในมือถือได้ */
-/* กันล้นแนวนอน (สำคัญ) */
-* { box-sizing: border-box; }
-html, body { width: 100%; overflow-x: hidden; }
-img, video { max-width: 100%; height: auto; display: block; }
+/* ===== RESPONSIVE MOBILE ===== */
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .about-image1 {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+  
+  .about-image1 img {
+    max-width: 100%;
+    height: 360px;
+  }
+  
+  .services-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-@media (max-width: 768px){
-
-  /* ===== HEADER ===== */
-  header h1{
+@media (max-width: 768px) {
+  /* Header */
+  header h1 {
     font-size: 18px;
     line-height: 1.2;
     padding: 6px 10px;
   }
-
- /* ===== NAVBAR ===== */
-.navbar{
-  padding: 8px 12px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* ===== MOBILE NAVBAR ===== */
-@media (max-width: 768px){
-
-  /* จัด layout รวมให้เรียงลง */
-  .nav-inner{
-    display: flex;
+  
+  /* Navbar */
+  .navbar {
+    padding: 8px 12px;
+  }
+  
+  .nav-inner {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 10px;
-    height: auto;
     padding: 10px 0;
   }
-
-  /* โลโก้ (ไม่ให้ดัน navbar) */
-  .logo{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;           /* ✅ ล็อกพื้นที่โลโก้ */
-    overflow: hidden;       /* ✅ กันล้น */
-  }
-
-  .logo img{
-    height: 90px !important;    /* ✅ ขยายโลโก้ */
-    width: auto !important;
-    padding-top: 0 !important;  /* ✅ กัน inline style */
-    display: block;
-  }
-
- .menu{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 ต่อแถว */
-    gap: 8px 10px;
-    justify-items: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-
-  .menu li{
-    width: 100%;
-    text-align: center;
-  }
-
-  .menu a{
-    width: 100%;
-    display: block;
-    padding: 10px 6px;
-    font-size: 14px;
-    line-height: 1.1;
-    white-space: nowrap;     /* ✅ กันตกบรรทัดมั่ว */
-  }
-
-  /* dropdown: จัดให้อยู่กลาง ไม่เพี้ยน */
-  .dropdown{
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 180px;
-    text-align: left;
-    z-index: 2000;
-  }
-}
-
-  /* แตะแล้วค้าง/โฟกัสให้เปิด dropdown ได้ */
-  .has-dropdown:focus-within .dropdown{
-    display: block;
-  }
-
-  /* ===== HERO ===== */
-  .hero{ padding: 16px 12px; }
-  .hero h1{ font-size: 20px; line-height: 1.25; }
-  .hero p{ font-size: 15px; }
-
-  /* ===== VIDEO ===== */
-  .about-image{
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 16 / 9;   /* มือถือดูสมส่วนกว่า 1920/573 */
+  
+  .logo {
+    height: 60px;
     overflow: hidden;
   }
-
-  .about-image .about-hero-video{
+  
+  .logo img {
+    height: 90px;
+  }
+  
+  .menu {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 10px;
+    justify-items: center;
   }
-
-  /* ===== SOCIAL ===== */
-  .social{
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    padding: 0 12px;
-    margin: 14px auto 0;
-  }
-
-  .social-btn{
-    gap: 10px;
-  }
-
-  .social-btn span{
+  
+  .menu a {
     font-size: 14px;
-    white-space: normal;   /* ให้ตัดบรรทัดได้ */
-    line-height: 1.2;
-    text-align: left;
+    padding: 10px 6px;
+    white-space: nowrap;
   }
-
-  /* ===== ABOUT CONTENT (ข้อความ + รูป) ===== */
-  .about-content{
-    flex-direction: column;
-    align-items: stretch;
-    gap: 18px;
-    padding: 0 12px;
+  
+  /* Social */
+  .social {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 16px;
   }
-
-  .about-image1{
-    justify-content: center;
+  
+  .social-btn {
+    width: 100%;
+    max-width: 280px;
   }
-
-  .about-image1 img{
-    max-width: 100%;
-    height: 280px;
-  }
-
-  /* ===== SERVICES / PORTFOLIO ให้เป็น 1 คอลัมน์ ===== */
-  .services-container{ grid-template-columns: 1fr; padding: 0 12px; }
-  .portfolio-grid{ grid-template-columns: 1fr; padding: 0 12px; }
-
-  /* ===== FOOTER ===== */
-  .footer-container{
+  
+  /* Footer */
+  .footer-container {
     flex-direction: column;
     gap: 20px;
   }
-}
-/* ===== MOBILE: จัดปุ่ม Social ให้เป็นระเบียบ ===== */
-@media (max-width: 768px) {
-
-  .social{
-    display: grid;
-    grid-template-columns: 1fr 1fr;   /* 2 ปุ่มต่อแถว */
-    gap: 16px;
-    justify-items: center;
-    padding: 0 16px;
-    margin-top: 20px;
-  }
-
-  .social-btn{
-    width: 100%;
-    max-width: 280px;
-    justify-content: flex-start;
-  }
-
-  .social-btn i{
-    width: 42px;
-    height: 42px;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  .social-btn span{
-    font-size: 14px;
-    line-height: 1.2;
-    white-space: normal;   /* ตัดบรรทัดได้ */
-  }
-
 }
 
