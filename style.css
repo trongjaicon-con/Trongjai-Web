@@ -2137,9 +2137,10 @@ img, video { max-width: 100%; height: auto; display: block; }
   }
 
   .logo img{
-    height: 170px !important;   /* ลดจาก 170px */
+    height: 64px !important;   /* ลดจาก 170px */
     width: auto !important;
     padding-top: 0 !important; /* กัน inline style 35px */
+    align-items: flex-start;
   }
 
   /* เมนูให้ขึ้นบรรทัดได้ ไม่ล้น */
