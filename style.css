@@ -2159,25 +2159,40 @@ img, video { max-width: 100%; height: auto; display: block; }
     display: block;
   }
 
-  /* dropdown ให้แสดงกลางและไม่เพี้ยน */
-  .menu li{ width: 100%; text-align:center; }
+ .menu{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 ต่อแถว */
+    gap: 8px 10px;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu li{
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu a{
+    width: 100%;
+    display: block;
+    padding: 10px 6px;
+    font-size: 14px;
+    line-height: 1.1;
+    white-space: nowrap;     /* ✅ กันตกบรรทัดมั่ว */
+  }
+
+  /* dropdown: จัดให้อยู่กลาง ไม่เพี้ยน */
   .dropdown{
     left: 50%;
     transform: translateX(-50%);
     min-width: 180px;
+    text-align: left;
+    z-index: 2000;
   }
 }
-
-  /* ===== DROPDOWN บนมือถือ: ให้แสดงเป็นบล็อก (ไม่ absolute) ===== */
-  .dropdown{
-    position: static;
-    min-width: auto;
-    width: 100%;
-    margin-top: 6px;
-    border-radius: 10px;
-    overflow: hidden;
-    display: none;
-  }
 
   /* แตะแล้วค้าง/โฟกัสให้เปิด dropdown ได้ */
   .has-dropdown:focus-within .dropdown{
