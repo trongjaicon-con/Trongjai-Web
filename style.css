@@ -2236,3 +2236,36 @@ img, video { max-width: 100%; height: auto; display: block; }
     gap: 20px;
   }
 }
+/* ===== MOBILE: จัดปุ่ม Social ให้เป็นระเบียบ ===== */
+@media (max-width: 768px) {
+
+  .social{
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* 2 ปุ่มต่อแถว */
+    gap: 16px;
+    justify-items: center;
+    padding: 0 16px;
+    margin-top: 20px;
+  }
+
+  .social-btn{
+    width: 100%;
+    max-width: 280px;
+    justify-content: flex-start;
+  }
+
+  .social-btn i{
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .social-btn span{
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: normal;   /* ตัดบรรทัดได้ */
+  }
+
+}
+
