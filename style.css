@@ -2120,7 +2120,7 @@ header {
     }
 
     .logo img {
-        height: 85px !important; /* <--- เพิ่มขนาดโลโก้ให้ใหญ่ขึ้นตามต้องการ */
+        height: 120px !important; /* <--- เพิ่มขนาดโลโก้ให้ใหญ่ขึ้นตามต้องการ */
         width: auto !important;
         padding: 0 !important;
         /* ใช้ margin ติดลบ เพื่อให้รูปใหญ่ขึ้นโดยไม่ดึงให้แถบสีน้ำตาลหนาตาม */
