@@ -2123,25 +2123,27 @@ img, video { max-width: 100%; height: auto; display: block; }
   /* ===== NAVBAR ===== */
   .navbar{ padding: 8px 12px; }
 
-  .nav-inner{
-    height: auto;              /* เดิมล็อก 50px ทำให้ทับกัน */
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-  }
+.navbar {
+  position: relative;      /* สำคัญมาก */
+  height: 110px;           /* 🔒 ล็อกความสูง navbar */
+}
 
-  .logo{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+/* กล่องโลโก้ */
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;    /* กันโลโก้บังการกดเมนู */
+}
 
-  .logo img{
-    height: 120px !important;   /* ลดจาก 170px */
-    width: auto !important;
-    padding-top: 0 !important; /* กัน inline style 35px */
-    align-items: flex-start;
-  }
+/* ตัวรูป */
+.logo img {
+  height: 150px;           /* 👈 ขยายโลโก้ได้ตามใจ */
+  width: auto;
+  display: block;
+}
+
 
   /* เมนูให้ขึ้นบรรทัดได้ ไม่ล้น */
   .menu{
