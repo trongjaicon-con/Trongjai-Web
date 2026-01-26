@@ -2080,14 +2080,11 @@ header {
 
 
 /* ============================================================
-   MOBILE FULL-WIDTH & HEADER OPTIMIZATION (ปรับโลโก้ใหญ่พิเศษ)
-   ============================================================ */
-/* ============================================================
-   MOBILE FULL-WIDTH & BIG LOGO OPTIMIZATION (เวอร์ชันโลโก้ใหญ่พิเศษ)
+   MOBILE FULL-WIDTH & BIG LOGO (ขยายโลโก้สูงสุดโดยไม่เพิ่มความสูง Navbar)
    ============================================================ */
 
 @media (max-width: 768px) {
-    /* 1. บังคับหน้าเว็บเต็มจอ (แก้ปัญหาขอบขาวด้านขวา) */
+    /* 1. บังคับหน้าเว็บเต็มจอ */
     html, body {
         overflow-x: hidden;
         width: 100%;
@@ -2096,7 +2093,7 @@ header {
         box-sizing: border-box;
     }
 
-    /* 2. ย่อส่วนหัวชื่อบริษัท (แถบดำ) */
+    /* 2. ส่วนหัวแถบสีดำ */
     header {
         padding: 8px 15px !important;
         width: 100% !important;
@@ -2108,25 +2105,26 @@ header {
         text-align: center;
     }
 
-    /* 3. จัดการ Navbar (แถบสีน้ำตาล) ให้รองรับโลโก้ขนาดใหญ่ */
+    /* 3. จัดการ Navbar (แถบสีน้ำตาล) */
     .navbar {
-        padding: 15px 10px !important; /* เพิ่มพื้นที่แนวตั้งเล็กน้อยให้โลโก้เด่น */
+        padding: 5px 10px !important; /* ลด Padding เพื่อล็อคความสูงแถบ */
         width: 100% !important;
         box-sizing: border-box;
+        overflow: visible !important; /* ยอมให้โลโก้ใหญ่กว่าแถบได้เล็กน้อยถ้าจำเป็น */
     }
 
     .nav-inner {
         display: flex !important;
-        flex-direction: column !important; /* แยกบรรทัดโลโก้กับเมนูออกจากกันชัดเจน */
+        flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
         height: auto !important;
         padding: 0 !important;
-        gap: 15px !important; /* เพิ่มช่องว่างระหว่างโลโก้กับเมนู ป้องกันการทับกัน */
+        gap: 5px !important; /* ลดช่องว่างเพื่อประหยัดพื้นที่แนวตั้ง */
         width: 100% !important;
     }
 
-    /* ปรับโลโก้ให้กว้างเกือบเต็มช่อง (ใหญ่ขึ้นมาก) */
+    /* ปรับโลโก้ให้ใหญ่ขึ้นแต่ไม่ดัน Navbar */
     .logo {
         width: 100%;
         display: flex;
@@ -2135,21 +2133,28 @@ header {
     }
 
     .logo img {
-        height: auto !important; /* ปล่อยความสูงให้ปรับตามความกว้าง */
-        width: 80% !important;   /* ขยายความกว้างโลโก้เป็น 80% ของหน้าจอ */
-        max-width: 280px !important; /* คุมขนาดสูงสุดไว้ไม่ให้ล้นหน้าจอ */
+        /* ปรับความสูงให้ใหญ่ขึ้น (ลองปรับจาก 100px-130px ตามความชอบ) */
+        height: 110px !important; 
+        width: auto !important;
         padding: 0 !important;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto !important;
+        
+        /* เทคนิคสำคัญ: margin ติดลบจะช่วยให้รูปใหญ่ขึ้นโดยไม่ทำให้แถบสีน้ำตาลขยายกว้างตาม */
+        margin-top: -10px !important; 
+        margin-bottom: -10px !important;
+        
+        position: relative;
+        z-index: 5;
     }
 
-    /* 4. ปรับเมนู Navbar ให้เรียงสวย ไม่ทับกับโลโก้ */
+    /* 4. เมนู Navbar (รักษาแบบเดิมตามที่คุณต้องการ) */
     .menu {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 8px !important; /* เพิ่มระยะห่างระหว่างปุ่มเมนูให้กดง่าย */
+        gap: 8px !important;
         width: 100% !important;
         padding: 5px 0 !important;
     }
@@ -2158,17 +2163,16 @@ header {
         font-size: 13px !important;
         padding: 6px 10px !important;
         white-space: nowrap;
-        background: rgba(255, 255, 255, 0.1); /* ใส่พื้นหลังจางๆ ให้ดูเป็นปุ่มชัดเจน */
+        background: rgba(255, 255, 255, 0.1); 
         border-radius: 4px;
     }
 
-    /* 5. ส่วน Hero และวิดีโอ (แถบสีทอง) */
+    /* 5. ส่วนอื่นๆ (เต็มจอปกติ) */
     .hero {
         padding: 20px 15px !important;
         width: 100% !important;
         box-sizing: border-box;
     }
-    .hero h1 { font-size: 18px !important; }
 
     .about-image {
         width: 100% !important;
@@ -2177,67 +2181,30 @@ header {
         margin: 0 !important;
     }
 
-    /* 6. ปุ่ม Social */
     .social {
         width: 100% !important;
         justify-content: center !important;
         gap: 15px !important;
         padding: 10px !important;
-        margin: 10px 0 !important;
         box-sizing: border-box;
     }
     .social-btn span { display: none !important; }
     .social-btn i { width: 44px !important; height: 44px !important; }
 
-    /* 7. ปรับเนื้อหาทุกส่วนให้เป็น 1 คอลัมน์กว้างเต็มจอ */
-    .about-content, 
-    .footer-container, 
-    .about-selection-grid,
-    .team-grid,
-    .portfolio-grid,
-    .services-container,
-    .portfolio-container {
+    .about-content, .footer-container, .services-container {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
         width: 100% !important;
-        gap: 20px;
         padding: 20px 15px !important;
         box-sizing: border-box;
     }
-
-    /* 8. จัดการรูปภาพในเนื้อหา */
-    .about-text, .about-image1, .about-image1 img {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
-    /* 9. ตารางข้อมูล (Stack แนวตั้ง) */
-    .company-table th, 
-    .company-table td,
-    .info-row1 {
-        display: block !important;
-        width: 100% !important;
-        box-sizing: border-box;
-    }
-
-    /* 10. Gallery 2 รูปต่อแถว */
-    .thumbnail-grid {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 10px !important;
-    }
-    .thumb-item {
-        width: calc(50% - 10px) !important;
-        height: 85px !important;
-    }
 }
 
-/* ปรับเพิ่มสำหรับจอขนาดจิ๋ว (iPhone SE) */
+/* สำหรับจอเล็กพิเศษ */
 @media (max-width: 480px) {
-    header h1 { font-size: 15px !important; }
-    .logo img { width: 85% !important; } /* ขยายกว้างขึ้นอีกสำหรับจอเล็กมาก */
-    .menu a { font-size: 12px !important; padding: 5px 6px !important; }
+    .logo img { 
+        height: 90px !important; /* ปรับลดลงเล็กน้อยเพื่อให้พอดีหน้าจอเล็ก */
+        margin-top: -5px !important;
+        margin-bottom: -5px !important;
+    }
 }
