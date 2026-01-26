@@ -2105,92 +2105,116 @@ header {
 }
 
 /* ทำให้เปิดในมือถือได้ */
-/* ===== GLOBAL FIX (ทุกหน้า) ===== */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
+/* กันล้นแนวนอน (สำคัญ) */
+* { box-sizing: border-box; }
 html, body { width: 100%; overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; display: block; }
 
-img, video, iframe { max-width: 100%; height: auto; display: block; }
+@media (max-width: 768px){
 
-/* กันข้อความ/ปุ่มล้นจอ */
-a, p, span { word-break: break-word; }
+  /* ===== HEADER ===== */
+  header h1{
+    font-size: 18px;
+    line-height: 1.2;
+    padding: 6px 10px;
+  }
 
-/* ===== NAV / HEADER (มือถือไม่ล้น) ===== */
-@media (max-width: 992px){
+  /* ===== NAVBAR ===== */
+  .navbar{ padding: 8px 12px; }
+
   .nav-inner{
-    height: auto;
+    height: auto;              /* เดิมล็อก 50px ทำให้ทับกัน */
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .logo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .logo img{
-    width: 84px;
-    height: 84px;
+    height: 64px !important;   /* ลดจาก 170px */
+    width: auto !important;
+    padding-top: 0 !important; /* กัน inline style 35px */
   }
 
+  /* เมนูให้ขึ้นบรรทัดได้ ไม่ล้น */
   .menu{
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 6px 10px;
   }
 
   .menu a{
     padding: 8px 10px;
+    font-size: 14px;
   }
-}
 
-/* ===== HERO (ตัวอักษรไม่ใหญ่เกิน) ===== */
-@media (max-width: 768px){
+  /* ===== DROPDOWN บนมือถือ: ให้แสดงเป็นบล็อก (ไม่ absolute) ===== */
+  .dropdown{
+    position: static;
+    min-width: auto;
+    width: 100%;
+    margin-top: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+  }
+
+  /* แตะแล้วค้าง/โฟกัสให้เปิด dropdown ได้ */
+  .has-dropdown:focus-within .dropdown{
+    display: block;
+  }
+
+  /* ===== HERO ===== */
   .hero{ padding: 16px 12px; }
-  .hero h1{ font-size: 20px; line-height: 1.35; }
-  .hero p{ font-size: 14px; }
-}
+  .hero h1{ font-size: 20px; line-height: 1.25; }
+  .hero p{ font-size: 15px; }
 
-/* ===== ABOUT IMAGE/VIDEO + SOCIAL (กันทับ/กันล้น) ===== */
-.about-image{
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-}
+  /* ===== VIDEO ===== */
+  .about-image{
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;   /* มือถือดูสมส่วนกว่า 1920/573 */
+    overflow: hidden;
+  }
 
-.about-image .about-hero-video{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .about-image .about-hero-video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-/* ปุ่ม social: บังคับให้อยู่ "ใต้" รูป/วิดีโอ และไม่ล้นจอ */
-.social{
-  position: static !important;
-  width: 100%;
-  max-width: 1200px;
-  margin: 16px auto 0;
-  padding: 0 16px;
+  /* ===== SOCIAL ===== */
+  .social{
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 0 12px;
+    margin: 14px auto 0;
+  }
 
-  display: flex;
-  flex-wrap: wrap;           /* ✅ สำคัญ กันล้น */
-  gap: 16px;
-  justify-content: center;
-}
+  .social-btn{
+    gap: 10px;
+  }
 
-/* ยกเลิก nowrap บนมือถือ (ของเดิมทำให้ล้น) */
-.social-btn span{
-  white-space: normal;       /* ✅ จาก nowrap -> normal */
-  font-size: 16px;
-  line-height: 1.2;
-}
+  .social-btn span{
+    font-size: 14px;
+    white-space: normal;   /* ให้ตัดบรรทัดได้ */
+    line-height: 1.2;
+    text-align: left;
+  }
 
-/* ===== ABOUT CONTENT (Text + รูป) ===== */
-@media (max-width: 992px){
+  /* ===== ABOUT CONTENT (ข้อความ + รูป) ===== */
   .about-content{
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .about-text{
-    padding: 18px;
+    gap: 18px;
+    padding: 0 12px;
   }
 
   .about-image1{
@@ -2198,33 +2222,17 @@ a, p, span { word-break: break-word; }
   }
 
   .about-image1 img{
-    width: 100%;
-    max-width: 520px;
-    height: 320px;
-    object-fit: cover;
-  }
-}
-
-/* ===== SERVICES / PORTFOLIO GRID ===== */
-@media (max-width: 992px){
-  .services-container{
-    grid-template-columns: 1fr;
-  }
-  .portfolio-grid{
-    grid-template-columns: 1fr;
+    max-width: 100%;
+    height: 280px;
   }
 
-  .service-image2{ height: 200px; }
-  .portfolio-item img{ height: 220px; }
-}
+  /* ===== SERVICES / PORTFOLIO ให้เป็น 1 คอลัมน์ ===== */
+  .services-container{ grid-template-columns: 1fr; padding: 0 12px; }
+  .portfolio-grid{ grid-template-columns: 1fr; padding: 0 12px; }
 
-/* ===== FOOTER (ไม่เพี้ยนในมือถือ) ===== */
-@media (max-width: 768px){
+  /* ===== FOOTER ===== */
   .footer-container{
     flex-direction: column;
-    gap: 24px;
-  }
-  .footer-column{
-    min-width: 0;
+    gap: 20px;
   }
 }
