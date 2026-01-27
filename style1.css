@@ -2082,4 +2082,29 @@ img {
         text-align: center;
     }
 }
+@media (max-width: 768px) {
+    /* จัดกลุ่ม Footer ให้เรียงแบบ 2 คอลัมน์ (ซ้าย-ขวา) */
+    .footer-container, .footer-blocks {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr); /* แบ่งเป็น 2 ฝั่ง */
+        gap: 20px;
+        text-align: left; /* เปลี่ยนจากกึ่งกลางเป็นชิดซ้าย */
+        padding: 20px;
+    }
+
+    /* บังคับให้หัวข้อใหญ่ (เช่น TRONGJAI DESIGN) ขยายเต็มแถวเดียว */
+    .footer-info, .footer-address-block {
+        grid-column: span 2; 
+        margin-top: 20px;
+    }
+
+    .footer-links h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .footer-links ul li {
+        margin-bottom: 5px;
+    }
+}
 
