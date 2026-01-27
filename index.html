@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="style1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
@@ -30,12 +32,14 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-
                 <a href="index.html">
                     <img src="/image/home index/logo1.png" alt="TRONGJAI logo">
                 </a>
             </div>
-    </div>
+
+            <!-- ปุ่มเมนูมือถือ -->
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
             <ul class="nav-links">
                 <li><a href="index.html">หน้าแรก</a></li>
 
@@ -62,6 +66,14 @@
             </ul>
         </div>
     </nav>
+
+    <!-- overlay (วางต่อจาก nav ได้เลย) -->
+    <div class="nav-overlay"></div>
+
+
+    <!-- overlay (วางต่อจาก nav ได้เลย) -->
+    <div class="nav-overlay"></div>
+
 
     <main class="main-content container">
         <div class="content-layout">
@@ -248,7 +260,7 @@
     <div id="homePopup" class="popup-overlay">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
-                <img src="image/home index/popup.jpg" alt="Announcement">
+            <img src="image/home index/popup.jpg" alt="Announcement">
             </a>
         </div>
     </div>
@@ -274,6 +286,55 @@
             }
         }
     </script>
+
+    <script>
+        const toggle = document.querySelector('.nav-toggle');
+        const overlay = document.querySelector('.nav-overlay');
+
+        function closeNav() {
+            document.body.classList.remove('nav-open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
+
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const isOpen = document.body.classList.toggle('nav-open');
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+        }
+
+        if (overlay) overlay.addEventListener('click', closeNav);
+
+        // dropdown คลิกเปิดเฉพาะจอเล็ก
+        document.querySelectorAll('.dropdown > .dropbtn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (window.matchMedia('(max-width: 900px)').matches) {
+                    e.preventDefault();
+                    const menu = btn.parentElement.querySelector('.dropdown-content');
+                    const isOpen = menu.style.display === 'block';
+                    // ปิด dropdown อื่นก่อน (กันรก)
+                    document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = 'none');
+                    menu.style.display = isOpen ? 'none' : 'block';
+                }
+            });
+        });
+
+        // คลิกลิงก์แล้วปิดเมนู (มือถือ)
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => {
+                if (window.matchMedia('(max-width: 900px)').matches) closeNav();
+            });
+        });
+
+        // ถ้าขยายจอจากมือถือ -> desktop ให้รีเซ็ต
+        window.addEventListener('resize', () => {
+            if (!window.matchMedia('(max-width: 900px)').matches) {
+                closeNav();
+                document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = '');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
