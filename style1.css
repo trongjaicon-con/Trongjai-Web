@@ -1869,6 +1869,58 @@ footer.site-footer {
         grid-template-columns: repeat(2, 1fr); /* ยังคงเป็น 2 คอลัมน์ หรือ 1fr ถ้าอยากให้ปุ่มเต็มหน้า */
     }
 }
+.nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(27, 67, 50, 0.98); /* สีเขียวเข้มแบบโปร่งแสงนิดๆ */
+        padding-top: 80px;
+        overflow-y: auto; /* เพิ่ม Scrollbar หากเมนูยาวเกินหน้าจอ */
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* ปรับระยะห่างของแต่ละหัวข้อเมนู */
+    .nav-links li {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem;
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* แก้ไขส่วนสำคัญ: Dropdown ในมือถือ */
+    .dropdown-content {
+        display: none; /* ซ่อนไว้ก่อน */
+        position: static; /* เปลี่ยนจาก absolute เป็น static เพื่อให้ดันเนื้อหาลงไป ไม่ทับกัน */
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 100%;
+        box-shadow: none;
+    }
+
+    /* เมื่อกดหรือโฮเวอร์ ให้แสดงเมนูย่อยแบบดันรายการอื่นลงไป */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content li a {
+        font-size: 1rem;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: #d4af37; /* สีทองเพื่อให้เด่นกว่าเมนูหลัก */
+    }
+
 
 @media (max-width: 480px) {
     /* สำหรับมือถือหน้าจอเล็ก */
@@ -2082,29 +2134,5 @@ img {
         text-align: center;
     }
 }
-@media (max-width: 768px) {
-    /* จัดกลุ่ม Footer ให้เรียงแบบ 2 คอลัมน์ (ซ้าย-ขวา) */
-    .footer-container, .footer-blocks {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr); /* แบ่งเป็น 2 ฝั่ง */
-        gap: 20px;
-        text-align: left; /* เปลี่ยนจากกึ่งกลางเป็นชิดซ้าย */
-        padding: 20px;
-    }
 
-    /* บังคับให้หัวข้อใหญ่ (เช่น TRONGJAI DESIGN) ขยายเต็มแถวเดียว */
-    .footer-info, .footer-address-block {
-        grid-column: span 2; 
-        margin-top: 20px;
-    }
-
-    .footer-links h3 {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-    }
-
-    .footer-links ul li {
-        margin-bottom: 5px;
-    }
-}
 
