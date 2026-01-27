@@ -1804,10 +1804,7 @@ img, video { max-width: 100%; height: auto; }
 }
 
 /* ทำให้โลโก้ไม่ล้น navbar (ปรับแบบ responsive) */
-.logo img {
-  height: 140px;           /* ค่า default เดิมคุณใหญ่ไปมาก */
-  padding-top: 0;
-}
+
 
 /* ========== Breakpoint มือถือ ========== */
 @media (max-width: 900px) {
@@ -1826,10 +1823,7 @@ img, video { max-width: 100%; height: auto; }
     align-items: center;
   }
 
-  .logo img {
-    height: 70px;            /* ให้พอดี navbar 80px */
-    padding-top: 0;
-  }
+  
 
   /* แสดงปุ่ม hamburger */
   .nav-toggle {
@@ -1958,11 +1952,6 @@ html, body { max-width: 100%; overflow-x: hidden; }
 }
 
 /* กันโลโก้ล้น (เดิม 250px ใหญ่มาก) */
-.logo img{
-  height: 120px;
-  width: auto;
-  padding-top: 0;
-}
 
 /* มือถือ/แท็บเล็ต */
 @media (max-width: 900px){
@@ -1972,18 +1961,6 @@ html, body { max-width: 100%; overflow-x: hidden; }
   }
 
   /* เปลี่ยนโลโก้จาก absolute เป็นปกติบนมือถือ */
-  .logo{
-    position: static;
-    transform: none;
-    left: auto;
-    top: auto;
-    display:flex;
-    align-items:center;
-  }
-
-  .logo img{
-    height: 64px; /* ให้พอดีกับ navbar สูง 80px */
-  }
 
   .nav-toggle{
     display:inline-flex;
