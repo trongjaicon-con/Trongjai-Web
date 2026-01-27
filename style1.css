@@ -15,11 +15,22 @@
   box-sizing: border-box;
 }
 
+main, .main-content, .contact-page, .services-section, .portfolio-container {
+    flex: 1 0 auto;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Kanit", "Segoe UI", Arial, sans-serif;
   background-color: #d8d5cb;
   color: var(--text);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -68,6 +79,10 @@ header.site-header {
 }
 
 /* --- ส่วนที่ 1: footer-blocks (ส่วนข้อมูล 4 คอลัมน์ด้านบน) --- */
+
+footer.site-footer, .footer-blocks {
+    flex-shrink: 0;
+}
 .footer-blocks {
   background-color: #2b3628;
   /* หรือเปลี่ยนเป็น var(--green) ให้เข้ากับด้านล่าง */
