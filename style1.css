@@ -2025,3 +2025,57 @@ img {
     max-width: 100%;
     height: auto;
 }
+/* สไตล์ปุ่ม 3 ขีด (ซ่อนไว้ในคอม จะโชว์ในมือถือ) */
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* โชว์ปุ่มในมือถือ */
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 80px; /* ความสูงของ Navbar */
+        left: -100%; /* ซ่อนไว้ฝั่งซ้าย */
+        background-color: #2b3628;
+        width: 100%;
+        height: calc(100vh - 80px);
+        transition: 0.3s ease;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    /* เมื่อกดเปิดเมนู จะเลื่อนออกมา */
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links a {
+        line-height: 60px; /* ปรับความกว้างแต่ละแถวเมนูในมือถือ */
+        width: 100%;
+    }
+
+    /* ปรับ Dropdown ในมือถือให้แสดงตลอด หรือกดง่ายขึ้น */
+    .dropdown:hover .dropdown-content {
+        position: relative;
+        transform: none;
+        left: 0;
+        background: rgba(255,255,255,0.1);
+    }
+    .dropdown-content li a {
+        color: #fff;
+        text-align: center;
+    }
+}

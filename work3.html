@@ -27,14 +27,16 @@
         </div>
     </header>
 
-    <nav class="navbar">
+ <nav class="navbar">
         <div class="container">
             <div class="logo">
                 <a href="index1.html">
                     <img src="/image/home index/logo1.png" alt="TRONGJAI logo">
                 </a>
             </div>
-
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <ul class="nav-links">
                 <li><a href="index1.html">หน้าแรก</a></li>
 
@@ -61,6 +63,7 @@
             </ul>
         </div>
     </nav>
+
     <section class="project-detail-container">
         <div class="back-btn-container">
             <a href="portfolio-home1.html" class="btn-back-simple">
@@ -139,8 +142,8 @@
         <script>
             // ข้อมูลจำลองผลงานทั้งหมด (คุณสามารถเพิ่มชื่อและพาธรูปภาพได้ตามจริง)
             const allWorks = [
-                { title: "หมู่บ้านเศรษฐสิริ พระราม 5", img: "image/portfolio-home/home/h1.png", link: "portfolio-work1.html" },
-                { title: "หมู่บ้านสีวลี ราชพฤกษ์", img: "image/portfolio-home/home/h2.png", link: "portfolio-work2.html" },
+                { title: "หมู่บ้านเศรษฐสิริ พระราม 5", img: "image/portfolio-home/home/h1.png", link: "work1.html" },
+                { title: "หมู่บ้านสีวลี ราชพฤกษ์", img: "image/portfolio-home/home/h2.png", link: "work2.html" },
             ];
 
             function displayRandomWorks() {
