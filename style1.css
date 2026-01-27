@@ -15,9 +15,6 @@
   box-sizing: border-box;
 }
 
-main, .main-content, .contact-page, .services-section, .portfolio-container {
-    flex: 1 0 auto;
-}
 
 body {
   margin: 0;
@@ -80,9 +77,6 @@ header.site-header {
 
 /* --- ส่วนที่ 1: footer-blocks (ส่วนข้อมูล 4 คอลัมน์ด้านบน) --- */
 
-footer.site-footer, .footer-blocks {
-    flex-shrink: 0;
-}
 .footer-blocks {
   background-color: #2b3628;
   /* หรือเปลี่ยนเป็น var(--green) ให้เข้ากับด้านล่าง */
@@ -2094,24 +2088,16 @@ img {
         text-align: center;
     }
 }
+/* ปรับจอมือถือให้เรียงตามความเหมาะสม */
+@media (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr); /* มือถือจอใหญ่เรียง 2 */
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-container {
+        grid-template-columns: 1fr; /* มือถือจอเล็กเรียง 1 เพื่อไม่ให้ภาพเล็กเกินไป */
+    }
+}
 /* แก้ปัญหา Footer ลอยในหน้าผลงาน ข้อมูลบริษัท และติดต่อเรา */
-.portfolio-container, 
-.company-info-section, 
-.contact-page {
-    /* 100vh คือความสูงเต็มจอ ลบออกด้วยความสูงโดยประมาณของ Header และ Footer */
-    min-height: calc(100vh - 400px); 
-    display: flex;
-    flex-direction: column;
-}
-
-/* แถม: ท่าไม้ตายสุดท้ายถ้ายังไม่หาย ให้ใส่ตัวนี้เพิ่มด้วยครับ */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
-footer {
-    margin-top: auto; /* ผลัก Footer ให้ตกลงไปข้างล่างสุดเสมอ */
-}
