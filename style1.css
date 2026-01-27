@@ -2149,3 +2149,41 @@ footer {
         padding: 30px 15px;
     }
 }
+/* --- 4. แก้ไขเมนู (Navbar & Mobile Menu) --- */
+@media (max-width: 768px) {
+    /* ปรับตำแหน่งปุ่ม 3 ขีดให้คงที่ */
+    .menu-toggle {
+        display: block !important;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1001;
+    }
+
+    /* แก้เมนูที่เด้งออกมาให้เต็มจอและไม่ทับ Navbar */
+    .nav-links {
+        display: none; /* ซ่อนไว้ก่อนกด */
+        flex-direction: column;
+        position: fixed;
+        top: 0; /* หรือปรับตามความสูง Navbar */
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #1b4332; /* สีเขียวตามธีมของคุณ */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        gap: 30px;
+    }
+
+    /* เมื่อกดเปิดเมนู */
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li a {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+}
