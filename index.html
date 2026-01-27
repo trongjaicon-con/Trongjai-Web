@@ -276,6 +276,35 @@
             }
         }
     </script>
+
+    <script>
+  // เลือกปุ่ม 3 ขีด และ รายการเมนู
+  const menuToggle = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+
+  // เมื่อมีการคลิกที่ปุ่ม 3 ขีด
+  menuToggle.addEventListener('click', () => {
+      // สลับคลาส 'active' (ที่เขียนไว้ใน CSS) เพื่อให้เมนูเลื่อนออกมา
+      navLinks.classList.toggle('active');
+      
+      // (ทางเลือก) สลับไอคอนจาก 3 ขีด เป็น กากบาท
+      const icon = menuToggle.querySelector('i');
+      if (navLinks.classList.contains('active')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+      } else {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+      }
+  });
+
+  // ปิดเมนูอัตโนมัติเมื่อมีการคลิกที่ลิงก์เมนู (เพื่อให้หน้าไม่ค้าง)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+      });
+  });
+</script>
 </body>
 
 </html>
