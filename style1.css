@@ -2094,3 +2094,24 @@ img {
         text-align: center;
     }
 }
+/* แก้ปัญหา Footer ลอยในหน้าผลงาน ข้อมูลบริษัท และติดต่อเรา */
+.portfolio-container, 
+.company-info-section, 
+.contact-page {
+    /* 100vh คือความสูงเต็มจอ ลบออกด้วยความสูงโดยประมาณของ Header และ Footer */
+    min-height: calc(100vh - 400px); 
+    display: flex;
+    flex-direction: column;
+}
+
+/* แถม: ท่าไม้ตายสุดท้ายถ้ายังไม่หาย ให้ใส่ตัวนี้เพิ่มด้วยครับ */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+footer {
+    margin-top: auto; /* ผลัก Footer ให้ตกลงไปข้างล่างสุดเสมอ */
+}
