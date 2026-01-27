@@ -1,0 +1,1983 @@
+:root {
+  --green: #1f2b26;
+  --brown: #4a3728;
+  --bg: #e9e3da;
+  --card: #ffffff;
+  --gold: #c9a44c;
+  --text: #1c1c1c;
+  --muted: rgba(0, 0, 0, .6);
+  --radius: 18px;
+  --shadow: 0 10px 22px rgba(0, 0, 0, .10);
+  --max: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Kanit", "Segoe UI", Arial, sans-serif;
+  background-color: #d8d5cb;
+  color: var(--text);
+}
+
+.container {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ===== HEADER (Green) ===== */
+header.site-header {
+  background: var(--green);
+  color: #ffffff;
+  padding: 20px 0;
+  /* เพิ่มพื้นที่บน-ล่างเล็กน้อยให้ดูไม่อึดอัด */
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  /* จัดให้ข้อความซ้อนกันในแนวตั้ง */
+  align-items: center;
+  /* จัดให้อยู่กึ่งกลางในแนวนอน */
+  justify-content: center;
+  text-align: center;
+  /* gap: 10px; (เอาออกหรือเก็บไว้ก็ได้ ถ้าใช้ column มันจะเว้นระยะระหว่าง h1 กับ p) */
+}
+
+.header-title {
+  font-weight: 800;
+  letter-spacing: .5px;
+  font-size: clamp(18px, 2.4vw, 28px);
+  margin: 0;
+  line-height: 1.2;
+  /* ปรับให้ดูไม่ติดกันเกินไป */
+}
+
+.header-sub {
+  margin: 8px 0 0;
+  /* เว้นระยะห่างจากหัวข้อนิดหน่อย */
+  color: rgba(255, 255, 255, .78);
+  font-size: 14px;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+/* --- ส่วนที่ 1: footer-blocks (ส่วนข้อมูล 4 คอลัมน์ด้านบน) --- */
+.footer-blocks {
+  background-color: #2b3628;
+  /* หรือเปลี่ยนเป็น var(--green) ให้เข้ากับด้านล่าง */
+  color: #ffffff;
+  padding: 60px 0;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* เส้นแบ่งจางๆ ก่อนถึงแถบลิขสิทธิ์ */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-column h3 {
+  color: #ffffff;
+  /* สีทองที่เป็นเอกลักษณ์ของ TRONGJAI */
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #d4af37;
+  padding-left: 5px;
+}
+
+/* ส่วนจัดการข้อมูลติดต่อในคอลัมน์ขวาสุด */
+.contact-info p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.contact-info i {
+  color: #d4af37;
+  margin-top: 5px;
+  width: 20px;
+}
+
+/* --- ส่วนที่ 2: site-footer (แถบลิขสิทธิ์ด้านล่างสุดที่คุณใช้อยู่) --- */
+footer.site-footer {
+  background: var(--green);
+  /* ใช้ตัวแปรสีเขียวของคุณ */
+  color: #fff;
+  padding: 20px 0;
+  /* margin-top: 8px; เอาออกเพื่อให้ติดกับ footer-blocks */
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-inner b {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.footer-inner small {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+}
+
+/* --- ส่วนที่ 3: Responsive สำหรับมือถือ --- */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* แถบ Navbar */
+/* 1. กำหนดความสูงที่แน่นอนให้ Navbar */
+.navbar {
+  background-color: #2b3628;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* แก้ไขจุดนี้: ใช้ .navbar .container เพื่อเจาะจงเฉพาะในแถบเมนู */
+.navbar .container {
+  max-width: 100%;       
+  margin: 0;             
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 40px;       
+  position: relative;
+  width: 100%;          
+}
+
+/* 2. โลโก้ชิดซ้าย */
+.logo {
+  position: absolute;
+  left: 40px;            
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+.logo img {
+  height: 250px;         
+  width: auto;
+  display: block;
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
+  transition: 0.3s ease;
+  padding-top: 15%;      
+}
+
+/* 3. เมนูชิดขวา */
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: auto;     
+}
+
+.nav-links a {
+  display: block;
+  padding: 0 15px;
+  line-height: 80px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* ส่วนที่เหลือคงเดิมตามที่คุณต้องการ */
+.nav-links a:hover {
+  color: #d4af37;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-content li a {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #333333;
+  border-bottom: 1px solid #f1f1f1;
+  line-height: normal;
+  text-align: left;
+}
+
+.dropdown-content li a:hover {
+  background-color: #f8f8f8;
+  color: #4a3728;
+  padding-left: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: fadeInCenter 0.3s ease;
+}
+
+@keyframes fadeInCenter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+    /* ต้องคงค่า translateX ไว้ */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*                 หน้าIndex                    */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+/* พื้นหลังมืดด้านหลัง Popup */
+.popup-overlay {
+    display: none; /* เริ่มต้นให้ซ่อนไว้ */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* สีดำโปร่งแสง */
+    z-index: 9999; /* ให้อยู่บนสุดเหนือทุกอย่าง */
+    justify-content: center;
+    align-items: center;
+}
+
+/* กล่องเนื้อหา */
+.popup-content {
+    position: relative;
+    max-width: 500px; /* ปรับขนาดความกว้างตามใจชอบ */
+    width: 90%;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    animation: popupScale 0.4s ease; /* ใส่ Animation ให้เด้งออกมาสวยๆ */
+}
+
+.popup-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ปุ่มปิด (X) */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(0,0,0,0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    background: #d4af37; /* เปลี่ยนเป็นสีทองเวลาเอาเมาส์ชี้ */
+}
+
+/* Animation ขยายตัว */
+@keyframes popupScale {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* การจัด Layout หลัก */
+.main-content {
+  padding: 60px 20px;
+  margin-top: 20px;
+}
+
+.content-layout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* ฝั่งบทความ (ซ้าย) */
+.article-section {
+  flex: 1.2;
+  /* ให้ฝั่งบทความกว้างกว่าเล็กน้อย */
+}
+
+/* จัดการหัวข้อบทความให้อยู่กึ่งกลาง */
+.article-section .section-title {
+    display: block;      /* บังคับให้เป็น Block เพื่อใช้ text-align ได้เต็มที่ */
+    width: 100%;         /* กางเต็มพื้นที่ */
+    text-align: center;  /* จัดตัวอักษรให้อยู่กึ่งกลาง */
+    margin-bottom: 25px; /* ระยะห่างจากเนื้อหาด้านล่าง */
+    line-height: 1.4;    /* เพิ่มระยะห่างระหว่างบรรทัดให้ไม่อึดอัด */
+}
+
+/* ทำให้ส่วนสีทองขึ้นบรรทัดใหม่และอยู่กึ่งกลางด้วย */
+.article-section .section-title .gold {
+    display: block;      /* บังคับให้ตัดลงบรรทัดใหม่ */
+    text-align: center;  /* จัดกึ่งกลางบรรทัดตัวเอง */
+    font-size: 1.2rem;   /* ปรับขนาดให้เล็กกว่าหัวข้อหลักเล็กน้อย (ถ้าต้องการ) */
+    margin-top: 5px;     /* ระยะห่างจากชื่อบริษัท */
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1b4332;
+  margin-bottom: 25px;
+  line-height: 1.3;
+}
+
+.article-text {
+  font-size: 1.05rem;
+  color: #333333;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.feature-list li {
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+.feature-list i {
+  color: #d4af37;
+  /* สีทอง */
+  margin-right: 10px;
+}
+
+
+/* ฝั่งวิดีโอ (ขวา) */
+.video-section {
+  flex: 1;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* อัตราส่วน 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background: #000;
+}
+
+/* แก้ไขจาก iframe เป็น .video-player เพื่อให้รองรับแท็ก <video> */
+.video-container .video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* สำคัญ: ทำให้วิดีโอเต็มกรอบโดยไม่เสียสัดส่วน */
+  border: none;
+}
+
+.video-caption {
+  margin-top: 15px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ปรับแต่งสำหรับหน้าจอมือถือ */
+@media (max-width: 992px) {
+  .content-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .article-section,
+  .video-section {
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .video-container {
+    max-width: 600px;
+    /* จำกัดความกว้างบนมือถือไม่ให้ใหญ่เกินไป */
+    margin: 0 auto;
+  }
+}
+
+/* จัดวางกลุ่มปุ่มโซเชียล */
+.social-pills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* แบ่งเป็น 2 คอลัมน์ */
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* สไตล์พื้นฐานของปุ่ม (ทรงแคปซูล) */
+.pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 50px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pill i {
+  font-size: 1.1rem;
+}
+
+/* สีแต่ละโซเชียล */
+.pill.fb {
+  background-color: #1877F2;
+}
+
+.pill.line {
+  background-color: #06C755;
+}
+
+.pill.ig {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.pill.tiktok {
+  background-color: #000000;
+}
+
+/* เอฟเฟกต์เวลา Hover */
+.pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.1);
+}
+
+/* ปรับแต่งสำหรับหน้าจอมือถือ */
+@media (max-width: 480px) {
+  .social-pills {
+    grid-template-columns: 1fr;
+    /* บนมือถือขนาดเล็กให้เรียงแถวละ 1 ปุ่ม */
+  }
+}
+
+/* ส่วนบริการของเรา */
+.services-overview {
+  padding: 40px 0;
+  width: 100%;
+  display: block;
+  /* มั่นใจว่าเป็น Block ปกติ */
+  clear: both;
+  /* ป้องกันการโดนดึงจาก Float ด้านบน */
+}
+
+/* จัดหัวข้อให้อยู่กึ่งกลางและสูงกว่ารูป */
+.section-title.center {
+  display: block;
+  /* บังคับให้ครองพื้นที่เต็มบรรทัด */
+  width: 100%;
+  /* ขยายเต็มความกว้างหน้าจอ */
+  text-align: center;
+  /* จัดตัวอักษรไว้กึ่งกลาง */
+  margin-bottom: 30px;
+  /* ระยะห่างระหว่างหัวข้อกับกลุ่มรูปภาพ */
+  font-size: 2.2rem;
+  /* ขนาดตัวอักษร */
+  color: #1b4332;
+  /* สีเขียวเข้ม (ปรับตามแบรนด์คุณได้) */
+}
+
+/* ส่วนจัดการรูปภาพ 3 คอลัมน์ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* แบ่งเป็น 3 คอลัมน์เท่ากัน */
+  gap: 20px;
+  max-width: 1200px;
+  /* จำกัดความกว้างไม่ให้รูปขยายจนแตก */
+  margin: 0 auto;
+  /* จัดกลุ่ม Grid ทั้งหมดไว้กลางหน้าจอ */
+  padding: 0 20px;
+}
+
+/* การ์ดแต่ละใบ */
+.service-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-img {
+  height: 220px;
+  overflow: hidden;
+}
+
+.service-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.service-card:hover .service-img img {
+  transform: scale(1.1);
+}
+
+.service-name {
+  margin: 25px 0 15px;
+  color: #1b4332;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* รายการเนื้อหาใต้รูป */
+.service-details {
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+}
+
+.service-details li {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+/* ปรับแต่งสำหรับมือถือ */
+@media (max-width: 768px) {
+  .services-overview {
+    padding: 50px 20px;
+  }
+}
+
+/* ส่วนผลงานของเรา */
+.portfolio-section {
+  padding: 60px 0;
+  /* เพิ่มพื้นที่บนล่างให้ดูไม่เบียด */
+  width: 100%;
+  display: block;
+}
+
+/* หัวข้อหลัก: ใช้สไตล์เดียวกับ "บริการของเรา" */
+.section-title.center {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  /* ลด margin เพื่อให้หัวข้อย่อยขยับขึ้นมาใกล้ */
+  font-size: 2.2rem;
+  color: #1b4332;
+  position: relative;
+}
+
+.section-title.center::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 15px auto 0;
+}
+
+/* Grid จัดวางผลงาน: 3 คอลัมน์ */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* สไตล์ไอเทมผลงาน */
+.portfolio-item {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.portfolio-img {
+  position: relative;
+  height: 280px;
+  /* สูงกว่าส่วนบริการเพื่อให้เห็นงานชัดๆ */
+  overflow: hidden;
+}
+
+.portfolio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+/* Overlay เวลาเอาเมาส์ชี้ */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 67, 50, 0.7);
+  /* สีเขียวโปร่งแสงตามธีม */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.1);
+}
+
+.view-project {
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+}
+
+/* ข้อมูลใต้รูป */
+.portfolio-info {
+  padding: 15px 0;
+  text-align: center;
+}
+
+.project-name {
+  font-size: 1.1rem;
+  color: #1b4332;
+  margin-bottom: 5px;
+}
+
+/* ปุ่มดูผลงานทั้งหมด */
+.center-btn {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #1b4332;
+  color: #fff;
+  padding: 12px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: #d4af37;
+  transform: translateY(-3px);
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 992px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*                 หน้า about                   */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+/* About Home Page Layout */
+.about-page {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* แบ่ง 3 คอลัมน์ */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* สไตล์ของการ์ดแต่ละใบ */
+.about-card {
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+    display: block;
+}
+
+.about-card:hover {
+    transform: translateY(-10px); /* ลอยขึ้นเมื่อ hover */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ส่วนรูปภาพในการ์ด */
+.about-card-img {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.about-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.about-card:hover .about-card-img img {
+    transform: scale(1.1); /* ซูมรูปภาพเล็กน้อย */
+}
+
+/* Overlay ที่จะโชว์เมื่อเอาเมาส์ชี้ */
+.about-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(74, 55, 40, 0.4); /* สีน้ำตาลโปร่งแสงตามธีม Navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.about-overlay i {
+    color: #fff;
+    font-size: 2rem;
+    border: 2px solid #fff;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.about-card:hover .about-overlay {
+    opacity: 1;
+}
+
+/* ข้อมูลใต้รูป */
+.about-card-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.about-card-info h3 {
+    color: #1b4332;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* รองรับมือถือ */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- ส่วนภาพรวมของ Team Section --- */
+.team-section {
+    padding: 60px 0;
+
+}
+
+.team-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #1b4332;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.team-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+/* --- การจัดวาง Grid --- */
+.team-grid {
+    display: flex;
+    justify-content: center; /* จัดการ์ดให้อยู่กึ่งกลาง */
+    gap: 20px;
+    padding: 0 20px;
+    flex-wrap: nowrap; /* บังคับไม่ให้ขึ้นบรรทัดใหม่ */
+}
+
+.team-card {
+    flex: 1; /* ให้การ์ดทุกใบมีความกว้างเท่าๆ กัน */
+    min-width: 200px;
+    max-width: 280px; /* คุมขนาดไม่ให้ใหญ่เกินไปจนดูไม่สวย */
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-bottom: 4px solid #d4af37; /* สีทองเมื่อเอาเมาส์วาง */
+}
+
+/* --- รูปภาพบุคลากร --- */
+.team-image {
+    width: 100%;
+    height: 300px; /* กำหนดความสูงให้เท่ากันทุกรูป */
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* บังคับให้รูปเต็มกรอบโดยไม่เสียสัดส่วน */
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-image img {
+    transform: scale(1.05); /* ซูมรูปเล็กน้อยเมื่อ hover */
+}
+
+/* --- ข้อมูลชื่อและตำแหน่ง --- */
+.team-info {
+    padding: 20px;
+}
+
+.team-info h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #1b4332;
+    font-weight: 600;
+}
+
+.team-info .position {
+    color: #666;
+    font-weight: 500;
+    margin-top: 5px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- ปุ่มย้อนกลับ --- */
+.back-btn-container {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+
+.btn-back-simple {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s;
+    background: #1b4332;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+.btn-back-simple:hover {
+    background: #d4af37;
+    color: #fff;
+    padding-left: 25px; /* เลื่อนไปทางขวาเล็กน้อย */
+}
+
+/* --- Animation (Reveal) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+@media (max-width: 768px) {
+    .team-grid {
+        /* กลับมาเป็น 1 หรือ 2 คอลัมน์เมื่อดูในมือถือ */
+        grid-template-columns: repeat(2, 1fr); 
+        flex-wrap: wrap; 
+    }
+}
+/* --- ส่วนภาพรวมของข้อมูลบริษัท --- */
+.company-info-section {
+    padding: 80px 0;
+    min-height: 60vh;
+}
+
+.company-info-container {
+    max-width: 900px; /* คุมความกว้างไม่ให้กว้างเกินไปจนอ่านยาก */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.company-title {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #1b4332;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* --- การ์ดครอบตาราง --- */
+.company-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* --- การจัดการตาราง --- */
+.company-table {
+    width: 100%;
+    border-collapse: collapse; /* ยุบเส้นขอบเข้าด้วยกัน */
+}
+
+.company-table tr {
+    border-bottom: 1px solid #eee; /* เส้นแบ่งแถว */
+}
+
+.company-table tr:last-child {
+    border-bottom: none; /* แถวสุดท้ายไม่ต้องมีเส้น */
+}
+
+.company-table th {
+    text-align: left;
+    width: 30%; /* กำหนดความกว้างหัวข้อ */
+    padding: 20px 15px;
+    color: #4a3728;
+    font-weight: 600;
+    background-color: #fafafa; /* ไฮไลท์พื้นหลังหัวข้อนิดๆ */
+}
+
+.company-table td {
+    padding: 20px 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.company-table td a {
+    color: #1b4332;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.company-table td a:hover {
+    color: #d4af37;
+    text-decoration: underline;
+}
+
+/* --- Responsive สำหรับมือถือ --- */
+@media (max-width: 600px) {
+    .company-title {
+        font-size: 2rem;
+    }
+
+    .company-card {
+        padding: 20px;
+    }
+
+    .company-table th, 
+    .company-table td {
+        display: block; /* สลับเป็นแนวตั้งในมือถือ */
+        width: 100%;
+        padding: 10px 5px;
+    }
+
+    .company-table th {
+        background-color: transparent;
+        color: #d4af37;
+        padding-top: 20px;
+    }
+    
+    .company-table tr {
+        padding-bottom: 10px;
+        display: block;
+    }
+}
+/* --- ส่วนภาพรวมของ History Section --- */
+.company-history-section {
+    padding: 80px 0;
+    min-height: 70vh;
+}
+
+.company-history-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.history-title {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #1b4332;
+    margin-bottom: 60px;
+}
+
+/* --- การจัดการรายการ Timeline --- */
+.history-list {
+    position: relative;
+    padding-left: 50px; /* เว้นที่ด้านซ้ายสำหรับเส้น Timeline */
+}
+
+
+/* --- รายการปีแต่ละรายการ --- */
+.history-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding: 20px 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.history-item:hover {
+    transform: translateX(10px); /* เลื่อนขวานิดๆ เมื่อ Hover */
+    box-shadow: 0 8px 25px rgba(74, 55, 40, 0.1);
+}
+
+/* จุดกลมบนเส้น Timeline */
+.history-item::before {
+    content: '';
+    position: absolute;
+    left: -42px; /* ดันออกไปทับเส้นแนวตั้ง */
+    top: 25px;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 3px solid #d4af37;
+    border-radius: 50%;
+    z-index: 1;
+    transition: 0.3s;
+}
+
+/* ไฮไลท์สำหรับรายการที่ active หรือล่าสุด */
+.history-item.active {
+    border-left: 5px solid #d4af37;
+}
+
+.history-item.active::before {
+    background: #d4af37; /* จุดทึบสีทองสำหรับรายการล่าสุด */
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* ตัวเลขปี */
+.history-year {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d4af37;
+    margin-bottom: 8px;
+}
+
+/* เนื้อหาประวัติ */
+.history-text {
+    color: #555;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.history-text strong {
+    color: #4a3728;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .history-list {
+        padding-left: 40px;
+    }
+    .history-list::before {
+        left: 12px;
+    }
+    .history-item::before {
+        left: -37px;
+    }
+}
+
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*                 หน้า services                   */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+.services-section {
+    padding: 80px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-main-title {
+    font-size: 2.5rem;
+    color: #1b4332;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* เรียง 3 คอลัมน์ */
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* --- การ์ดบริการ (Service Item) --- */
+.service-item {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    padding-bottom: 25px;
+    border: 1px solid #eee;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.service-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* --- รูปภาพพรีวิว --- */
+.service-thumbnail {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.service-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.service-item:hover .service-thumbnail img {
+    transform: scale(1.1);
+}
+
+/* --- หัวข้อและรายละเอียด --- */
+.service-title {
+    margin: 20px 0 15px;
+    font-size: 1.6rem;
+    color: #1b4332;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0 20px;
+    text-align: left; /* รายละเอียดชิดซ้ายเพื่อให้อ่านง่าย */
+}
+
+.service-features li {
+    padding: 8px 0;
+    color: #666;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.service-features li i {
+    color: #d4af37; /* ไอคอนสีทอง */
+    margin-right: 10px;
+}
+
+/* --- Responsive สำหรับมือถือ --- */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* หน้าจอแท็บเล็ตเหลือ 2 คอลัมน์ */
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* หน้าจอมือถือเหลือ 1 คอลัมน์ */
+    }
+}
+
+/* --- ส่วนหัวข้อบริการออกแบบ --- */
+.services-home {
+    padding: 60px 0 20px;
+    text-align: center;
+}
+
+.services-home h2 a {
+    text-decoration: none;
+    color: #1b4332;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* --- การจัดการแถวเนื้อหาแบบสลับฝั่ง (Alternating Section) --- */
+.alternating-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+/* บังคับให้แถวคู่ (แถวที่ 2, 4, 6...) สลับตำแหน่งรูปไปทางขวา */
+.info-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.info-image {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.info-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.info-row:hover .info-image img {
+    transform: scale(1.05);
+}
+
+.info-text {
+    flex: 1;
+}
+
+.info-text h2 {
+    color: #1b4332;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-left: 5px solid #d4af37;
+    padding-left: 15px;
+}
+
+.info-text p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* --- ส่วนแกลเลอรี (Gallery Section) --- */
+.gallery-section {
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+}
+
+.gallery-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* เรียง 4 รูปในแถวเดียว */
+    gap: 20px;
+}
+
+.gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    height: 200px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(80%);
+}
+
+/* --- Modal ระบบขยายรูป --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 5px;
+    animation: zoomIn 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Responsive ปรับแต่งสำหรับมือถือ --- */
+@media (max-width: 850px) {
+    .info-row, .info-row:nth-child(even) {
+        flex-direction: column; /* เปลี่ยนเป็นแนวตั้งในมือถือ */
+        text-align: center;
+        gap: 25px;
+    }
+    
+    .info-text h2 {
+        border-left: none;
+        border-bottom: 3px solid #d4af37;
+        padding-left: 0;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* มือถือโชว์แถวละ 2 รูป */
+    }
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*                 หน้า portfolio                  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+/* --- Portfolio Section Container --- */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* ปรับจำนวนคอลัมน์ตามความกว้างหน้าจอ */
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- การ์ดผลงานแต่ละชิ้น --- */
+.portfolio-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px); /* ลอยขึ้นเมื่อ hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* --- ส่วนรูปภาพและ Overlay --- */
+.portfolio-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* ขยายรูปเล็กน้อยเมื่อ hover */
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.1);
+}
+
+/* Layer สีดำที่จะปรากฏเมื่อเอาเมาส์วาง */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 57, 50, 0.7); /* สีเขียวเข้มโปร่งแสงตามธีมปุ่มย้อนกลับ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay span {
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+
+/* --- ส่วนข้อมูลด้านล่างรูป --- */
+.portfolio-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.portfolio-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    color: #1b4332;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* ตัดคำถ้าชื่อยาวเกินไป */
+}
+
+.view-more {
+    font-size: 0.9rem;
+    color: #4a3728; /* สีทอง */
+    font-weight: 500;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.portfolio-item:hover .view-more {
+    letter-spacing: 1px; /* ขยับตัวอักษรเล็กน้อยเมื่อ hover */
+    color: #d4af37;
+}
+
+/* --- Responsive ปรับแต่งสำหรับมือถือ --- */
+@media (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: 1fr; /* มือถือโชว์แถวละ 1 รูป */
+        gap: 20px;
+    }
+    
+    .portfolio-image {
+        height: 240px;
+    }
+}
+
+/* สำหรับ Animation Reveal (ถ้าคุณใส่ JavaScript ไว้แล้ว) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* work------------------------------ */
+/* --- โครงสร้างหลัก --- */
+/* --- โครงสร้างหลัก --- */
+.project-detail-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.project-header h1 {
+    font-size: 28px;
+    color: #1b4332;
+    margin: 0;
+}
+
+.social-share {
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.share-btn.fb { background: #1877F2; }
+.share-btn.tiktok { background: #000; }
+.share-btn.line { background: #00C300; }
+.share-btn.ig { background: radial-gradient(circle at 30% 30%, #fdf497, #fd5949, #d6249f, #285AEB); }
+
+.share-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+/* --- รูปภาพหลัก --- */
+/* --- รูปภาพหลัก --- */
+.main-project-image img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 30px;
+}
+
+/* --- เนื้อหาโครงการ (ปรับให้ตารางอยู่บน รูปอยู่ล่าง) --- */
+.project-content {
+    display: flex; 
+    flex-direction: column; /* เปลี่ยนเป็นแนวตั้งเพื่อให้รูปย่อยอยู่ล่างตาราง */
+    gap: 20px;
+    align-items: start;
+    margin-top: 30px;
+}
+
+.company-name {
+    width: 100%;
+    font-size: 18px;
+    color: #1a4d2e;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1a4d2e;
+    padding-bottom: 10px;
+}
+
+.info-table1 {
+    width: 100%; /* ให้ตารางยืดเต็มความกว้าง */
+    margin-bottom: 10px;
+}
+
+.info-row1 {
+    display: grid;
+    grid-template-columns: 150px auto;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.label1 { font-weight: 600; color: #333; }
+
+/* --- แกลเลอรีรูปย่อย (เรียงแนวนอนใต้ตาราง) --- */
+.thumbnail-grid {
+    width: 100%; /* ยืดพื้นที่รูปให้เต็มหน้า */
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.thumb-item {
+    /* เรียงแถวละ 5 รูปตามตัวอย่างภาพที่ส่งมาล่าสุด */
+    flex: 0 0 calc(20% - 10px); 
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb-item:hover {
+    border-color: #1a4d2e;
+    transform: scale(1.03);
+}
+
+/* --- ส่วนผลงานอื่นๆ --- */
+.other-works-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #1a4d2e; /* เส้นคั่นหนาตามแบบ */
+}
+
+.random-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.random-item { text-decoration: none; color: inherit; transition: 0.3s; }
+.random-item:hover { transform: translateY(-5px); }
+
+.random-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.random-item p { text-align: center; margin-top: 10px; font-weight: 500; }
+
+/* Modal CSS */
+.modal {
+    display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); justify-content: center; align-items: center;
+}
+.modal-content { max-width: 90%; max-height: 80%; }
+
+/* --- Responsive สำหรับมือถือ --- */
+@media (max-width: 768px) {
+    .thumb-item {
+        flex: 0 0 calc(33.33% - 8px); /* จอมือถือให้เรียงแถวละ 3 รูปแทน */
+    }
+    .random-projects-grid {
+        grid-template-columns: 1fr; /* ผลงานอื่นๆ เรียงลงมาเป็นแถวเดียวในมือถือ */
+    }
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*                 หน้า ติดต่อเรา                */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* --- Contact Page Styles --- */
+/* --- Contact Page Custom Style --- */
+.contact-page {
+    padding: 40px 15px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* การ์ดหลักฝั่งซ้าย */
+.contact-main-card {
+    flex: 2;
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.contact-main-card h3 {
+    color: #1a4d2e;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.contact-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.contact-details {
+    margin-bottom: 35px;
+}
+
+.detail-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.detail-item i {
+    font-size: 18px;
+    color: #333;
+    margin-top: 5px;
+}
+
+.detail-item p { color: #555; margin: 0; }
+
+/* ปุ่มโซเชียลแบบ Grid */
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+
+.social-button:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.social-button i { font-size: 24px; }
+.social-button.fb i { color: #1877F2; }
+.social-button.line i { color: #00C300; }
+.social-button.ig i { color: #E4405F; }
+
+/* ฝั่งขวา (QR Code) */
+.contact-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.qr-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.qr-code img {
+    width: 80%;
+    margin: 15px 0;
+}
+
+.qr-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.qr-actions a {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-open-line { background: #00C300; color: #fff; }
+.btn-open-fb { border: 1px solid #ddd; color: #333; }
+
+.contact-banner img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .contact-container { flex-direction: column; }
+    .social-grid { grid-template-columns: 1fr; }
+}
