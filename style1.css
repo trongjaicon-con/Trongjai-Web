@@ -2029,22 +2029,27 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .navbar { z-index: 3000; }
 
 /* ให้เมนูอยู่เหนือ overlay */
+
 @media (max-width: 900px){
+
+  /* เมนูต้องกดได้เสมอ */
   .nav-links{
-    z-index: 4000 !important;
-    pointer-events: auto;
+    position: fixed;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
   }
 
-  /* ให้ overlay อยู่ "ใต้เมนู" */
+  /* ให้แผ่นมืด "คลิกทะลุ" จะได้ไม่ทับเมนู */
   .nav-overlay{
-    z-index: 3500 !important;
-    pointer-events: auto;
+    z-index: 999998 !important;
+    pointer-events: none !important;
   }
 
-  /* (สำคัญ) dropdown ที่เปิดออกมาก็ต้องอยู่บน */
+  /* กัน dropdown กดไม่ได้ */
   .dropdown-content{
-    z-index: 4100 !important;
-    pointer-events: auto;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
   }
 }
+.popup-overlay, .modal { display: none !important; }
 

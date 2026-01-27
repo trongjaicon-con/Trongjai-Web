@@ -284,51 +284,52 @@
 
     <script>
         const toggle = document.querySelector('.nav-toggle');
-        const overlay = document.querySelector('.nav-overlay');
+        const navLinks = document.querySelector('.nav-links');
 
+        function openNav() {
+            document.body.classList.add('nav-open');
+            toggle?.setAttribute('aria-expanded', 'true');
+        }
         function closeNav() {
             document.body.classList.remove('nav-open');
-            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            toggle?.setAttribute('aria-expanded', 'false');
+            document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = 'none');
         }
 
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-                const isOpen = document.body.classList.toggle('nav-open');
-                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            });
-        }
+        toggle?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.body.classList.contains('nav-open') ? closeNav() : openNav();
+        });
 
-        if (overlay) overlay.addEventListener('click', closeNav);
+        // แตะนอกเมนู = ปิด (เพราะ overlay คลิกทะลุแล้ว)
+        document.addEventListener('click', (e) => {
+            if (!document.body.classList.contains('nav-open')) return;
+            if (navLinks.contains(e.target) || toggle.contains(e.target)) return;
+            closeNav();
+        });
 
-        // dropdown คลิกเปิดเฉพาะจอเล็ก
+        // dropdown แตะเปิดเฉพาะมือถือ
         document.querySelectorAll('.dropdown > .dropbtn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 if (window.matchMedia('(max-width: 900px)').matches) {
                     e.preventDefault();
+                    e.stopPropagation();
                     const menu = btn.parentElement.querySelector('.dropdown-content');
                     const isOpen = menu.style.display === 'block';
-                    // ปิด dropdown อื่นก่อน (กันรก)
                     document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = 'none');
                     menu.style.display = isOpen ? 'none' : 'block';
                 }
             });
         });
 
-        // คลิกลิงก์แล้วปิดเมนู (มือถือ)
+        // คลิกลิงก์แล้วปิดเมนู
         document.querySelectorAll('.nav-links a').forEach(a => {
             a.addEventListener('click', () => {
                 if (window.matchMedia('(max-width: 900px)').matches) closeNav();
             });
         });
-
-        // ถ้าขยายจอจากมือถือ -> desktop ให้รีเซ็ต
-        window.addEventListener('resize', () => {
-            if (!window.matchMedia('(max-width: 900px)').matches) {
-                closeNav();
-                document.querySelectorAll('.dropdown-content').forEach(d => d.style.display = '');
-            }
-        });
     </script>
+
 
 </body>
 
