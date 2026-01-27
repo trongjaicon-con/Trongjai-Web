@@ -2053,3 +2053,13 @@ html, body { max-width: 100%; overflow-x: hidden; }
 }
 .popup-overlay, .modal { display: none !important; }
 
+
+@media (max-width: 900px){
+  .dropbtn{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    width:100%;
+  }
+}
+
