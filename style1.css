@@ -168,19 +168,6 @@ footer.site-footer {
   font-size: 13px;
 }
 
-/* --- ส่วนที่ 3: Responsive สำหรับมือถือ --- */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: left;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-  }
-}
 
 /* แถบ Navbar */
 /* 1. กำหนดความสูงที่แน่นอนให้ Navbar */
@@ -286,18 +273,6 @@ footer.site-footer {
   animation: fadeInCenter 0.3s ease;
 }
 
-@keyframes fadeInCenter {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(10px);
-    /* ต้องคงค่า translateX ไว้ */
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
 
 /*  */
 /*  */
@@ -482,30 +457,6 @@ footer.site-footer {
   font-style: italic;
 }
 
-/* ปรับแต่งสำหรับหน้าจอมือถือ */
-@media (max-width: 992px) {
-  .content-layout {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .article-section,
-  .video-section {
-    width: 100%;
-  }
-
-  .section-title {
-    font-size: 1.7rem;
-    text-align: center;
-  }
-
-  .video-container {
-    max-width: 600px;
-    /* จำกัดความกว้างบนมือถือไม่ให้ใหญ่เกินไป */
-    margin: 0 auto;
-  }
-}
-
 /* จัดวางกลุ่มปุ่มโซเชียล */
 .social-pills {
   display: grid;
@@ -557,14 +508,6 @@ footer.site-footer {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   filter: brightness(1.1);
-}
-
-/* ปรับแต่งสำหรับหน้าจอมือถือ */
-@media (max-width: 480px) {
-  .social-pills {
-    grid-template-columns: 1fr;
-    /* บนมือถือขนาดเล็กให้เรียงแถวละ 1 ปุ่ม */
-  }
 }
 
 /* ส่วนบริการของเรา */
@@ -656,13 +599,6 @@ footer.site-footer {
   margin-bottom: 10px;
   font-size: 0.95rem;
   position: relative;
-}
-
-/* ปรับแต่งสำหรับมือถือ */
-@media (max-width: 768px) {
-  .services-overview {
-    padding: 50px 20px;
-  }
 }
 
 /* ส่วนผลงานของเรา */
@@ -792,18 +728,6 @@ footer.site-footer {
   transform: translateY(-3px);
 }
 
-/* Responsive สำหรับมือถือ */
-@media (max-width: 992px) {
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-}
 /*  */
 /*  */
 /*  */
@@ -904,19 +828,6 @@ footer.site-footer {
     color: #1b4332;
     font-size: 1.5rem;
     margin-bottom: 10px;
-}
-
-/* รองรับมือถือ */
-@media (max-width: 992px) {
-    .about-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* --- ส่วนภาพรวมของ Team Section --- */
@@ -1115,34 +1026,6 @@ footer.site-footer {
     text-decoration: underline;
 }
 
-/* --- Responsive สำหรับมือถือ --- */
-@media (max-width: 600px) {
-    .company-title {
-        font-size: 2rem;
-    }
-
-    .company-card {
-        padding: 20px;
-    }
-
-    .company-table th, 
-    .company-table td {
-        display: block; /* สลับเป็นแนวตั้งในมือถือ */
-        width: 100%;
-        padding: 10px 5px;
-    }
-
-    .company-table th {
-        background-color: transparent;
-        color: #d4af37;
-        padding-top: 20px;
-    }
-    
-    .company-table tr {
-        padding-bottom: 10px;
-        display: block;
-    }
-}
 /* --- ส่วนภาพรวมของ History Section --- */
 .company-history-section {
     padding: 80px 0;
@@ -1229,18 +1112,7 @@ footer.site-footer {
     color: #4a3728;
 }
 
-/* --- Responsive --- */
-@media (max-width: 600px) {
-    .history-list {
-        padding-left: 40px;
-    }
-    .history-list::before {
-        left: 12px;
-    }
-    .history-item::before {
-        left: -37px;
-    }
-}
+
 
 
 /*  */
@@ -1348,18 +1220,6 @@ footer.site-footer {
     margin-right: 10px;
 }
 
-/* --- Responsive สำหรับมือถือ --- */
-@media (max-width: 992px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr); /* หน้าจอแท็บเล็ตเหลือ 2 คอลัมน์ */
-    }
-}
-
-@media (max-width: 600px) {
-    .services-grid {
-        grid-template-columns: 1fr; /* หน้าจอมือถือเหลือ 1 คอลัมน์ */
-    }
-}
 
 /* --- ส่วนหัวข้อบริการออกแบบ --- */
 .services-home {
@@ -1500,27 +1360,6 @@ footer.site-footer {
     to { transform: scale(1); opacity: 1; }
 }
 
-/* --- Responsive ปรับแต่งสำหรับมือถือ --- */
-@media (max-width: 850px) {
-    .info-row, .info-row:nth-child(even) {
-        flex-direction: column; /* เปลี่ยนเป็นแนวตั้งในมือถือ */
-        text-align: center;
-        gap: 25px;
-    }
-    
-    .info-text h2 {
-        border-left: none;
-        border-bottom: 3px solid #d4af37;
-        padding-left: 0;
-        display: inline-block;
-        padding-bottom: 10px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr); /* มือถือโชว์แถวละ 2 รูป */
-    }
-}
-
 /*  */
 /*  */
 /*  */
@@ -1646,17 +1485,6 @@ footer.site-footer {
     color: #d4af37;
 }
 
-/* --- Responsive ปรับแต่งสำหรับมือถือ --- */
-@media (max-width: 768px) {
-    .portfolio-container {
-        grid-template-columns: 1fr; /* มือถือโชว์แถวละ 1 รูป */
-        gap: 20px;
-    }
-    
-    .portfolio-image {
-        height: 240px;
-    }
-}
 
 /* สำหรับ Animation Reveal (ถ้าคุณใส่ JavaScript ไว้แล้ว) */
 .reveal {
@@ -1824,15 +1652,6 @@ footer.site-footer {
 }
 .modal-content { max-width: 90%; max-height: 80%; }
 
-/* --- Responsive สำหรับมือถือ --- */
-@media (max-width: 768px) {
-    .thumb-item {
-        flex: 0 0 calc(33.33% - 8px); /* จอมือถือให้เรียงแถวละ 3 รูปแทน */
-    }
-    .random-projects-grid {
-        grid-template-columns: 1fr; /* ผลงานอื่นๆ เรียงลงมาเป็นแถวเดียวในมือถือ */
-    }
-}
 /*  */
 /*  */
 /*  */
@@ -1976,8 +1795,233 @@ footer.site-footer {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* Responsive */
+/* ============================================================
+   RESPONSIVE DESIGN (ปรับแต่งเพื่อรองรับมือถือและแท็บเล็ต)
+   ============================================================ */
+
 @media (max-width: 992px) {
-    .contact-container { flex-direction: column; }
-    .social-grid { grid-template-columns: 1fr; }
+    /* ปรับ Navbar */
+    .navbar .container {
+        padding: 0 20px;
+    }
+    .logo img {
+        height: 180px; /* ลดขนาดโลโก้ในแท็บเล็ต */
+    }
+    .nav-links a {
+        padding: 0 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 1. ปรับ Layout ส่วนเนื้อหาหลัก (Article + Video) */
+    .content-layout {
+        flex-direction: column; /* เปลี่ยนจากซ้าย-ขวา เป็น บน-ล่าง */
+        gap: 30px;
+    }
+
+    .article-section, .video-section {
+        width: 100%; /* ให้กางเต็มหน้าจอ */
+        flex: none;
+    }
+
+    .section-title {
+        font-size: 1.6rem; /* ลดขนาดหัวข้อลงเล็กน้อย */
+    }
+
+    /* 2. ปรับ Grid บริการ (Services) */
+    .services-grid {
+        grid-template-columns: 1fr; /* จาก 3 คอลัมน์ เหลือ 1 คอลัมน์ */
+        gap: 30px;
+    }
+
+    /* 3. ปรับ Grid ผลงาน (Portfolio) */
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* ในมือถือโชว์แถวละ 2 รูป (หรือ 1fr ถ้าอยากให้ใหญ่ๆ) */
+        gap: 15px;
+    }
+
+    /* 4. ปรับ Footer */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-column {
+        min-width: 100%;
+    }
+
+    .contact-info p {
+        justify-content: center; /* จัดไอคอนติดต่อให้อยู่กลาง */
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    /* 5. ปรับส่วนปุ่มโซเชียลข้างใต้วิดีโอ */
+    .social-pills {
+        grid-template-columns: repeat(2, 1fr); /* ยังคงเป็น 2 คอลัมน์ หรือ 1fr ถ้าอยากให้ปุ่มเต็มหน้า */
+    }
+}
+
+@media (max-width: 480px) {
+    /* สำหรับมือถือหน้าจอเล็ก */
+    .header-title {
+        font-size: 18px;
+    }
+
+    .logo img {
+        height: 140px; /* ลดขนาดโลโก้ลงอีกในมือถือเครื่องเล็ก */
+        padding-top: 10%;
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    .nav-links {
+        display: none; /* แนะนำ: ในอนาคตควรทำ Hamburger Menu แทนการซ่อน */
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* มือถือเล็กมาก ให้โชว์ผลงานแถวละ 1 รูป */
+    }
+
+    .social-pills {
+        grid-template-columns: 1fr; /* ปุ่มโซเชียลเรียงลงมาแถวละปุ่ม */
+    }
+
+    .section-title.center {
+        font-size: 1.8rem;
+    }
+
+    /* ปรับ Popup ให้พอดีหน้าจอ */
+    .popup-content {
+        width: 95%;
+    }
+}
+
+/* เพิ่มเติม: ทำให้ตารางข้อมูลโครงการ (ถ้ามี) เลื่อนดูได้ในมือถือ */
+.info-table1 {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+}
+@media (max-width: 1024px) {
+    /* หน้า Services และ About Grid ให้เหลือ 2 คอลัมน์ */
+    .services-grid, .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* --- ส่วนรวม --- */
+    .section-title.center, .services-main-title, .company-title, .history-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* --- หน้าเกี่ยวกับเรา (About & Team) --- */
+    .about-grid {
+        grid-template-columns: 1fr; /* แถวละ 1 ใบ */
+    }
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr); /* ทีมงานแถวละ 2 คน */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .team-card {
+        max-width: 100%;
+    }
+
+    /* --- หน้าข้อมูลบริษัท & ประวัติ --- */
+    .company-table th {
+        width: 40%;
+        padding: 15px 10px;
+    }
+    .history-list {
+        padding-left: 30px; /* ลดระยะห่างเส้น Timeline */
+    }
+    .history-item::before {
+        left: -37px;
+    }
+
+    /* --- หน้าบริการ (Services) --- */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .info-row, .info-row:nth-child(even) {
+        flex-direction: column; /* รูปอยู่บน ข้อความอยู่ล่าง */
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* แกลเลอรีแถวละ 2 รูป */
+    }
+
+    /* --- หน้าผลงาน (Portfolio) --- */
+    .portfolio-container {
+        grid-template-columns: 1fr; /* ผลงานแถวละ 1 ชิ้น */
+    }
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .info-row1 {
+        grid-template-columns: 120px auto; /* ปรับขนาดตารางข้อมูลโครงการ */
+    }
+    .thumb-item {
+        flex: 0 0 calc(33.33% - 10px); /* รูปย่อยแถวละ 3 รูป */
+    }
+    .random-projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- หน้าติดต่อเรา (Contact) --- */
+    .contact-container {
+        flex-direction: column;
+    }
+    .social-grid {
+        grid-template-columns: 1fr; /* ปุ่มโซเชียลเรียงเดี่ยว */
+    }
+    .contact-main-card, .qr-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* --- สำหรับมือถือเล็กมาก --- */
+    .team-grid {
+        grid-template-columns: 1fr; /* ทีมงานเรียงเดี่ยว */
+    }
+    .company-table th, .company-table td {
+        display: block; /* ตารางเปลี่ยนเป็นแนวตั้ง */
+        width: 100%;
+        padding: 10px;
+    }
+    .company-table th {
+        background-color: #f0f0f0;
+        border-bottom: none;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .thumb-item {
+        flex: 0 0 calc(50% - 10px); /* รูปย่อยแถวละ 2 รูป */
+    }
+    .project-header h1 {
+        font-size: 22px;
+    }
+}
+
+/* ป้องกันรูปภาพล้นจอ */
+img {
+    max-width: 100%;
+    height: auto;
 }
