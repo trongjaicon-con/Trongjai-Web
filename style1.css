@@ -2101,3 +2101,51 @@ img {
     }
 }
 /* แก้ปัญหา Footer ลอยในหน้าผลงาน ข้อมูลบริษัท และติดต่อเรา */
+/* --- 1. จัดการโครงสร้างรวม (Global Layout) --- */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* เรียง Header, Main, Footer จากบนลงล่าง */
+}
+
+main {
+    flex: 1 0 auto; /* ดันเนื้อหาให้ยืดออกเพื่อผลัก Footer ไปล่างสุดเสมอ */
+}
+
+footer {
+    flex-shrink: 0; /* ป้องกัน Footer โดนบีบตัว */
+}
+
+/* --- 2. จัดการหน้าผลงาน (Portfolio Grid) --- */
+.portfolio-container {
+    display: grid !important; /* บังคับใช้ Grid เพื่อให้รูปเรียงแนวนอน */
+    /* PC: แบ่ง 3 คอลัมน์เท่าๆ กัน */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 3. ปรับแต่งสำหรับมือถือ (Responsive) --- */
+@media (max-width: 992px) {
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr); /* แท็บเล็ต/มือถือจอใหญ่ เรียง 2 คอลัมน์ */
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-container {
+        grid-template-columns: 1fr; /* มือถือทั่วไป เรียง 1 คอลัมน์ เพื่อความสวยงาม */
+        gap: 20px;
+    }
+    
+    /* ปรับ Footer ในมือถือให้ดูแน่นขึ้น */
+    .site-footer {
+        padding: 30px 15px;
+    }
+}
