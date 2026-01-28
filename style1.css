@@ -2148,29 +2148,7 @@ video {
   /* จอเล็ก 2 ต่อแถว */
 }
 
-/* ====== MOBILE NAVBAR FIX (วางท้ายไฟล์) ====== */
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
 
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: 0;
-  color: #fff;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, .45);
-  z-index: 1040;
-}
 
 /* กันโลโก้ล้น (เดิม 250px ใหญ่มาก) */
 
