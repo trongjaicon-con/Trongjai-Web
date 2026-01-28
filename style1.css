@@ -2085,3 +2085,31 @@ html, body { max-width: 100%; overflow-x: hidden; }
   }
 }
 
+@media (max-width: 900px) {
+  /* 1. ปิด Hover เดิม */
+  .dropdown:hover .dropdown-content { 
+    display: none !important; 
+  }
+
+  /* 2. สร้าง Class สำหรับการกดเปิดเมนูย่อย */
+  .dropdown.open > .dropdown-content {
+    display: block !important; /* แสดงเมื่อมีการกด */
+    position: static;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: 5px;
+  }
+
+  /* 3. ปรับ Overlay ให้กดทะลุได้เฉพาะตอนปิด แต่ถ้าเปิดต้องรับแรงกดเพื่อปิดเมนู */
+  .nav-overlay {
+    z-index: 1040;
+    pointer-events: auto; /* กลับมาให้รับแรงกดได้เพื่อใช้ปิดเมนูเวลาคลิกที่ว่าง */
+  }
+
+  /* 4. แก้ไขเรื่อง z-index ให้ลำดับถูกต้อง */
+  .nav-links {
+    z-index: 1050 !important;
+    pointer-events: auto !important;
+  }
+}
+
