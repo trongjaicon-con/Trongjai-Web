@@ -34,6 +34,9 @@
                     <img src="/image/home index/logo1.png" alt="TRONGJAI logo">
                 </a>
             </div>
+            <!-- ปุ่มเมนูมือถือ -->
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
             <ul class="nav-links">
                 <li><a href="index1.html">หน้าแรก</a></li>
 
@@ -64,48 +67,49 @@
 
 
     <section class="company-info-section">
-    <div class="company-info-container"> 
-        
-        <div class="back-btn-container">
-            <a href="about-home1.html" class="btn-back-simple"> ย้อนกลับ ❯ </a>
+        <div class="company-info-container">
+
+            <div class="back-btn-container">
+                <a href="about-home1.html" class="btn-back-simple"> ย้อนกลับ ❯ </a>
+            </div>
+
+            <h1 class="company-title">ข้อมูลบริษัท</h1>
+
+            <div class="company-card">
+                <table class="company-table">
+                    <tr>
+                        <th>ชื่อบริษัท</th>
+                        <td>บริษัท ตรงใจ ดีไซน์ แอนด์ คอนสตรัคชั่น จำกัด</td>
+                    </tr>
+                    <tr>
+                        <th>วันที่ก่อตั้ง</th>
+                        <td>20 พฤศจิกายน 2568</td>
+                    </tr>
+                    <tr>
+                        <th>ทุนจดทะเบียน</th>
+                        <td>2,000,000 บาท</td>
+                    </tr>
+                    <tr>
+                        <th>ประเภทธุรกิจ</th>
+                        <td>รับเหมาก่อสร้าง / ออกแบบ / รีโนเวทอาคาร</td>
+                    </tr>
+                    <tr>
+                        <th>ที่อยู่</th>
+                        <td>65/2 หมู่ที่ 3 ตำบลปากช่อง อำเภอจอมบึง จังหวัดราชบุรี 70150</td>
+                    </tr>
+                    <tr>
+                        <th>เว็บไซต์</th>
+                        <td>
+                            <a href="https://www.trongjaiconstruction.com" target="_blank">
+                                www.trongjaiconstruction.com
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
-
-        <h1 class="company-title">ข้อมูลบริษัท</h1>
-
-        <div class="company-card">
-            <table class="company-table">
-                <tr>
-                    <th>ชื่อบริษัท</th>
-                    <td>บริษัท ตรงใจ ดีไซน์ แอนด์ คอนสตรัคชั่น จำกัด</td>
-                </tr>
-                <tr>
-                    <th>วันที่ก่อตั้ง</th>
-                    <td>20 พฤศจิกายน 2568</td>
-                </tr>
-                <tr>
-                    <th>ทุนจดทะเบียน</th>
-                    <td>2,000,000 บาท</td>
-                </tr>
-                <tr>
-                    <th>ประเภทธุรกิจ</th>
-                    <td>รับเหมาก่อสร้าง / ออกแบบ / รีโนเวทอาคาร</td>
-                </tr>
-                <tr>
-                    <th>ที่อยู่</th>
-                    <td>65/2 หมู่ที่ 3 ตำบลปากช่อง อำเภอจอมบึง จังหวัดราชบุรี 70150</td>
-                </tr>
-                <tr>
-                    <th>เว็บไซต์</th>
-                    <td>
-                        <a href="https://www.trongjaiconstruction.com" target="_blank">
-                            www.trongjaiconstruction.com
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-    </div> </section>
+    </section>
     <section class="footer-blocks">
         <div class="footer-container">
             <div class="footer-column">
@@ -153,6 +157,53 @@
             <small>© 2026 TRONGJAI · All rights reserved.</small>
         </div>
     </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // 1. จัดการปุ่ม 3 ขีด (Hamburger)
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            document.body.classList.toggle('nav-open');
+            // เปลี่ยนไอคอน ☰ เป็น ✕ เวลาเปิด
+            this.textContent = document.body.classList.contains('nav-open') ? '✕' : '☰';
+        });
+    }
+
+    // 2. จัดการ Dropdown ในมือถือ
+    dropdowns.forEach(dropdown => {
+        const btn = dropdown.querySelector('.dropbtn');
+        
+        btn.addEventListener('click', function(e) {
+            // ทำงานเฉพาะจอเล็กกว่า 900px
+            if (window.innerWidth <= 900) {
+                // เช็กว่าถ้ายังไม่ได้เปิดเมนูย่อย ให้หยุดการลิงก์ไปหน้าอื่นก่อน
+                if (!dropdown.classList.contains('open')) {
+                    e.preventDefault(); 
+                    e.stopPropagation();
+                    
+                    // ปิดตัวอื่นก่อนเปิดตัวนี้ (จะได้ไม่ซ้อนกันเละ)
+                    dropdowns.forEach(d => d.classList.remove('open'));
+                    
+                    // เปิดตัวที่คลิก
+                    dropdown.classList.add('open');
+                }
+            }
+        });
+    });
+
+    // คลิกที่ว่างอื่นๆ ให้ปิดเมนู
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.navbar')) {
+            document.body.classList.remove('nav-open');
+            dropdowns.forEach(d => d.classList.remove('open'));
+            if(navToggle) navToggle.textContent = '☰';
+        }
+    });
+});
+</script>
 </body>
 
 </html>
