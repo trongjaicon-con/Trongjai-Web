@@ -377,47 +377,89 @@ footer.site-footer {
 }
 
 /* การจัด Layout หลัก */
-.main-content {
-  padding: 60px 20px;
-  margin-top: 20px;
+/* ขยาย Container ให้เต็มหน้าจอเพื่อให้ดันชิดขอบได้จริง */
+.main-content.container {
+  max-width: 100% !important;
+  padding: 0 40px;
+  width: 100%;
 }
 
 .content-layout {
   display: flex;
-  gap: 50px;
-  align-items: flex-start;
-}
-
-/* ฝั่งบทความ (ซ้าย) */
-.article-section {
-  flex: 1.2;
-  /* ให้ฝั่งบทความกว้างกว่าเล็กน้อย */
-}
-
-/* จัดการหัวข้อบทความให้อยู่กึ่งกลาง */
-.article-section .section-title {
-  display: block;
-  /* บังคับให้เป็น Block เพื่อใช้ text-align ได้เต็มที่ */
+  align-items: center;
+  justify-content: center;
+  /* ล็อคเส้นแบ่งไว้กลางจอ */
+  padding: 40px 0;
+  /* ลด padding ลงเพื่อให้กระชับขึ้น */
   width: 100%;
-  /* กางเต็มพื้นที่ */
-  text-align: center;
-  /* จัดตัวอักษรให้อยู่กึ่งกลาง */
-  margin-bottom: 25px;
-  /* ระยะห่างจากเนื้อหาด้านล่าง */
-  line-height: 1.4;
-  /* เพิ่มระยะห่างระหว่างบรรทัดให้ไม่อึดอัด */
 }
 
-/* ทำให้ส่วนสีทองขึ้นบรรทัดใหม่และอยู่กึ่งกลางด้วย */
-.article-section .section-title .gold {
-  display: block;
-  /* บังคับให้ตัดลงบรรทัดใหม่ */
-  text-align: center;
-  /* จัดกึ่งกลางบรรทัดตัวเอง */
-  font-size: 1.2rem;
-  /* ปรับขนาดให้เล็กกว่าหัวข้อหลักเล็กน้อย (ถ้าต้องการ) */
-  margin-top: 5px;
-  /* ระยะห่างจากชื่อบริษัท */
+/* ฝั่งซ้าย: เนื้อหาชิดซ้ายสุด */
+.article-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 50px;
+}
+
+/* แก้ไขช่องว่างเนื้อหาย่อย [p] ให้ชิดกันมากขึ้น */
+.article-text {
+  margin-bottom: 8px;
+  /* ลดจากค่ามาตรฐานเพื่อให้บรรทัดชิดกัน */
+  line-height: 1.5;
+}
+
+/* เส้นแบ่งกึ่งกลาง */
+.vertical-divider {
+  width: 3px;
+  height: 250px;
+  background: linear-gradient(to bottom, transparent, #d4af37, transparent);
+  opacity: 1;
+  flex-shrink: 0;
+}
+
+/* ฝั่งขวา: รูปภาพชิดขวาสุด */
+.article-image {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* ดันกลุ่มรูปไปชิดขวาสุด */
+  gap: 0;
+  /* ลบช่องว่างระหว่างรูปตามที่ต้องการ */
+  padding-left: 50px;
+}
+
+.article-image img {
+  width: 280px;
+  /* ขนาดใหญ่เด่นชัด */
+  height: 280px;
+  object-fit: cover;
+  /* เอา border ออกเพื่อให้รูปดูเชื่อมต่อกัน หรือเก็บไว้บางๆ */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  flex-shrink: 1;
+}
+
+/* เอฟเฟกต์ยกตัวแยกจากกันเฉพาะตอน Hover */
+.article-image img:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ลบโค้งมนเฉพาะด้านในเพื่อให้รูปดูแนบชิดกัน (Optional) */
+.article-image img:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.article-image img:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.article-image img:last-child {
+  border-radius: 0 12px 12px 0;
 }
 
 .section-title {
@@ -432,7 +474,8 @@ footer.site-footer {
   font-size: 1.05rem;
   color: #333333;
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .feature-list {
@@ -458,8 +501,7 @@ footer.site-footer {
 .video-section {
   width: 100%;
   /* ปรับเป็น 90-95% เพื่อให้เหลือขอบข้างเล็กน้อย */
-  max-width: 95vw;
-  margin: 20px auto;
+  margin: 5px auto 0 auto;
   /* จัดกึ่งกลางและเพิ่มระยะบนล่างให้ดูโปร่ง */
   display: flex;
   justify-content: center;
@@ -470,13 +512,10 @@ footer.site-footer {
   width: 100%;
   /* คุมความสูง: ถ้าอยากได้ความสูงเท่าเดิมที่คุณชอบ 
        ลองปรับเปอร์เซ็นต์ระหว่าง 30% - 40% */
-  padding-bottom: 35%;
+  padding-bottom: 45%;
   height: 0;
   overflow: hidden;
-  /* เพิ่มความมนของขอบเล็กน้อยเพื่อให้เข้ากับดีไซน์พรีเมียม */
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  background: #000;
+  margin-bottom: 0;
 }
 
 .video-container .video-player {
@@ -490,16 +529,6 @@ footer.site-footer {
   border: none;
 }
 
-/* คำบรรยายใต้วิดีโอ */
-.video-caption {
-  margin-top: 20px;
-  text-align: center;
-  color: #1f2b26;
-  /* ใช้สีเขียวเข้มจากธีมหลัก */
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  opacity: 0.8;
-}
 
 /* Layer โปร่งใสทับวิดีโอ (กันคลิก) */
 .video-container::after {
@@ -535,61 +564,49 @@ footer.site-footer {
 .drag-slider {
   position: relative;
   width: 100vw;
-  height: 550px;
-  margin: 0 auto;
-  overflow-y: hidden;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 850px;
+  /* ความสูงตามที่คุณกำหนด */
+  overflow: hidden;
+  cursor: grab;
+  /* เปลี่ยนเมาส์เป็นรูปมือเพื่อให้รู้ว่าลากได้ */
+  margin-top: 0 !important;
+}
+
+.drag-slider:active {
+  cursor: grabbing;
+  /* เปลี่ยนรูปมือเมื่อคลิกค้าง */
+}
+
+/* ซ่อนลูกศรออกตามคำขอ */
+.slider-arrow {
+  display: none;
 }
 
 .slider-inner {
   display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  /* สไลด์นุ่มแบบ Tokura */
-  width: 300%;
-  /* (จำนวนรูป x 100) */
+  height: 100%;
+  transition: transform 0.1s ease-out;
+  /* ให้ความรู้สึกนุ่มนวลเวลาลาก */
+  will-change: transform;
 }
 
 .slide-item {
-  width: 100vw;
-  /* มั่นใจว่า 1 รูปเท่ากับ 1 หน้าจอเป๊ะ */
-  flex-shrink: 0;
+  flex: 0 0 100vw;
+  /* ให้แต่ละรูปกว้างเต็มจอพอดี */
+  height: 100%;
 }
 
-/* ปุ่มลูกศร - ปรับให้ลอยเด่นขึ้น */
-.slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 999;
-  /* สูงสุดเพื่อให้กดติด */
-  background: rgba(31, 43, 38, 0.6);
-  color: #d4af37;
-  border: 1px solid #d4af37;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.drag-slider:hover .slider-arrow {
-  opacity: 1;
-}
-
-.prev {
-  left: 20px;
-}
-
-.next {
-  right: 20px;
-}
-
-/* ซ่อนปุ่มเมื่อถึงหน้าแรก/สุดท้าย */
-.slider-arrow.hidden {
-  display: none !important;
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* รูปเต็มพื้นที่ไม่เบี้ยว */
+  pointer-events: none;
+  /* ป้องกันการลากรูปภาพของ Browser แทรกแซง */
 }
 
 /* จัดวางกลุ่มปุ่มโซเชียล */
@@ -2072,9 +2089,11 @@ video {
 @media (max-width: 900px) {
   .video-section {
     width: 100%;
-    background-color: #000; /* ให้พื้นหลังเป็นสีดำกันขอบวิดีโอแหว่ง */
+    background-color: #000;
+    /* ให้พื้นหลังเป็นสีดำกันขอบวิดีโอแหว่ง */
     overflow: hidden;
-    line-height: 0; /* แก้ปัญหาช่องว่างใต้ภาพ/วิดีโอ */
+    line-height: 0;
+    /* แก้ปัญหาช่องว่างใต้ภาพ/วิดีโอ */
   }
 
   .video-container {
@@ -2086,10 +2105,14 @@ video {
   }
 
   .video-player {
-    width: 100% !important;   /* ยืดให้เต็มความกว้างมือถือ */
-    height: auto !important;  /* ให้ความสูงปรับตามสัดส่วนวิดีโอ */
-    max-height: 60vh;         /* จำกัดความสูงไม่ให้เกิน 60% ของความสูงจอ (กันวิดีโอใหญ่เกินไป) */
-    object-fit: cover;        /* ให้วิดีโอขยายเต็มพื้นที่ที่กำหนดโดยไม่เสียรูปทรง */
+    width: 100% !important;
+    /* ยืดให้เต็มความกว้างมือถือ */
+    height: auto !important;
+    /* ให้ความสูงปรับตามสัดส่วนวิดีโอ */
+    max-height: 60vh;
+    /* จำกัดความสูงไม่ให้เกิน 60% ของความสูงจอ (กันวิดีโอใหญ่เกินไป) */
+    object-fit: cover;
+    /* ให้วิดีโอขยายเต็มพื้นที่ที่กำหนดโดยไม่เสียรูปทรง */
   }
 }
 
