@@ -2265,46 +2265,8 @@ video {
     color: #d4af37;
   }
 
-
-  /* ===== FIX: เมนูกดไม่ได้เพราะ overlay ทับ ===== */
-
-  /* ให้ navbar อยู่บนสุดเสมอ */
   .navbar {
     z-index: 3000;
-  }
-
-  /* ให้เมนูอยู่เหนือ overlay */
-}
-
-@media (max-width: 900px) {
-
-  /* เมนูต้องกดได้เสมอ */
-  .nav-links {
-    position: fixed;
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-  }
-
-  /* ให้แผ่นมืด "คลิกทะลุ" จะได้ไม่ทับเมนู */
-  .nav-overlay {
-    z-index: 999998 !important;
-    pointer-events: none !important;
-  }
-
-  /* กัน dropdown กดไม่ได้ */
-  .dropdown-content {
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-  }
-}
-
-
-@media (max-width: 900px) {
-  .dropbtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
   }
 }
 
@@ -2344,6 +2306,10 @@ video {
   /* 4. แก้ไขเรื่อง z-index ให้ลำดับถูกต้อง */
   .nav-links {
     z-index: 1050 !important;
+    pointer-events: auto !important;
+  }
+    .dropdown-content {
+    z-index: 999999 !important;
     pointer-events: auto !important;
   }
 }
