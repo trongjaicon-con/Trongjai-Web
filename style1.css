@@ -201,12 +201,12 @@ footer.site-footer {
 }
 
 .logo img {
-  height: 200px;         /* ขนาดที่คุณต้องการใน PC */
+  height: 220px;         /* ขนาดที่คุณต้องการใน PC */
   width: auto;
   display: block;
   filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
   transition: 0.3s ease;
-  padding-top: 30%;      /* ค่าเดิมที่คุณตั้งไว้ */
+  padding-top: 30px;      /* ค่าเดิมที่คุณตั้งไว้ */
 }
 
 /* 3. เมนูชิดขวา */
@@ -1982,15 +1982,6 @@ video {
     padding: 0 16px;
   }
 
-  /* ลด/จัดตำแหน่งโลโก้ให้ไม่ล้น */
-  .logo {
-    position: static;
-    /* จาก absolute -> ปลอดภัยบนมือถือ */
-    transform: none;
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-  }
 
 
 
@@ -2195,7 +2186,7 @@ body {
     height: 80px;
     padding: 0 16px;
   }
-}
+
 
 /* เปลี่ยนโลโก้จาก absolute เป็นปกติบนมือถือ */
 
@@ -2244,17 +2235,17 @@ body.nav-open .nav-overlay {
     position: absolute !important;
     left: 50% !important;
     top: 50% !important;
-    transform: translate(-50%, -50%) !important; /* ดึงกลับมาให้กลางเป๊ะ */
+    transform: translate(-50%, -50%) !important;
     margin: 0 !important;
     z-index: 1001;
   }
 
-  /* ปรับขนาดรูปโลโก้ในมือถือให้พอดี (ไม่ใหญ่เกินไป) */
   .logo img {
-    height: 200px !important; /* ปรับขนาดตามความเหมาะสม */
+    /* ปรับให้ขนาดพอดีกับแถบ 80px */
+    height: 230px !important;  /* เล็กลงเพื่อให้ดูแพงและสะอาดตา */
     width: auto !important;
-    padding: 0 !important;
-    padding-top: 30%;
+    padding: 0 !important;     /* ล้างค่า padding-top ของ PC ทิ้งให้หมด */
+    padding-top: 35px !important; /* สำคัญมาก: ต้องเป็น 0 ไม่งั้นโลโก้เบี้ยวลงล่าง */
   }
 
 /* dropdown บนมือถือ: ทำให้เนียน + ไม่ใช้ hover เปิด */
@@ -2294,6 +2285,7 @@ body.nav-open .nav-overlay {
 }
 
 /* ให้เมนูอยู่เหนือ overlay */
+}
 
 @media (max-width: 900px) {
 
