@@ -2253,10 +2253,10 @@ body.nav-open .nav-overlay {
 
   /* ปรับขนาดรูปโลโก้ในมือถือให้พอดี (ไม่ใหญ่เกินไป) */
   .logo img {
-    height: 220px !important; /* ปรับขนาดตามความเหมาะสม */
+    height: 200px !important; /* ปรับขนาดตามความเหมาะสม */
     width: auto !important;
     padding: 0 !important;
-    padding-top: 30%;
+    padding-top: 15%;
   }
 
 /* dropdown บนมือถือ: ทำให้เนียน + ไม่ใช้ hover เปิด */
