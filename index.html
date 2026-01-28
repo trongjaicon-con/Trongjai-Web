@@ -66,7 +66,7 @@
             </ul>
         </div>
     </nav>
-    <!-- overlay (วางต่อจาก nav ได้เลย) -->
+
     <div class="nav-overlay"></div>
 
 
@@ -100,20 +100,32 @@
             </video>
         </div>
     </aside>
-      <div class="social-pills">
-            <a href="https://www.facebook.com/profile.php?id=61551506019574" target="_blank" class="pill fb">
-                <i class="fa-brands fa-facebook-f"></i> Facebook
-            </a>
-            <a href="https://line.me/ti/p/@trongjai.con" target="_blank" class="pill line">
-                <i class="fa-brands fa-line"></i> Line
-            </a>
-            <a href="https://instagram.com/trongjai_design" target="_blank" class="pill ig">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-            <a href="https://tiktok.com/@trongjai.con" target="_blank" class="pill tiktok">
-                <i class="fa-brands fa-tiktok"></i> TikTok
-            </a>
+
+    <div class="drag-slider" id="dragSlider">
+        <button class="slider-arrow prev" id="prevBtn" type="button">&#10094;</button>
+        <button class="slider-arrow next" id="nextBtn" type="button">&#10095;</button>
+
+        <div class="slider-inner" id="sliderInner">
+            <div class="slide-item"><img src="/image/home index/index2.png" alt="Work 1" draggable="false"></div>
+            <div class="slide-item"><img src="/image/home index/index3.png" alt="Work 2" draggable="false"></div>
+            <div class="slide-item"><img src="/image/home index/index4.png" alt="Work 3" draggable="false"></div>
         </div>
+    </div>
+
+    <div class="social-pills">
+        <a href="https://www.facebook.com/profile.php?id=61551506019574" target="_blank" class="pill fb">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://line.me/ti/p/@trongjai.con" target="_blank" class="pill line">
+            <i class="fa-brands fa-line"></i> Line
+        </a>
+        <a href="https://instagram.com/trongjai_design" target="_blank" class="pill ig">
+            <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+        <a href="https://tiktok.com/@trongjai.con" target="_blank" class="pill tiktok">
+            <i class="fa-brands fa-tiktok"></i> TikTok
+        </a>
+    </div>
     <section class="services-overview container">
         <h2 class="section-title center">บริการของเรา</h2>
 
@@ -329,6 +341,55 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inner = document.getElementById('sliderInner');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slides = document.querySelectorAll('.slide-item');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            function updateSlider() {
+                // คำนวณระยะเลื่อน (ใช้ -100vw คูณกับลำดับภาพ)
+                inner.style.transform = `translateX(-${currentIndex * 100}vw)`;
+
+                // จัดการปุ่มหน้าแรก (ซ่อนปุ่มซ้าย)
+                if (currentIndex === 0) {
+                    prevBtn.classList.add('hidden');
+                } else {
+                    prevBtn.classList.remove('hidden');
+                }
+
+                // จัดการปุ่มหน้าสุดท้าย (ซ่อนปุ่มขวา)
+                if (currentIndex === totalSlides - 1) {
+                    nextBtn.classList.add('hidden');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                }
+            }
+
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // กัน Bug ของบราวเซอร์
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            // ตรวจสอบสถานะปุ่มตอนเริ่มโหลด
+            updateSlider();
+        });
+    </script>
 </body>
 
 </html>

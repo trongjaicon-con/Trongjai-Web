@@ -454,24 +454,29 @@ footer.site-footer {
 }
 
 
-/* ฝั่งวิดีโอ (ขวา) */
+/* ฝั่งวิดีโอ */
 .video-section {
-  flex: 1;
+  width: 100%;
+  /* ปรับเป็น 90-95% เพื่อให้เหลือขอบข้างเล็กน้อย */
+  max-width: 95vw;
+  margin: 20px auto;
+  /* จัดกึ่งกลางและเพิ่มระยะบนล่างให้ดูโปร่ง */
+  display: flex;
+  justify-content: center;
 }
 
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
-  /* อัตราส่วน 16:9 */
+  width: 100%;
+  /* คุมความสูง: ถ้าอยากได้ความสูงเท่าเดิมที่คุณชอบ 
+       ลองปรับเปอร์เซ็นต์ระหว่าง 30% - 40% */
+  padding-bottom: 35%;
   height: 0;
   overflow: hidden;
+  /* เพิ่มความมนของขอบเล็กน้อยเพื่อให้เข้ากับดีไซน์พรีเมียม */
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background: #000;
-
-  /* ป้องกันการคลิกหรือเลือกวิดีโอ */
-  user-select: none;
-  pointer-events: none;
 }
 
 .video-container .video-player {
@@ -480,30 +485,23 @@ footer.site-footer {
   left: 0;
   width: 100%;
   height: 100%;
+  /* สำคัญ: ใช้ cover เพื่อให้วิดีโอยืดเต็มพื้นที่ที่เกือบเต็มนี้ */
   object-fit: cover;
-  /* วิดีโอเต็มกรอบ */
   border: none;
 }
 
+/* คำบรรยายใต้วิดีโอ */
 .video-caption {
-  margin-top: 15px;
+  margin-top: 20px;
   text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-  font-style: italic;
+  color: #1f2b26;
+  /* ใช้สีเขียวเข้มจากธีมหลัก */
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
 }
 
-/* ซ่อน Shadow DOM Controls ใน Webkit (Chrome, Safari, Edge) */
-.video-player::-webkit-media-controls {
-  display: none !important;
-}
-
-/* สำหรับซ่อนปุ่มเล่นบนหน้าจอ */
-.video-player::-webkit-media-controls-enclosure {
-  display: none !important;
-}
-
-/* สร้าง Layer โปร่งใสทับวิดีโอ (กันเหนียว) */
+/* Layer โปร่งใสทับวิดีโอ (กันคลิก) */
 .video-container::after {
   content: "";
   position: absolute;
@@ -512,8 +510,86 @@ footer.site-footer {
   width: 100%;
   height: 100%;
   z-index: 10;
-  background: transparent;
-  /* ทับไว้เฉยๆ ไม่ให้เมาส์หรือการ Focus เข้าถึงตัววิดีโอได้ */
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));
+  /* เพิ่มมิติเล็กน้อย */
+}
+
+/* ซ่อน Controls สำหรับบราวเซอร์ต่างๆ */
+.video-player::-webkit-media-controls {
+  display: none !important;
+}
+
+.video-player::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+.video-player::-moz-media-controls {
+  display: none !important;
+}
+
+.video-player::-ms-media-controls {
+  display: none !important;
+}
+
+/* รูปใหญ่ใต้วิดีโอ */
+.drag-slider {
+  position: relative;
+  width: 100vw;
+  height: 550px;
+  margin: 0 auto;
+  overflow-y: hidden;
+}
+
+.slider-inner {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* สไลด์นุ่มแบบ Tokura */
+  width: 300%;
+  /* (จำนวนรูป x 100) */
+}
+
+.slide-item {
+  width: 100vw;
+  /* มั่นใจว่า 1 รูปเท่ากับ 1 หน้าจอเป๊ะ */
+  flex-shrink: 0;
+}
+
+/* ปุ่มลูกศร - ปรับให้ลอยเด่นขึ้น */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  /* สูงสุดเพื่อให้กดติด */
+  background: rgba(31, 43, 38, 0.6);
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.drag-slider:hover .slider-arrow {
+  opacity: 1;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* ซ่อนปุ่มเมื่อถึงหน้าแรก/สุดท้าย */
+.slider-arrow.hidden {
+  display: none !important;
 }
 
 /* จัดวางกลุ่มปุ่มโซเชียล */
@@ -1633,18 +1709,21 @@ footer.site-footer {
 }
 
 .share-btn {
-  width: 40px;      /* เพิ่มขนาดขึ้นเล็กน้อยให้กดง่าย */
+  width: 40px;
+  /* เพิ่มขนาดขึ้นเล็กน้อยให้กดง่าย */
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  
-  /* เปลี่ยนจากสีแบรนด์สดๆ เป็นโทนหรู */
-  background: #1f2b26;      /* สีเขียวเข้มจากธีมหลัก */
-  color: #f1efe5;           /* สีทองจากโลโก้ */
 
-  
+  /* เปลี่ยนจากสีแบรนด์สดๆ เป็นโทนหรู */
+  background: #1f2b26;
+  /* สีเขียวเข้มจากธีมหลัก */
+  color: #f1efe5;
+  /* สีทองจากโลโก้ */
+
+
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 18px;
@@ -1652,10 +1731,14 @@ footer.site-footer {
 
 
 .share-btn:hover {
-  transform: translateY(-5px); /* ลอยขึ้นสวยๆ */
-  background: #d4af37;         /* สลับเป็นสีทองทึบตอน Hover */
-  color: #1f2b26;              /* ไอคอนเปลี่ยนเป็นเขียวเข้ม */
-  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); /* เงาสีทองจางๆ */
+  transform: translateY(-5px);
+  /* ลอยขึ้นสวยๆ */
+  background: #d4af37;
+  /* สลับเป็นสีทองทึบตอน Hover */
+  color: #1f2b26;
+  /* ไอคอนเปลี่ยนเป็นเขียวเข้ม */
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+  /* เงาสีทองจางๆ */
 }
 
 /* --- รูปภาพหลัก --- */
@@ -1989,9 +2072,11 @@ video {
 @media (max-width: 900px) {
   .video-section {
     width: 100%;
-    background-color: #000; /* ให้พื้นหลังเป็นสีดำกันขอบวิดีโอแหว่ง */
+    background-color: #000;
+    /* ให้พื้นหลังเป็นสีดำกันขอบวิดีโอแหว่ง */
     overflow: hidden;
-    line-height: 0; /* แก้ปัญหาช่องว่างใต้ภาพ/วิดีโอ */
+    line-height: 0;
+    /* แก้ปัญหาช่องว่างใต้ภาพ/วิดีโอ */
   }
 
   .video-container {
@@ -2003,10 +2088,55 @@ video {
   }
 
   .video-player {
-    width: 100% !important;   /* ยืดให้เต็มความกว้างมือถือ */
-    height: auto !important;  /* ให้ความสูงปรับตามสัดส่วนวิดีโอ */
-    max-height: 60vh;         /* จำกัดความสูงไม่ให้เกิน 60% ของความสูงจอ (กันวิดีโอใหญ่เกินไป) */
-    object-fit: cover;        /* ให้วิดีโอขยายเต็มพื้นที่ที่กำหนดโดยไม่เสียรูปทรง */
+    width: 100% !important;
+    /* ยืดให้เต็มความกว้างมือถือ */
+    height: auto !important;
+    /* ให้ความสูงปรับตามสัดส่วนวิดีโอ */
+    max-height: 60vh;
+    /* จำกัดความสูงไม่ให้เกิน 60% ของความสูงจอ (กันวิดีโอใหญ่เกินไป) */
+    object-fit: cover;
+    /* ให้วิดีโอขยายเต็มพื้นที่ที่กำหนดโดยไม่เสียรูปทรง */
+  }
+
+  .drag-slider {
+    overflow-x: auto;
+    /* เปิดให้ปัดได้ */
+    scroll-snap-type: x mandatory;
+    /* บังคับให้รูปดีดเข้าที่ */
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /* ซ่อน scrollbar */
+    scrollbar-width: none;
+  }
+
+  .drag-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slider-inner {
+    transform: none !important;
+    /* ยกเลิกการใช้ JS Transform บนมือถือ */
+    display: flex;
+    width: auto !important;
+  }
+
+  .slide-item {
+    scroll-snap-align: start;
+    /* จุดที่รูปจะดีดมาหยุด */
+    scroll-snap-stop: always;
+  }
+
+  /* ซ่อนปุ่มลูกศรบนมือถือ */
+  .slider-arrow {
+    display: none !important;
+  }
+}
+
+/* --- สำหรับ PC (901px ขึ้นไป) --- */
+@media (min-width: 901px) {
+  .drag-slider {
+    overflow: hidden;
+    /* ปิดการปัดบน PC เพื่อให้ใช้ปุ่มแทน */
   }
 }
 
