@@ -1989,10 +1989,6 @@ video {
   .navbar .container {
     padding: 0 16px;
   }
-
-
-
-
   /* แสดงปุ่ม hamburger */
   .nav-toggle {
     display: inline-flex;
@@ -2061,19 +2057,6 @@ video {
   /* กัน hover เปิดเองบนมือถือ */
   .dropdown:hover .dropdown-content {
     display: none;
-  }
-
-  /* overlay ดำด้านหลังเมนู */
-  .nav-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .45);
-    z-index: 1040;
-  }
-
-  body.nav-open .nav-overlay {
-    display: block;
   }
 }
 
