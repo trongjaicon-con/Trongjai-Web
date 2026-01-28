@@ -170,7 +170,7 @@ footer.site-footer {
 
 
 /* แถบ Navbar */
-/* 1. กำหนดความสูงที่แน่นอนให้ Navbar */
+
 .navbar {
   background-color: #2b3628;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -180,35 +180,33 @@ footer.site-footer {
   z-index: 1000;
 }
 
-/* แก้ไขจุดนี้: ใช้ .navbar .container เพื่อเจาะจงเฉพาะในแถบเมนู */
 .navbar .container {
   max-width: 100%;
   margin: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* ตัวนี้จะดันโลโก้ไปซ้าย และเมนูไปขวาเอง */
   align-items: center;
   height: 100%;
   padding: 0 40px;
-  position: relative;
+  position: relative; /* เก็บไว้เพื่อให้ dropdown อ้างอิงได้ */
   width: 100%;
 }
 
-/* 2. โลโก้ชิดซ้าย */
 .logo {
-  position: absolute;
-  left: 40px;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;      /* ปลดล็อกจากการเป็น absolute */
+  transform: none;      /* ลบการตั้งค่าเยื้องกลางออก */
   z-index: 1001;
+  display: flex;        /* ช่วยให้จัดกึ่งกลางแนวตั้งในแถบได้ง่ายขึ้น */
+  align-items: center;
 }
 
 .logo img {
-  height: 200px;
+  height: 200px;         /* ขนาดที่คุณต้องการใน PC */
   width: auto;
   display: block;
   filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
   transition: 0.3s ease;
-  padding-top: 15%;
+  padding-top: 30%;      /* ค่าเดิมที่คุณตั้งไว้ */
 }
 
 /* 3. เมนูชิดขวา */
@@ -2256,7 +2254,7 @@ body.nav-open .nav-overlay {
     height: 200px !important; /* ปรับขนาดตามความเหมาะสม */
     width: auto !important;
     padding: 0 !important;
-    padding-top: 15%;
+    padding-top: 30%;
   }
 
 /* dropdown บนมือถือ: ทำให้เนียน + ไม่ใช้ hover เปิด */
