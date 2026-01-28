@@ -172,45 +172,54 @@ footer.site-footer {
 /* แถบ Navbar */
 
 .navbar {
-    background-color: #2b3628;
-    height: 80px;
-    
-    /* ส่วนสำคัญที่ทำให้เลื่อนตาม */
-    position: sticky; 
-    top: 0;           /* ล็อคไว้ที่ขอบบนสุด */
-    z-index: 2000;    /* ให้ค่าสูงๆ ไว้เพื่อให้อยู่เหนือรูปภาพหรือเนื้อหาอื่นๆ */
-    
-    /* เพิ่มเงาเล็กน้อยเพื่อให้ดูมีมิติเวลาเลื่อนทับเนื้อหา */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+  background-color: #2b3628;
+  height: 80px;
+
+  /* ส่วนสำคัญที่ทำให้เลื่อนตาม */
+  position: sticky;
+  top: 0;
+  /* ล็อคไว้ที่ขอบบนสุด */
+  z-index: 2000;
+  /* ให้ค่าสูงๆ ไว้เพื่อให้อยู่เหนือรูปภาพหรือเนื้อหาอื่นๆ */
+
+  /* เพิ่มเงาเล็กน้อยเพื่อให้ดูมีมิติเวลาเลื่อนทับเนื้อหา */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .navbar .container {
   max-width: 100%;
   margin: 0;
   display: flex;
-  justify-content: space-between; /* ตัวนี้จะดันโลโก้ไปซ้าย และเมนูไปขวาเอง */
+  justify-content: space-between;
+  /* ตัวนี้จะดันโลโก้ไปซ้าย และเมนูไปขวาเอง */
   align-items: center;
   height: 100%;
   padding: 0 40px;
-  position: relative; /* เก็บไว้เพื่อให้ dropdown อ้างอิงได้ */
+  position: relative;
+  /* เก็บไว้เพื่อให้ dropdown อ้างอิงได้ */
   width: 100%;
 }
 
 .logo {
-  position: static;      /* ปลดล็อกจากการเป็น absolute */
-  transform: none;      /* ลบการตั้งค่าเยื้องกลางออก */
+  position: static;
+  /* ปลดล็อกจากการเป็น absolute */
+  transform: none;
+  /* ลบการตั้งค่าเยื้องกลางออก */
   z-index: 1001;
-  display: flex;        /* ช่วยให้จัดกึ่งกลางแนวตั้งในแถบได้ง่ายขึ้น */
+  display: flex;
+  /* ช่วยให้จัดกึ่งกลางแนวตั้งในแถบได้ง่ายขึ้น */
   align-items: center;
 }
 
 .logo img {
-  height: 220px;         /* ขนาดที่คุณต้องการใน PC */
+  height: 220px;
+  /* ขนาดที่คุณต้องการใน PC */
   width: auto;
   display: block;
   filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
   transition: 0.3s ease;
-  padding-top: 30px;      /* ค่าเดิมที่คุณตั้งไว้ */
+  padding-top: 30px;
+  /* ค่าเดิมที่คุณตั้งไว้ */
 }
 
 /* 3. เมนูชิดขวา */
@@ -2165,50 +2174,50 @@ video {
   }
 
 
-/* เปลี่ยนโลโก้จาก absolute เป็นปกติบนมือถือ */
+  /* เปลี่ยนโลโก้จาก absolute เป็นปกติบนมือถือ */
 
-.nav-toggle {
-  display: inline-flex;
-  margin-left: auto;
-  /* ดันไปขวาสุด */
-  z-index: 1100;
-  position: relative;
-}
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+    /* ดันไปขวาสุด */
+    z-index: 1100;
+    position: relative;
+  }
 
-.nav-links {
-  position: fixed;
-  top: 80px;
-  right: -320px;
-  width: 300px;
-  max-width: 85vw;
-  height: calc(100vh - 80px);
-  background: #2b3628;
-  box-shadow: -10px 0 25px rgba(0, 0, 0, .25);
-  margin: 0;
-  padding: 14px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  overflow-y: auto;
-  transition: right .28s ease;
-  z-index: 1050;
-}
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    right: -320px;
+    width: 300px;
+    max-width: 85vw;
+    height: calc(100vh - 80px);
+    background: #2b3628;
+    box-shadow: -10px 0 25px rgba(0, 0, 0, .25);
+    margin: 0;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    transition: right .28s ease;
+    z-index: 1050;
+  }
 
-body.nav-open .nav-links {
-  right: 0;
-}
+  body.nav-open .nav-links {
+    right: 0;
+  }
 
-body.nav-open .nav-overlay {
-  display: block;
-}
+  body.nav-open .nav-overlay {
+    display: block;
+  }
 
-.nav-links a {
-  line-height: normal;
-  padding: 14px 14px;
-  border-radius: 10px;
-}
+  .nav-links a {
+    line-height: normal;
+    padding: 14px 14px;
+    border-radius: 10px;
+  }
 
-.logo {
+  .logo {
     position: absolute !important;
     left: 50% !important;
     top: 50% !important;
@@ -2219,49 +2228,52 @@ body.nav-open .nav-overlay {
 
   .logo img {
     /* ปรับให้ขนาดพอดีกับแถบ 80px */
-    height: 230px !important;  /* เล็กลงเพื่อให้ดูแพงและสะอาดตา */
+    height: 230px !important;
+    /* เล็กลงเพื่อให้ดูแพงและสะอาดตา */
     width: auto !important;
-    padding: 0 !important;     /* ล้างค่า padding-top ของ PC ทิ้งให้หมด */
-    padding-top: 35px !important; /* สำคัญมาก: ต้องเป็น 0 ไม่งั้นโลโก้เบี้ยวลงล่าง */
+    padding: 0 !important;
+    /* ล้างค่า padding-top ของ PC ทิ้งให้หมด */
+    padding-top: 35px !important;
+    /* สำคัญมาก: ต้องเป็น 0 ไม่งั้นโลโก้เบี้ยวลงล่าง */
   }
 
-/* dropdown บนมือถือ: ทำให้เนียน + ไม่ใช้ hover เปิด */
-.dropdown:hover .dropdown-content {
-  display: none;
-}
+  /* dropdown บนมือถือ: ทำให้เนียน + ไม่ใช้ hover เปิด */
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
 
-.dropdown-content {
-  position: static;
-  transform: none;
-  min-width: unset;
-  box-shadow: none;
-  border-radius: 10px;
-  margin: 0 8px 8px;
-  background: rgba(255, 255, 255, .08);
-  overflow: hidden;
-  display: none;
-  /* ปิดไว้ก่อน แล้วค่อยเปิดด้วย JS */
-}
+  .dropdown-content {
+    position: static;
+    transform: none;
+    min-width: unset;
+    box-shadow: none;
+    border-radius: 10px;
+    margin: 0 8px 8px;
+    background: rgba(255, 255, 255, .08);
+    overflow: hidden;
+    display: none;
+    /* ปิดไว้ก่อน แล้วค่อยเปิดด้วย JS */
+  }
 
-.dropdown-content li a {
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, .12);
-}
+  .dropdown-content li a {
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+  }
 
-.dropdown-content li a:hover {
-  background: rgba(255, 255, 255, .08);
-  color: #d4af37;
-}
+  .dropdown-content li a:hover {
+    background: rgba(255, 255, 255, .08);
+    color: #d4af37;
+  }
 
 
-/* ===== FIX: เมนูกดไม่ได้เพราะ overlay ทับ ===== */
+  /* ===== FIX: เมนูกดไม่ได้เพราะ overlay ทับ ===== */
 
-/* ให้ navbar อยู่บนสุดเสมอ */
-.navbar {
-  z-index: 3000;
-}
+  /* ให้ navbar อยู่บนสุดเสมอ */
+  .navbar {
+    z-index: 3000;
+  }
 
-/* ให้เมนูอยู่เหนือ overlay */
+  /* ให้เมนูอยู่เหนือ overlay */
 }
 
 @media (max-width: 900px) {
@@ -2316,9 +2328,17 @@ body.nav-open .nav-overlay {
 
   /* 3. ปรับ Overlay ให้กดทะลุได้เฉพาะตอนปิด แต่ถ้าเปิดต้องรับแรงกดเพื่อปิดเมนู */
   .nav-overlay {
-    z-index: 1040;
-    pointer-events: auto;
-    /* กลับมาให้รับแรงกดได้เพื่อใช้ปิดเมนูเวลาคลิกที่ว่าง */
+    display: none;
+    position: fixed;
+    inset: 0;
+    /* ลดความเข้มจาก .45 เหลือ .2 เพื่อให้หน้าแรกสว่างขึ้น */
+    background: rgba(0, 0, 0, 0.2) !important;
+    z-index: 1500 !important;
+    /* อยู่หลังเมนู แต่หน้าเนื้อหาเว็บ */
+    backdrop-filter: blur(3px);
+    /* เพิ่มความนวลตา */
+    pointer-events: auto !important;
+    /* ยอมให้คลิกเพื่อปิดเมนูได้ */
   }
 
   /* 4. แก้ไขเรื่อง z-index ให้ลำดับถูกต้อง */
