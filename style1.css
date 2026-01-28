@@ -518,11 +518,16 @@ footer.site-footer {
 
 /* จัดวางกลุ่มปุ่มโซเชียล */
 .social-pills {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* แบ่งเป็น 2 คอลัมน์ */
-  gap: 10px;
-  margin-top: 20px;
+  display: flex;
+  /* เปลี่ยนจาก grid เป็น flex เพื่อให้ปุ่มกว้างเท่าที่จำเป็น */
+  flex-wrap: wrap;
+  /* ให้ปุ่มขึ้นบรรทัดใหม่ได้ถ้าหน้าจอแคบ */
+  justify-content: center;
+  /* จัดให้อยู่กึ่งกลางหน้าจอ */
+  gap: 12px;
+  margin-top: 30px;
+  padding: 0 20px;
+  /* กันปุ่มชิดขอบจอเกินไป */
 }
 
 /* สไตล์พื้นฐานของปุ่ม (ทรงแคปซูล) */
@@ -531,14 +536,22 @@ footer.site-footer {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px;
+  padding: 8px 24px;
+  /* ปรับให้ดูเพรียวขึ้น (บน-ล่างน้อย, ซ้าย-ขวามาก) */
   border-radius: 50px;
-  color: #fff;
+
+  /* ปรับโทนสีให้ดูหรูขึ้น */
+  background-color: #1f2b26;
+  border: 1px solid #ffffff;
+  /* เพิ่มเส้นขอบสีทองเพื่อให้แมตช์กับหัวเว็บ */
+  color: #ffffff;
+  /* เปลี่ยนตัวอักษรเป็นสีทองเพื่อให้ดูพรีเมียม */
+
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  /* ลดขนาดลงเล็กน้อยเพื่อให้ดูสะอาดตา */
   font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .pill i {
@@ -547,27 +560,27 @@ footer.site-footer {
 
 /* สีแต่ละโซเชียล */
 .pill.fb {
-  background-color: #1877F2;
+  background-color: #1f2b26;
 }
 
 .pill.line {
-  background-color: #06C755;
+  background-color: #1f2b26;
 }
 
 .pill.ig {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background-color: #1f2b26;
 }
 
 .pill.tiktok {
-  background-color: #000000;
+  background-color: #1f2b26;
 }
 
 /* เอฟเฟกต์เวลา Hover */
-.pill:hover {
+/* .pill:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   filter: brightness(1.1);
-}
+} */
 
 /* ส่วนบริการของเรา */
 .services-overview {
@@ -1590,7 +1603,6 @@ footer.site-footer {
 
 /* work------------------------------ */
 /* --- โครงสร้างหลัก --- */
-/* --- โครงสร้างหลัก --- */
 .project-detail-container {
   max-width: 1000px;
   margin: 40px auto;
@@ -1615,43 +1627,37 @@ footer.site-footer {
 
 .social-share {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .share-btn {
-  width: 38px;
-  height: 38px;
+  width: 40px;      /* เพิ่มขนาดขึ้นเล็กน้อยให้กดง่าย */
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: #fff;
+  
+  /* เปลี่ยนจากสีแบรนด์สดๆ เป็นโทนหรู */
+  background: #1f2b26;      /* สีเขียวเข้มจากธีมหลัก */
+  color: #f1efe5;           /* สีทองจากโลโก้ */
+
+  
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  font-size: 18px;
 }
 
-.share-btn.fb {
-  background: #1877F2;
-}
-
-.share-btn.tiktok {
-  background: #000;
-}
-
-.share-btn.line {
-  background: #00C300;
-}
-
-.share-btn.ig {
-  background: radial-gradient(circle at 30% 30%, #fdf497, #fd5949, #d6249f, #285AEB);
-}
 
 .share-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* ลอยขึ้นสวยๆ */
+  background: #d4af37;         /* สลับเป็นสีทองทึบตอน Hover */
+  color: #1f2b26;              /* ไอคอนเปลี่ยนเป็นเขียวเข้ม */
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); /* เงาสีทองจางๆ */
 }
 
-/* --- รูปภาพหลัก --- */
 /* --- รูปภาพหลัก --- */
 .main-project-image img {
   width: 100%;
@@ -1887,15 +1893,15 @@ footer.site-footer {
 }
 
 .social-button.fb i {
-  color: #1877F2;
+  color: #1f2b26;
 }
 
 .social-button.line i {
-  color: #00C300;
+  color: #1f2b26;
 }
 
 .social-button.ig i {
-  color: #E4405F;
+  color: #1f2b26;
 }
 
 /* ฝั่งขวา (QR Code) */
@@ -1935,13 +1941,14 @@ footer.site-footer {
 }
 
 .btn-open-line {
-  background: #00C300;
+  background: #1f2b26;
   color: #fff;
 }
 
 .btn-open-fb {
   border: 1px solid #ddd;
-  color: #333;
+  background: #1f2b26;
+  color: #ffffff;
 }
 
 .contact-banner img {
@@ -1979,8 +1986,29 @@ video {
   cursor: pointer;
 }
 
-/* ทำให้โลโก้ไม่ล้น navbar (ปรับแบบ responsive) */
+@media (max-width: 900px) {
+  .video-section {
+    width: 100%;
+    background-color: #000; /* ให้พื้นหลังเป็นสีดำกันขอบวิดีโอแหว่ง */
+    overflow: hidden;
+    line-height: 0; /* แก้ปัญหาช่องว่างใต้ภาพ/วิดีโอ */
+  }
 
+  .video-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .video-player {
+    width: 100% !important;   /* ยืดให้เต็มความกว้างมือถือ */
+    height: auto !important;  /* ให้ความสูงปรับตามสัดส่วนวิดีโอ */
+    max-height: 60vh;         /* จำกัดความสูงไม่ให้เกิน 60% ของความสูงจอ (กันวิดีโอใหญ่เกินไป) */
+    object-fit: cover;        /* ให้วิดีโอขยายเต็มพื้นที่ที่กำหนดโดยไม่เสียรูปทรง */
+  }
+}
 
 /* ========== Breakpoint มือถือ ========== */
 @media (max-width: 900px) {
@@ -1989,6 +2017,7 @@ video {
   .navbar .container {
     padding: 0 16px;
   }
+
   /* แสดงปุ่ม hamburger */
   .nav-toggle {
     display: inline-flex;
@@ -2291,7 +2320,8 @@ video {
     z-index: 1050 !important;
     pointer-events: auto !important;
   }
-    .dropdown-content {
+
+  .dropdown-content {
     z-index: 999999 !important;
     pointer-events: auto !important;
   }

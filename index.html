@@ -90,31 +90,30 @@
                     <li><i class="fa-solid fa-check-circle"></i> งบประมาณไม่บานปลาย</li>
                 </ul>
             </article>
-
-            <aside class="video-section">
-                <div class="video-container">
-                    <video controls autoplay muted loop playsinline class="video-player">
-                        <source src="/image/video/index-h.mp4" type="video/mp4">
-                        เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-                    </video>
-                </div>
-                <div class="social-pills">
-                    <a href="https://www.facebook.com/profile.php?id=61551506019574" target="_blank" class="pill fb">
-                        <i class="fa-brands fa-facebook-f"></i> Facebook
-                    </a>
-                    <a href="https://line.me/ti/p/@trongjai.con" target="_blank" class="pill line">
-                        <i class="fa-brands fa-line"></i> Line
-                    </a>
-                    <a href="https://instagram.com/trongjai_design" target="_blank" class="pill ig">
-                        <i class="fa-brands fa-instagram"></i> Instagram
-                    </a>
-                    <a href="https://tiktok.com/@trongjai.con" target="_blank" class="pill tiktok">
-                        <i class="fa-brands fa-tiktok"></i> TikTok
-                    </a>
-                </div>
-            </aside>
         </div>
     </main>
+    <aside class="video-section">
+        <div class="video-container">
+            <video controls autoplay muted loop playsinline class="video-player">
+                <source src="/image/video/index-h.mp4" type="video/mp4">
+                เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+            </video>
+        </div>
+    </aside>
+      <div class="social-pills">
+            <a href="https://www.facebook.com/profile.php?id=61551506019574" target="_blank" class="pill fb">
+                <i class="fa-brands fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://line.me/ti/p/@trongjai.con" target="_blank" class="pill line">
+                <i class="fa-brands fa-line"></i> Line
+            </a>
+            <a href="https://instagram.com/trongjai_design" target="_blank" class="pill ig">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://tiktok.com/@trongjai.con" target="_blank" class="pill tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+        </div>
     <section class="services-overview container">
         <h2 class="section-title center">บริการของเรา</h2>
 
@@ -282,53 +281,53 @@
         }
     </script>
 
- <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const dropdowns = document.querySelectorAll('.dropdown');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
 
-    // 1. จัดการปุ่ม 3 ขีด (Hamburger)
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            document.body.classList.toggle('nav-open');
-            // เปลี่ยนไอคอน ☰ เป็น ✕ เวลาเปิด
-            this.textContent = document.body.classList.contains('nav-open') ? '✕' : '☰';
-        });
-    }
-
-    // 2. จัดการ Dropdown ในมือถือ
-    dropdowns.forEach(dropdown => {
-        const btn = dropdown.querySelector('.dropbtn');
-        
-        btn.addEventListener('click', function(e) {
-            // ทำงานเฉพาะจอเล็กกว่า 900px
-            if (window.innerWidth <= 900) {
-                // เช็กว่าถ้ายังไม่ได้เปิดเมนูย่อย ให้หยุดการลิงก์ไปหน้าอื่นก่อน
-                if (!dropdown.classList.contains('open')) {
-                    e.preventDefault(); 
-                    e.stopPropagation();
-                    
-                    // ปิดตัวอื่นก่อนเปิดตัวนี้ (จะได้ไม่ซ้อนกันเละ)
-                    dropdowns.forEach(d => d.classList.remove('open'));
-                    
-                    // เปิดตัวที่คลิก
-                    dropdown.classList.add('open');
-                }
+            // 1. จัดการปุ่ม 3 ขีด (Hamburger)
+            if (navToggle) {
+                navToggle.addEventListener('click', function () {
+                    document.body.classList.toggle('nav-open');
+                    // เปลี่ยนไอคอน ☰ เป็น ✕ เวลาเปิด
+                    this.textContent = document.body.classList.contains('nav-open') ? '✕' : '☰';
+                });
             }
-        });
-    });
 
-    // คลิกที่ว่างอื่นๆ ให้ปิดเมนู
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.navbar')) {
-            document.body.classList.remove('nav-open');
-            dropdowns.forEach(d => d.classList.remove('open'));
-            if(navToggle) navToggle.textContent = '☰';
-        }
-    });
-});
-</script>
+            // 2. จัดการ Dropdown ในมือถือ
+            dropdowns.forEach(dropdown => {
+                const btn = dropdown.querySelector('.dropbtn');
+
+                btn.addEventListener('click', function (e) {
+                    // ทำงานเฉพาะจอเล็กกว่า 900px
+                    if (window.innerWidth <= 900) {
+                        // เช็กว่าถ้ายังไม่ได้เปิดเมนูย่อย ให้หยุดการลิงก์ไปหน้าอื่นก่อน
+                        if (!dropdown.classList.contains('open')) {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            // ปิดตัวอื่นก่อนเปิดตัวนี้ (จะได้ไม่ซ้อนกันเละ)
+                            dropdowns.forEach(d => d.classList.remove('open'));
+
+                            // เปิดตัวที่คลิก
+                            dropdown.classList.add('open');
+                        }
+                    }
+                });
+            });
+
+            // คลิกที่ว่างอื่นๆ ให้ปิดเมนู
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.navbar')) {
+                    document.body.classList.remove('nav-open');
+                    dropdowns.forEach(d => d.classList.remove('open'));
+                    if (navToggle) navToggle.textContent = '☰';
+                }
+            });
+        });
+    </script>
 
 </body>
 
