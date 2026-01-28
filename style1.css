@@ -2071,16 +2071,19 @@ video {
 
 @media (max-width: 900px) {
   .video-section {
-    width: 100%;
+    width: 100vw;
+    /* ใช้ vw เพื่อให้กว้างเต็มขอบจอจริง ๆ */
+    margin-left: calc(-50vw + 50%);
+    /* เทคนิคขยายเต็มจอแม้ติด Container */
+    margin-right: calc(-50vw + 50%);
     background-color: #000;
-    /* ให้พื้นหลังเป็นสีดำกันขอบวิดีโอแหว่ง */
     overflow: hidden;
-    line-height: 0;
-    /* แก้ปัญหาช่องว่างใต้ภาพ/วิดีโอ */
   }
 
   .video-container {
     width: 100%;
+    /* ปรับความสูงขั้นต่ำให้ดูใหญ่ขึ้น เช่น 50% ของความสูงจอ */
+    min-height: 50vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -2089,48 +2092,47 @@ video {
 
   .video-player {
     width: 100% !important;
-    /* ยืดให้เต็มความกว้างมือถือ */
-    height: auto !important;
-    /* ให้ความสูงปรับตามสัดส่วนวิดีโอ */
-    max-height: 60vh;
-    /* จำกัดความสูงไม่ให้เกิน 60% ของความสูงจอ (กันวิดีโอใหญ่เกินไป) */
+    height: 100% !important;
+    /* บังคับให้สูงตามพื้นที่ที่กำหนด */
+    /* เพิ่มขีดจำกัดความสูงให้ใหญ่ขึ้นเกือบเต็มจอ */
+    max-height: 85vh;
     object-fit: cover;
-    /* ให้วิดีโอขยายเต็มพื้นที่ที่กำหนดโดยไม่เสียรูปทรง */
-  }
-
-  .drag-slider {
-    overflow-x: auto;
-    /* เปิดให้ปัดได้ */
-    scroll-snap-type: x mandatory;
-    /* บังคับให้รูปดีดเข้าที่ */
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    /* ซ่อน scrollbar */
-    scrollbar-width: none;
-  }
-
-  .drag-slider::-webkit-scrollbar {
-    display: none;
-  }
-
-  .slider-inner {
-    transform: none !important;
-    /* ยกเลิกการใช้ JS Transform บนมือถือ */
-    display: flex;
-    width: auto !important;
-  }
-
-  .slide-item {
-    scroll-snap-align: start;
-    /* จุดที่รูปจะดีดมาหยุด */
-    scroll-snap-stop: always;
-  }
-
-  /* ซ่อนปุ่มลูกศรบนมือถือ */
-  .slider-arrow {
-    display: none !important;
+    /* วิดีโอจะถมเต็มพื้นที่โดยไม่เหลือขอบดำ */
   }
 }
+.drag-slider {
+  overflow-x: auto;
+  /* เปิดให้ปัดได้ */
+  scroll-snap-type: x mandatory;
+  /* บังคับให้รูปดีดเข้าที่ */
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  /* ซ่อน scrollbar */
+  scrollbar-width: none;
+}
+
+.drag-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-inner {
+  transform: none !important;
+  /* ยกเลิกการใช้ JS Transform บนมือถือ */
+  display: flex;
+  width: auto !important;
+}
+
+.slide-item {
+  scroll-snap-align: start;
+  /* จุดที่รูปจะดีดมาหยุด */
+  scroll-snap-stop: always;
+}
+
+/* ซ่อนปุ่มลูกศรบนมือถือ */
+.slider-arrow {
+  display: none !important;
+}
+
 
 /* --- สำหรับ PC (901px ขึ้นไป) --- */
 @media (min-width: 901px) {
