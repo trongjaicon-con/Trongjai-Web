@@ -428,24 +428,25 @@ footer.site-footer {
 
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
-  /* อัตราส่วน 16:9 */
+  padding-bottom: 56.25%; /* อัตราส่วน 16:9 */
   height: 0;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   background: #000;
+  
+  /* ป้องกันการคลิกหรือเลือกวิดีโอ */
+  user-select: none;
+  pointer-events: none; 
 }
 
-/* แก้ไขจาก iframe เป็น .video-player เพื่อให้รองรับแท็ก <video> */
 .video-container .video-player {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  /* สำคัญ: ทำให้วิดีโอเต็มกรอบโดยไม่เสียสัดส่วน */
+  object-fit: cover; /* วิดีโอเต็มกรอบ */
   border: none;
 }
 
@@ -455,6 +456,28 @@ footer.site-footer {
   color: #666;
   font-size: 0.9rem;
   font-style: italic;
+}
+
+/* ซ่อน Shadow DOM Controls ใน Webkit (Chrome, Safari, Edge) */
+.video-player::-webkit-media-controls {
+  display: none !important;
+}
+
+/* สำหรับซ่อนปุ่มเล่นบนหน้าจอ */
+.video-player::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+/* สร้าง Layer โปร่งใสทับวิดีโอ (กันเหนียว) */
+.video-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: transparent; /* ทับไว้เฉยๆ ไม่ให้เมาส์หรือการ Focus เข้าถึงตัววิดีโอได้ */
 }
 
 /* จัดวางกลุ่มปุ่มโซเชียล */
@@ -2051,7 +2074,6 @@ html, body { max-width: 100%; overflow-x: hidden; }
     pointer-events: auto !important;
   }
 }
-.popup-overlay, .modal { display: none !important; }
 
 
 @media (max-width: 900px){
