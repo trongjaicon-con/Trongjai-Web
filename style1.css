@@ -2100,39 +2100,72 @@ video {
     /* วิดีโอจะถมเต็มพื้นที่โดยไม่เหลือขอบดำ */
   }
 }
-.drag-slider {
-  overflow-x: auto;
-  /* เปิดให้ปัดได้ */
-  scroll-snap-type: x mandatory;
-  /* บังคับให้รูปดีดเข้าที่ */
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  /* ซ่อน scrollbar */
-  scrollbar-width: none;
-}
 
-.drag-slider::-webkit-scrollbar {
-  display: none;
-}
+/* --- สำหรับหน้าจอมือถือ (ต่ำกว่า 900px) --- */
+@media (max-width: 900px) {
+  .drag-slider {
+    overflow-x: auto;
+    /* เปิดให้ปัดได้ */
+    scroll-snap-type: x mandatory;
+    /* บังคับให้รูปดีดเข้าที่ */
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /* ซ่อน scrollbar */
+    scrollbar-width: none;
+  }
 
-.slider-inner {
-  transform: none !important;
-  /* ยกเลิกการใช้ JS Transform บนมือถือ */
-  display: flex;
-  width: auto !important;
-}
+  .drag-slider::-webkit-scrollbar {
+    display: none;
+  }
 
-.slide-item {
-  scroll-snap-align: start;
-  /* จุดที่รูปจะดีดมาหยุด */
-  scroll-snap-stop: always;
-}
+  .slider-inner {
+    transform: none !important;
+    /* ยกเลิกการใช้ JS Transform บนมือถือ */
+    display: flex;
+    width: auto !important;
+  }
 
-/* ซ่อนปุ่มลูกศรบนมือถือ */
-.slider-arrow {
-  display: none !important;
-}
+  .slide-item {
+    scroll-snap-align: start;
+    /* จุดที่รูปจะดีดมาหยุด */
+    scroll-snap-stop: always;
+  }
 
+  /* ซ่อนปุ่มลูกศรบนมือถือ */
+  .slider-arrow {
+    display: none !important;
+  }
+
+  /* 1. ดึงกลุ่มปุ่มทั้งหมดขึ้นไปชิดรูปภาพ */
+  .social-pills {
+    margin-top: 5px !important;
+    /* ลดระยะห่างด้านบนให้เหลือนิดเดียว */
+    padding-top: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    /* ให้ปุ่มตัดแถวได้ถ้าจอแคบ */
+    justify-content: center;
+    /* จัดให้อยู่กลางจอ */
+    gap: 8px;
+    /* ระยะห่างระหว่างปุ่มแต่ละปุ่ม */
+  }
+
+  /* 2. ปรับขนาดปุ่มให้เล็กลงเพื่อให้ดูไม่ห่างกันจนเกินไป */
+  .social-pills .pill {
+    margin: 0 !important;
+    /* ลบ margin รอบปุ่มเดิมออก */
+    padding: 6px 12px !important;
+    /* ลดความอ้วนของปุ่ม */
+    font-size: 13px !important;
+    /* ลดขนาดตัวอักษรเล็กน้อย */
+  }
+
+  /* 3. หากมีส่วนหัว (Heading) หรือข้อความคั่นอยู่ ให้ลดระยะห่างด้วย */
+  .social-pills+*,
+  .drag-slider+.social-pills {
+    margin-top: 5px !important;
+  }
+}
 
 /* --- สำหรับ PC (901px ขึ้นไป) --- */
 @media (min-width: 901px) {
