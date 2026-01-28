@@ -2253,7 +2253,7 @@ body.nav-open .nav-overlay {
 
   /* ปรับขนาดรูปโลโก้ในมือถือให้พอดี (ไม่ใหญ่เกินไป) */
   .logo img {
-    height: 200px !important; /* ปรับขนาดตามความเหมาะสม */
+    height: 250px !important; /* ปรับขนาดตามความเหมาะสม */
     width: auto !important;
     padding: 0 !important;
     padding-top: 15%;
