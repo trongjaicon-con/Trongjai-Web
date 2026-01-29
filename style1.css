@@ -17,8 +17,8 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Kanit", "Segoe UI", Arial, sans-serif;
-  background-color: #d8d5cb;
+  font-family: "Chonburi", serif;
+  background-color: #E5E4E2;
   color: var(--text);
 }
 
@@ -669,11 +669,53 @@ footer.site-footer {
 }
 
 /* เอฟเฟกต์เวลา Hover */
-/* .pill:hover {
+.pill:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   filter: brightness(1.1);
-} */
+}
+
+.why-trust-us-container {
+  width: 100%;
+  padding: 60px 0;
+  text-align: center;
+  background-color: #E5E4E2;
+}
+
+.why-trust-us-container .section-title {
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: #1b4332;
+  /* สีเขียวเข้มตามแบรนด์ */
+}
+
+.feature-highlights {
+  display: flex;
+  justify-content: center;
+  /* จัดกลุ่มรูปให้อยู่กลางจอ */
+  align-items: center;
+  gap: 0;
+  /* หัวใจสำคัญ: กำหนดช่องว่างระหว่างรูปเป็น 0 */
+  width: 100%;
+  overflow: hidden;
+}
+
+.feature-highlights img {
+  /* กำหนดขนาดรูปให้เท่ากันเพื่อให้เรียงสวย */
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  /* ป้องกันรูปบี้แบน */
+  display: block;
+  /* กำจัดช่องว่างเล็กน้อยที่ขอบล่างของรูป */
+
+  /* ลบ border หรือปรับให้บางที่สุดเพื่อให้ดูเป็นเนื้อเดียวกัน */
+  border: none;
+
+  /* หากต้องการความพรีเมียม สามารถใส่โค้งมนแค่รูปแรกและรูปสุดท้ายได้ */
+  transition: transform 0.3s ease;
+}
+
 
 /* ส่วนบริการของเรา */
 .services-overview {
@@ -826,30 +868,6 @@ footer.site-footer {
   transition: 0.5s;
 }
 
-/* Overlay เวลาเอาเมาส์ชี้ */
-.portfolio-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(27, 67, 50, 0.7);
-  /* สีเขียวโปร่งแสงตามธีม */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: 0.4s;
-}
-
-.portfolio-item:hover .portfolio-overlay {
-  opacity: 1;
-}
-
-.portfolio-item:hover img {
-  transform: scale(1.1);
-}
-
 .view-project {
   color: #fff;
   border: 2px solid #fff;
@@ -892,6 +910,83 @@ footer.site-footer {
   background-color: #d4af37;
   transform: translateY(-3px);
 }
+
+.map-wrapper {
+  width: 100%;
+  padding: 60px 0;
+  /* เพิ่มระยะบน-ล่างให้ดูโปร่ง */
+  text-align: center;
+}
+
+.address-title {
+  color: #1b4332;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.address-detail {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* ปรับแต่งปุ่มให้ดูสวยและพรีเมียม */
+.map-wrapper a {
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.map-wrapper button {
+  background: #1b4332;
+  font-family: "Chonburi", serif;
+  color: #fff;
+  border: none;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  /* ทรงมนดูหรูหรา */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.map-wrapper button:hover {
+  transform: translateY(-3px);
+  background: #d4af37;
+}
+
+/* ส่วนแผนที่แบบย่อขนาดเกือบชิดขอบ */
+.map-section {
+  width: 92%;
+  /* ย่อขนาดให้เกือบชิดขอบทั้ง 2 ข้าง */
+  max-width: 1400px;
+  /* คุมไม่ให้กว้างเกินไปบนจอใหญ่ */
+  margin: 0 auto;
+  /* จัดกึ่งกลาง */
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  /* เพิ่มความมนให้ขอบแผนที่ดูพรีเมียม */
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  /* เส้นขอบทองบางๆ */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.map-section iframe {
+  position: absolute;
+  top: -65px;
+  /* ดันแถบดำหลุดขอบบน */
+  left: 0;
+  width: 100% !important;
+  height: calc(100% + 70px) !important;
+  border: 0;
+  filter: grayscale(0.1) contrast(1.05);
+}
+
+
+
 
 /*  */
 /*  */
@@ -1474,37 +1569,33 @@ footer.site-footer {
 
 /* --- ส่วนแกลเลอรี (Gallery Section) --- */
 .gallery-section {
-  background-color: #f9f9f9;
-  padding: 80px 20px;
+  background-color: #E5E4E2;
+  /* ปรับ padding-bottom เป็น 0 เพื่อให้เนื้อหาชิดขอบล่างของเซกชัน */
+  padding: 60px 0 0 0;
+  /* มั่นใจว่าไม่มี margin ด้านล่างที่จะไปดัน footer ออก */
+  margin-bottom: 0;
 }
 
 .gallery-grid {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* เรียง 4 รูปในแถวเดียว */
-  gap: 20px;
+  gap: 0;
+  /* ล้าง margin ล่างของ grid */
+  margin-bottom: 0;
 }
 
 .gallery-item {
   cursor: pointer;
   overflow: hidden;
-  border-radius: 12px;
-  height: 200px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.4s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1);
-  filter: brightness(80%);
+  border-radius: 0;
+  height: 300px;
+  box-shadow: none;
+  /* ปรับเส้นขอบด้านล่างออกหากไม่อยากให้เห็นรอยต่อกับ footer */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
 }
 
 /* --- Modal ระบบขยายรูป --- */
@@ -1548,6 +1639,70 @@ footer.site-footer {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.process-section {
+  /* สีพื้นหลังครีมนวล */
+  padding: 80px 20px;
+  text-align: center;
+  font-family: "Chonburi", serif;
+  /* ใช้ฟอนต์แบรนด์ */
+}
+
+.process-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 50px auto 0;
+  position: relative;
+}
+
+/* เส้นเชื่อมต่อระหว่างขั้นตอน */
+.process-container::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background-color: #1b4332;
+  /* สีทอง */
+  z-index: 1;
+}
+
+.process-item {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.process-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #1b4332;
+  /* สีเขียวเข้มแบรนด์ */
+  /* ขอบทอง */
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.process-item:hover .process-circle {
+  transform: scale(1.1);
+  background-color: #d4af37;
+  /* เปลี่ยนเป็นสีทองเมื่อ Hover */
+  color: #1f2b26;
+}
+
+
+
+.process-item:hover .process-circle span {
+  color: #1f2b26;
 }
 
 /*  */
