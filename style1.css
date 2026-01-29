@@ -403,13 +403,6 @@ footer.site-footer {
   padding-right: 50px;
 }
 
-/* แก้ไขช่องว่างเนื้อหาย่อย [p] ให้ชิดกันมากขึ้น */
-.article-text {
-  margin-bottom: 8px;
-  /* ลดจากค่ามาตรฐานเพื่อให้บรรทัดชิดกัน */
-  line-height: 1.5;
-}
-
 /* เส้นแบ่งกึ่งกลาง */
 .vertical-divider {
   width: 3px;
@@ -499,23 +492,22 @@ footer.site-footer {
 
 /* ฝั่งวิดีโอ */
 .video-section {
-  width: 100%;
-  /* ปรับเป็น 90-95% เพื่อให้เหลือขอบข้างเล็กน้อย */
-  margin: 5px auto 0 auto;
-  /* จัดกึ่งกลางและเพิ่มระยะบนล่างให้ดูโปร่ง */
-  display: flex;
-  justify-content: center;
+    width: 100%;
+    /* ปรับ margin-top เป็น 0 หรือค่าลบเล็กน้อยเพื่อความชัวร์ */
+    margin: 0 auto !important; 
+    display: flex;
+    justify-content: center;
+    background-color: #000; /* ใส่พื้นหลังดำเผื่อไว้กันเส้นแสงขาว */
 }
 
 .video-container {
-  position: relative;
-  width: 100%;
-  /* คุมความสูง: ถ้าอยากได้ความสูงเท่าเดิมที่คุณชอบ 
-       ลองปรับเปอร์เซ็นต์ระหว่าง 30% - 40% */
-  padding-bottom: 45%;
-  height: 0;
-  overflow: hidden;
-  margin-bottom: 0;
+    position: relative;
+    width: 100%;
+    padding-bottom: 45%;
+    height: 0;
+    overflow: hidden;
+    /* มั่นใจว่าไม่มี margin บน-ล่าง */
+    margin: 0 !important; 
 }
 
 .video-container .video-player {
@@ -562,18 +554,14 @@ footer.site-footer {
 
 /* รูปใหญ่ใต้วิดีโอ */
 .drag-slider {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  height: 850px;
-  /* ความสูงตามที่คุณกำหนด */
-  overflow: hidden;
-  cursor: grab;
-  /* เปลี่ยนเมาส์เป็นรูปมือเพื่อให้รู้ว่าลากได้ */
-  margin-top: 0 !important;
+    position: relative;
+    width: 100%; /* เปลี่ยนจาก 100vw เพื่อป้องกันการล้น */
+    height: 850px;
+    overflow: hidden;
+    cursor: grab;
+    /* กำหนด margin ด้านล่างให้เป็น 0 เพื่อให้ชิดกับวิดีโอ */
+    margin-bottom: 0 !important;
+    display: block; /* ป้องกันช่องว่างที่เกิดจากพฤติกรรมของ inline element */
 }
 
 .drag-slider:active {
@@ -612,15 +600,15 @@ footer.site-footer {
 /* จัดวางกลุ่มปุ่มโซเชียล */
 .social-pills {
   display: flex;
-  /* เปลี่ยนจาก grid เป็น flex เพื่อให้ปุ่มกว้างเท่าที่จำเป็น */
   flex-wrap: wrap;
-  /* ให้ปุ่มขึ้นบรรทัดใหม่ได้ถ้าหน้าจอแคบ */
-  justify-content: center;
-  /* จัดให้อยู่กึ่งกลางหน้าจอ */
+  /* เปลี่ยนจาก center เป็น flex-end เพื่อดันปุ่มไปชิดขวาสุด */
+  justify-content: flex-end; 
   gap: 12px;
   margin-top: 30px;
-  padding: 0 20px;
-  /* กันปุ่มชิดขอบจอเกินไป */
+  /* กำหนดระยะห่างจากขอบขวาตามความสวยงาม */
+  padding: 0 40px; 
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* สไตล์พื้นฐานของปุ่ม (ทรงแคปซูล) */
@@ -653,19 +641,19 @@ footer.site-footer {
 
 /* สีแต่ละโซเชียล */
 .pill.fb {
-  background-color: #1f2b26;
+  background-color: #1b4332;
 }
 
 .pill.line {
-  background-color: #1f2b26;
+  background-color: #1b4332;
 }
 
 .pill.ig {
-  background-color: #1f2b26;
+  background-color: #1b4332;
 }
 
 .pill.tiktok {
-  background-color: #1f2b26;
+  background-color: #1b4332;
 }
 
 /* เอฟเฟกต์เวลา Hover */
@@ -680,10 +668,11 @@ footer.site-footer {
   padding: 60px 0;
   text-align: center;
   background-color: #E5E4E2;
+  margin-top: -40px;
 }
 
 .why-trust-us-container .section-title {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 2rem;
   color: #1b4332;
   /* สีเขียวเข้มตามแบรนด์ */
@@ -698,6 +687,7 @@ footer.site-footer {
   /* หัวใจสำคัญ: กำหนดช่องว่างระหว่างรูปเป็น 0 */
   width: 100%;
   overflow: hidden;
+  margin-top: -70px;
 }
 
 .feature-highlights img {
@@ -725,6 +715,7 @@ footer.site-footer {
   /* มั่นใจว่าเป็น Block ปกติ */
   clear: both;
   /* ป้องกันการโดนดึงจาก Float ด้านบน */
+  margin-top: -70px;
 }
 
 /* จัดหัวข้อให้อยู่กึ่งกลางและสูงกว่ารูป */
@@ -814,6 +805,7 @@ footer.site-footer {
   /* เพิ่มพื้นที่บนล่างให้ดูไม่เบียด */
   width: 100%;
   display: block;
+  margin-top: -70px;
 }
 
 /* หัวข้อหลัก: ใช้สไตล์เดียวกับ "บริการของเรา" */
@@ -916,6 +908,7 @@ footer.site-footer {
   padding: 60px 0;
   /* เพิ่มระยะบน-ล่างให้ดูโปร่ง */
   text-align: center;
+  margin-top: -70px;
 }
 
 .address-title {
@@ -1641,12 +1634,14 @@ footer.site-footer {
   }
 }
 
+/* ขั้นตอนการทำงาน */
 .process-section {
   /* สีพื้นหลังครีมนวล */
   padding: 80px 20px;
   text-align: center;
   font-family: "Chonburi", serif;
   /* ใช้ฟอนต์แบรนด์ */
+  margin-top: -70px;
 }
 
 .process-container {
@@ -1696,7 +1691,7 @@ footer.site-footer {
   transform: scale(1.1);
   background-color: #d4af37;
   /* เปลี่ยนเป็นสีทองเมื่อ Hover */
-  color: #1f2b26;
+  color: #ffffff;
 }
 
 
@@ -2281,6 +2276,7 @@ video {
     -ms-overflow-style: none;
     /* ซ่อน scrollbar */
     scrollbar-width: none;
+    
   }
 
   .drag-slider::-webkit-scrollbar {
@@ -2305,7 +2301,6 @@ video {
     display: none !important;
   }
 
-  /* 1. ดึงกลุ่มปุ่มทั้งหมดขึ้นไปชิดรูปภาพ */
   .social-pills {
     margin-top: 5px !important;
     /* ลดระยะห่างด้านบนให้เหลือนิดเดียว */
