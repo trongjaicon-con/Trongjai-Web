@@ -492,22 +492,23 @@ footer.site-footer {
 
 /* ฝั่งวิดีโอ */
 .video-section {
-    width: 100%;
-    /* ปรับ margin-top เป็น 0 หรือค่าลบเล็กน้อยเพื่อความชัวร์ */
-    margin: 0 auto !important; 
-    display: flex;
-    justify-content: center;
-    background-color: #000; /* ใส่พื้นหลังดำเผื่อไว้กันเส้นแสงขาว */
+  width: 100%;
+  /* ปรับ margin-top เป็น 0 หรือค่าลบเล็กน้อยเพื่อความชัวร์ */
+  margin: 0 auto !important;
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+  /* ใส่พื้นหลังดำเผื่อไว้กันเส้นแสงขาว */
 }
 
 .video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 45%;
-    height: 0;
-    overflow: hidden;
-    /* มั่นใจว่าไม่มี margin บน-ล่าง */
-    margin: 0 !important; 
+  position: relative;
+  width: 100%;
+  padding-bottom: 45%;
+  height: 0;
+  overflow: hidden;
+  /* มั่นใจว่าไม่มี margin บน-ล่าง */
+  margin: 0 !important;
 }
 
 .video-container .video-player {
@@ -554,14 +555,16 @@ footer.site-footer {
 
 /* รูปใหญ่ใต้วิดีโอ */
 .drag-slider {
-    position: relative;
-    width: 100%; /* เปลี่ยนจาก 100vw เพื่อป้องกันการล้น */
-    height: 850px;
-    overflow: hidden;
-    cursor: grab;
-    /* กำหนด margin ด้านล่างให้เป็น 0 เพื่อให้ชิดกับวิดีโอ */
-    margin-bottom: 0 !important;
-    display: block; /* ป้องกันช่องว่างที่เกิดจากพฤติกรรมของ inline element */
+  position: relative;
+  width: 100%;
+  /* เปลี่ยนจาก 100vw เพื่อป้องกันการล้น */
+  height: 850px;
+  overflow: hidden;
+  cursor: grab;
+  /* กำหนด margin ด้านล่างให้เป็น 0 เพื่อให้ชิดกับวิดีโอ */
+  margin-bottom: 0 !important;
+  display: block;
+  /* ป้องกันช่องว่างที่เกิดจากพฤติกรรมของ inline element */
 }
 
 .drag-slider:active {
@@ -602,11 +605,11 @@ footer.site-footer {
   display: flex;
   flex-wrap: wrap;
   /* เปลี่ยนจาก center เป็น flex-end เพื่อดันปุ่มไปชิดขวาสุด */
-  justify-content: flex-end; 
+  justify-content: flex-end;
   gap: 12px;
   margin-top: 30px;
   /* กำหนดระยะห่างจากขอบขวาตามความสวยงาม */
-  padding: 0 40px; 
+  padding: 0 40px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -927,55 +930,58 @@ footer.site-footer {
 .map-wrapper a {
   text-decoration: none;
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  /* ลดระยะห่างลงเล็กน้อยให้ดูพอดี */
 }
 
 .map-wrapper button {
+  /* ใช้สีเขียวเข้มแบรนด์เป็นพื้นหลัง */
   background: #1b4332;
   font-family: "Chonburi", serif;
-  color: #fff;
-  border: none;
-  padding: 14px 40px;
+  color: #ffffff;
+  border: 1px solid #d4af37;
+  /* เพิ่มเส้นขอบทองบางๆ ให้ปุ่มดูมีมิติ */
+  padding: 14px 45px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 50px;
-  /* ทรงมนดูหรูหรา */
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .map-wrapper button:hover {
-  transform: translateY(-3px);
+  /* เมื่อ Hover ให้เปลี่ยนเป็นสีทองและตัวอักษรสีเขียวเข้ม */
   background: #d4af37;
+  color: #1b4332;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
 }
 
-/* ส่วนแผนที่แบบย่อขนาดเกือบชิดขอบ */
+/* ส่วนแผนที่รูปภาพ */
 .map-section {
   width: 92%;
-  /* ย่อขนาดให้เกือบชิดขอบทั้ง 2 ข้าง */
   max-width: 1400px;
-  /* คุมไม่ให้กว้างเกินไปบนจอใหญ่ */
   margin: 0 auto;
-  /* จัดกึ่งกลาง */
-  height: 700px;
+  height: 800px;
+  /* ปรับความสูงให้พอดีกับรูปภาพ (700px อาจจะสูงไปสำหรับรูปนิ่ง) */
   overflow: hidden;
   position: relative;
   border-radius: 15px;
-  /* เพิ่มความมนให้ขอบแผนที่ดูพรีเมียม */
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  /* เส้นขอบทองบางๆ */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  /* เส้นขอบทองที่ชัดขึ้นเล็กน้อย */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.map-section iframe {
-  position: absolute;
-  top: -65px;
-  /* ดันแถบดำหลุดขอบบน */
-  left: 0;
-  width: 100% !important;
-  height: calc(100% + 70px) !important;
-  border: 0;
-  filter: grayscale(0.1) contrast(1.05);
+/* ปรับสไตล์รูปภาพแผนที่ */
+.map-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* บังคับให้รูปเต็มพื้นที่โดยไม่เบี้ยว */
+  display: block;
+  /* ใส่ฟิลเตอร์ให้ออกโทนหรูๆ (Optional) */
+  filter: sepia(10%) contrast(1.05);
 }
 
 
@@ -2237,32 +2243,67 @@ video {
 }
 
 @media (max-width: 900px) {
-  .video-section {
+
+  /* --- จัดการ Slider ให้ปัดได้ด้วยนิ้ว --- */
+  .drag-slider {
+    height: auto !important;
+    /* ให้ความสูงปรับตามรูปภาพ */
+    overflow-x: auto !important;
+    /* เปิดการสกロールแนวนอน */
+    scroll-snap-type: x mandatory;
+    /* บังคับให้รูปดีดเข้ากึ่งกลางจอ */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* ให้ปัดลื่นๆ ใน iPhone */
+    cursor: default;
+  }
+
+  /* ซ่อน Scrollbar ของ Slider เพื่อความสวยงาม */
+  .drag-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slider-inner {
+    display: flex !important;
+    transform: none !important;
+    /* ปิดการใช้ JS Transform บนมือถือเพื่อใช้ Native Scroll แทน */
+    width: auto !important;
+  }
+
+  .slide-item {
+    flex: 0 0 100% !important;
+    /* หนึ่งรูปเต็มหน้าจอพอดี */
+    width: 100vw;
+    scroll-snap-align: start;
+    /* จุดที่รูปจะดีดมาหยุด */
+  }
+
+  .slide-item img {
     width: 100%;
-    background-color: #000;
-    /* ให้พื้นหลังเป็นสีดำกันขอบวิดีโอแหว่ง */
-    overflow: hidden;
-    line-height: 0;
-    /* แก้ปัญหาช่องว่างใต้ภาพ/วิดีโอ */
+    height: auto;
+    object-fit: contain;
+    /* ป้องกันรูปโดนตัดขอบบนมือถือ */
+  }
+
+  .video-section {
+    padding: 0;
+    background: #000;
   }
 
   .video-container {
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-bottom: 56.25% !important;
+    /* บังคับสัดส่วน 16:9 */
+    height: 0;
   }
 
   .video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100% !important;
-    /* ยืดให้เต็มความกว้างมือถือ */
-    height: auto !important;
-    /* ให้ความสูงปรับตามสัดส่วนวิดีโอ */
-    max-height: 60vh;
-    /* จำกัดความสูงไม่ให้เกิน 60% ของความสูงจอ (กันวิดีโอใหญ่เกินไป) */
+    height: 100% !important;
     object-fit: cover;
-    /* ให้วิดีโอขยายเต็มพื้นที่ที่กำหนดโดยไม่เสียรูปทรง */
+    /* ให้วิดีโอเต็มพื้นที่ */
   }
 }
 
@@ -2276,7 +2317,7 @@ video {
     -ms-overflow-style: none;
     /* ซ่อน scrollbar */
     scrollbar-width: none;
-    
+
   }
 
   .drag-slider::-webkit-scrollbar {
@@ -2302,32 +2343,83 @@ video {
   }
 
   .social-pills {
-    margin-top: 5px !important;
-    /* ลดระยะห่างด้านบนให้เหลือนิดเดียว */
-    padding-top: 0 !important;
+    justify-content: flex-end;
+    /* ยังคงชิดขวาตามคำขอ */
+    padding: 15px 20px;
+    gap: 8px;
+  }
+
+  .pill {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    /* ลดขนาดตัวอักษรบนมือถือเพื่อให้ไม่ล้น */
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-highlights {
+    flex-direction: column;
+    /* เรียงแนวตั้ง */
+    align-items: center;
+  }
+
+  .feature-highlights img {
+    max-width: 100%;
+    /* เต็มความกว้างมือถือ */
+  }
+}
+
+@media (max-width: 900px) {
+
+  /* --- จัดการส่วนแผนที่ --- */
+  .map-wrapper {
+    padding: 20px 15px !important;
+  }
+
+  .map-section {
+    width: 100% !important;
+    height: 300px !important;
+    /* ปรับความสูงให้พอดีกับหน้าจอมือถือ */
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+
+  .map-wrapper button {
+    width: 100%;
+    /* ปุ่มขยายเต็มจอให้กดง่ายขึ้น */
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  /* --- จัดการขั้นตอนการทำงาน (เรียงแถวละ 2 อัน) --- */
+  .process-container {
     display: flex;
     flex-wrap: wrap;
-    /* ให้ปุ่มตัดแถวได้ถ้าจอแคบ */
+    /* ยอมให้ขึ้นบรรทัดใหม่ */
     justify-content: center;
-    /* จัดให้อยู่กลางจอ */
-    gap: 8px;
-    /* ระยะห่างระหว่างปุ่มแต่ละปุ่ม */
+    gap: 20px 10px;
+    /* ระยะห่าง บน-ล่าง และ ซ้าย-ขวา */
+    padding: 20px 10px;
   }
 
-  /* 2. ปรับขนาดปุ่มให้เล็กลงเพื่อให้ดูไม่ห่างกันจนเกินไป */
-  .social-pills .pill {
-    margin: 0 !important;
-    /* ลบ margin รอบปุ่มเดิมออก */
-    padding: 6px 12px !important;
-    /* ลดความอ้วนของปุ่ม */
-    font-size: 13px !important;
-    /* ลดขนาดตัวอักษรเล็กน้อย */
+  .process-item {
+    flex: 0 0 calc(50% - 20px);
+    /* บังคับให้ขนาดเป็น 50% ของหน้าจอ (แถวละ 2) */
+    display: flex;
+    justify-content: center;
   }
 
-  /* 3. หากมีส่วนหัว (Heading) หรือข้อความคั่นอยู่ ให้ลดระยะห่างด้วย */
-  .social-pills+*,
-  .drag-slider+.social-pills {
-    margin-top: 5px !important;
+  .process-circle {
+    width: 120px !important;
+    /* ปรับขนาดวงกลมให้เล็กลงพอดีกับมือถือ */
+    height: 120px !important;
+    font-size: 14px !important;
+    border-width: 3px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-content strong {
+    font-size: 16px;
   }
 }
 
@@ -2420,9 +2512,64 @@ video {
 
 /* ========== ปรับ Grid/Layouts ให้ไม่ล้นบนมือถือ ========== */
 @media (max-width: 900px) {
+
+  /* 1. ปรับ Layout หลักให้เรียงต่อกันเป็นแนวตั้ง */
   .content-layout {
-    flex-direction: column;
-    gap: 30px;
+    flex-direction: column !important;
+    padding: 20px 0 !important;
+    text-align: center;
+    /* จัดตัวอักษรให้อยู่กึ่งกลางเพื่อให้อ่านง่ายบนมือถือ */
+  }
+
+  /* 2. จัดการส่วนข้อความ */
+  .article-section {
+    padding-right: 0 !important;
+    align-items: center !important;
+    /* จัดปุ่ม/รายการให้อยู่กลาง */
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 1.6rem !important;
+    /* ลดขนาดหัวข้อลงเล็กน้อย */
+    margin-bottom: 15px;
+  }
+
+  .feature-list {
+    display: inline-block;
+    /* ให้รายการเช็คลิสต์อยู่กึ่งกลาง */
+    text-align: left;
+    margin: 20px 0;
+  }
+
+  /* 3. ซ่อนเส้นแบ่งแนวตั้ง เพราะเปลี่ยนเป็นเรียงแนวดิ่งแล้ว */
+  .vertical-divider {
+    display: none;
+  }
+
+  /* 4. จัดการรูปภาพ 3 รูปให้ต่อกันสวยงาม */
+  .article-image {
+    padding-left: 0 !important;
+    justify-content: center !important;
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    /* ให้รูปอยู่บรรทัดเดียวกันแต่ย่อขนาดลง */
+    gap: 5px;
+    /* เพิ่มช่องว่างเล็กน้อยระหว่างรูป */
+  }
+
+  .article-image img.profile-img {
+    width: 32% !important;
+    /* แบ่งพื้นที่ให้พอดี 3 รูป */
+    height: auto !important;
+    /* รักษาสัดส่วนรูป */
+    aspect-ratio: 1/1;
+    /* บังคับให้เป็นจัตุรัสเพื่อให้ดูเป็นระเบียบ */
+    border-radius: 8px !important;
+    /* ลดความมนลงให้เข้ากับขนาดที่เล็กลง */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
   .services-grid {
@@ -2498,8 +2645,6 @@ video {
 }
 
 
-
-/* กันโลโก้ล้น (เดิม 250px ใหญ่มาก) */
 
 /* มือถือ/แท็บเล็ต */
 @media (max-width: 900px) {
