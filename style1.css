@@ -2423,17 +2423,21 @@ video {
 
   .map-section {
     width: 100% !important;
-    height: 300px !important;
+    height: auto !important;
+    /* เปลี่ยนจาก 300px เป็น auto */
     border-radius: 0 !important;
-    /* เอาขอบมนออกเพื่อให้ชนขอบจอแบบไร้รอยต่อ */
     margin-top: 10px;
+    background-color: #f4f4f4;
+    /* เผื่อสีพื้นหลังถ้าสัดส่วนรูปไม่พอดีจอ */
   }
 
   .map-section img {
     width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    /* ให้รูปแผนที่เต็มพื้นที่โดยไม่เบี้ยว */
+    height: auto !important;
+    /* ให้ความสูงปรับตามรูปจริง */
+    object-fit: contain !important;
+    /* บังคับให้แสดงรูปครบทั้งใบ */
+    display: block;
   }
 
   /* --- 2. ขั้นตอนการทำงาน: ปรับขนาดวงกลมให้พอดี (แถวละ 2) --- */
@@ -2558,55 +2562,46 @@ video {
 /* ========== ปรับ Grid/Layouts ให้ไม่ล้นบนมือถือ ========== */
 @media (max-width: 900px) {
 
-  @media (max-width: 900px) {
-
-    /* 1. จัด Layout หลักให้เป็นแนวตั้ง */
-    .content-layout {
-      flex-direction: column !important;
-      padding: 20px 0 !important;
-      /* ลด padding ซ้ายขวาเพื่อให้รูปชนขอบจอได้ถ้าต้องการ */
-      text-align: center;
-    }
-
-    /* 2. ซ่อนเส้นแบ่ง (Vertical Divider) ไม่ให้แสดงบนมือถือ */
-    .vertical-divider {
-      display: none !important;
-    }
-
-    /* 3. จัดการส่วนบทความให้เต็มความกว้าง */
-    .article-section {
-      padding: 0 20px !important;
-      /* เพิ่มระยะห่างให้ตัวอักษรไม่ชิดขอบจอ */
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    /* 4. จัดการรูปภาพให้เรียงต่อกันสนิท (ขอบติดกัน) */
-    .article-image {
-      padding-left: 0 !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 0 !important;
-      /* แก้เป็น 0 เพื่อให้ขอบรูปติดกันสนิท */
-      width: 100%;
-    }
-
-    .article-image img {
-      width: 100% !important;
-      /* ขยายเต็มความกว้างเพื่อให้ขอบชนกันพอดี */
-      max-width: 100%;
-      /* ปรับให้เต็มจอ */
-      height: auto !important;
-      display: block;
-      /* ป้องกันช่องว่างเล็กๆ ใต้รูป (Baseline gap) */
-      border-radius: 0 !important;
-      /* ยกเลิกขอบมนเพื่อให้รอยต่อเรียบสนิท */
-      box-shadow: none !important;
-      /* ยกเลิกเงาเพื่อไม่ให้เห็นรอยแยกระหว่างรูป */
-      margin: 0 !important;
-    }
+  /* 1. จัด Layout หลักให้เป็นแนวตั้ง */
+  .content-layout {
+    flex-direction: column !important;
+    padding: 20px !important;
+    text-align: center;
   }
+
+  /* 2. ซ่อนเส้นแบ่ง (Vertical Divider) ไม่ให้แสดงบนมือถือ */
+  .vertical-divider {
+    display: none !important;
+  }
+
+  /* 3. จัดการส่วนบทความให้เต็มความกว้าง และเอา margin-bottom ออกเพราะไม่มีรูปต่อท้ายแล้ว */
+  .article-section {
+    padding: 0 !important;
+    width: 100%;
+    margin-bottom: 0 !important;
+  }
+
+  /* 4. แก้ไข: สั่งซ่อนส่วนรูปภาพทั้งหมด ไม่ให้แสดงผลในมือถือ */
+  .article-image {
+    display: none !important;
+    /* ซ่อนรูปภาพ 3 รูปนี้ทันที */
+  }
+
+  .article-image img {
+    width: 100% !important;
+    /* ขยายเต็มความกว้างเพื่อให้ขอบชนกันพอดี */
+    max-width: 100%;
+    /* ปรับให้เต็มจอ */
+    height: auto !important;
+    display: block;
+    /* ป้องกันช่องว่างเล็กๆ ใต้รูป (Baseline gap) */
+    border-radius: 0 !important;
+    /* ยกเลิกขอบมนเพื่อให้รอยต่อเรียบสนิท */
+    box-shadow: none !important;
+    /* ยกเลิกเงาเพื่อไม่ให้เห็นรอยแยกระหว่างรูป */
+    margin: 0 !important;
+  }
+
 
   .services-grid {
     grid-template-columns: 1fr;
@@ -2664,9 +2659,8 @@ video {
   .thumb-item {
     flex: 0 0 calc(33.333% - 10px);
   }
-
-  /* มือถือจาก 5 เป็น 3 ต่อแถว */
 }
+
 
 @media (max-width: 480px) {
   .gallery-grid {
