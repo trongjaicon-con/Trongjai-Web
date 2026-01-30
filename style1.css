@@ -2440,40 +2440,31 @@ video {
   .process-container {
     display: flex;
     flex-wrap: wrap;
+    /* ยอมให้ขึ้นบรรทัดใหม่ */
     justify-content: center;
     gap: 20px 10px;
+    /* ระยะห่าง บน-ล่าง และ ซ้าย-ขวา */
     padding: 20px 10px;
   }
 
   .process-item {
     flex: 0 0 calc(50% - 20px);
+    /* บังคับให้ขนาดเป็น 50% ของหน้าจอ (แถวละ 2) */
     display: flex;
     justify-content: center;
   }
 
   .process-circle {
     width: 120px !important;
+    /* ปรับขนาดวงกลมให้เล็กลงพอดีกับมือถือ */
     height: 120px !important;
     font-size: 14px !important;
-
-    /* --- ส่วนที่แก้ไข: เอาเส้นขอบออก --- */
-    border: none !important;
-    /* ---------------------------- */
-
-    background-color: #f8f8f8;
-    /* เพิ่มสีพื้นหลังอ่อนๆ เพื่อให้วงกลมยังดูเป็นรูปทรง */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    /* ปรับเงาให้นุ่มนวลขึ้น */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    border-width: 3px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
 
   .step-content strong {
     font-size: 16px;
-    color: #1f2b26;
-    /* สีตัวอักษรเข้มเพื่อให้เด่นชัด */
   }
 }
 
