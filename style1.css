@@ -2524,9 +2524,8 @@ video {
   /* 2. จัดการส่วนข้อความ */
   .article-section {
     padding-right: 0 !important;
-    align-items: center !important;
-    /* จัดปุ่ม/รายการให้อยู่กลาง */
     width: 100%;
+    margin-bottom: 30px;
   }
 
   .section-title {
@@ -2550,26 +2549,26 @@ video {
   /* 4. จัดการรูปภาพ 3 รูปให้ต่อกันสวยงาม */
   .article-image {
     padding-left: 0 !important;
-    justify-content: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    /* เปลี่ยนเป็นเรียงแนวตั้ง */
+    align-items: center !important;
+    gap: 15px;
+    /* ระยะห่างระหว่างรูปแต่ละรูป */
     width: 100%;
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: nowrap;
-    /* ให้รูปอยู่บรรทัดเดียวกันแต่ย่อขนาดลง */
-    gap: 5px;
-    /* เพิ่มช่องว่างเล็กน้อยระหว่างรูป */
   }
 
-  .article-image img.profile-img {
-    width: 32% !important;
-    /* แบ่งพื้นที่ให้พอดี 3 รูป */
+  .article-image img {
+    width: 90% !important;
+    /* ขยายรูปให้เกือบเต็มหน้าจอ */
+    max-width: 400px;
+    /* คุมขนาดไม่ให้ใหญ่เกินไปในแท็บเล็ต */
     height: auto !important;
-    /* รักษาสัดส่วนรูป */
-    aspect-ratio: 1/1;
-    /* บังคับให้เป็นจัตุรัสเพื่อให้ดูเป็นระเบียบ */
-    border-radius: 8px !important;
-    /* ลดความมนลงให้เข้ากับขนาดที่เล็กลง */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    aspect-ratio: unset !important;
+    /* ปล่อยให้สัดส่วนเป็นตามรูปจริง */
+    border-radius: 12px !important;
+    /* เพิ่มความมนให้รูปดูนุ่มนวลขึ้น */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   }
 
   .services-grid {
