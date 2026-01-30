@@ -112,13 +112,19 @@
     </div>
 
     <aside class="video-section">
+
         <div class="video-container">
-            <video id="heroVideo" autoplay muted loop playsinline class="video-player"
-                poster="/image/home index/video-placeholder.webp">
-                <source data-src="/image/video/index-h.mp4" type="video/mp4">
+
+            <video controls autoplay muted loop playsinline class="video-player">
+
+                <source src="/image/video/index-h.mp4" type="video/mp4">
+
                 เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+
             </video>
+
         </div>
+
     </aside>
 
     <div class="why-trust-us-container">
@@ -534,19 +540,6 @@
                     if (navToggle) navToggle.textContent = '☰';
                 }
             });
-        });
-    </script>
-
-    <script>
-        // สั่งให้วิดีโอเริ่มโหลดหลังจากหน้าเว็บหลัก (รูปภาพ/ข้อความ) โหลดเสร็จแล้ว
-        window.addEventListener('load', function () {
-            var video = document.getElementById('heroVideo');
-            var source = video.querySelector('source');
-
-            // ย้าย data-src มาใส่ src เพื่อเริ่มดาวน์โหลด
-            source.src = source.getAttribute('data-src');
-            video.load(); // สั่งโหลดไฟล์
-            video.play(); // สั่งเล่น
         });
     </script>
 </body>
