@@ -2259,51 +2259,79 @@ video {
   }
 
   /* ซ่อน Scrollbar ของ Slider เพื่อความสวยงาม */
-  .drag-slider::-webkit-scrollbar {
-    display: none;
-  }
+  @media (max-width: 900px) {
 
-  .slider-inner {
-    display: flex !important;
-    transform: none !important;
-    /* ปิดการใช้ JS Transform บนมือถือเพื่อใช้ Native Scroll แทน */
-    width: auto !important;
-  }
+    /* --- 1. จัดการ Slider ให้สูงเท่ากับวิดีโอ (16:9) และชิดขอบ --- */
+    .drag-slider {
+      width: 100% !important;
+      /* ใช้ aspect-ratio เพื่อให้สูงเท่ากับวิดีโอ 16:9 */
+      aspect-ratio: 16 / 9 !important;
+      height: auto !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 !important;
+      /* กำจัดระยะห่างภายนอก */
+      padding: 0 !important;
+      /* กำจัดระยะห่างภายใน */
+      background: #000;
+    }
 
-  .slide-item {
-    flex: 0 0 100% !important;
-    /* หนึ่งรูปเต็มหน้าจอพอดี */
-    width: 100vw;
-    scroll-snap-align: start;
-    /* จุดที่รูปจะดีดมาหยุด */
-  }
+    .drag-slider::-webkit-scrollbar {
+      display: none;
+    }
 
-  .slide-item img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    /* ป้องกันรูปโดนตัดขอบบนมือถือ */
-  }
+    .slider-inner {
+      display: flex !important;
+      transform: none !important;
+      width: auto !important;
+      height: 100% !important;
+    }
 
-  .video-section {
-    padding: 0;
-    background: #000;
-  }
+    .slide-item {
+      flex: 0 0 100% !important;
+      width: 100vw;
+      height: 100% !important;
+      scroll-snap-align: start;
+    }
 
-  .video-container {
-    padding-bottom: 56.25% !important;
-    /* บังคับสัดส่วน 16:9 */
-    height: 0;
-  }
+    .slide-item img {
+      width: 100% !important;
+      height: 100% !important;
+      /* ใช้ object-fit: cover เพื่อให้รูปเต็มพื้นที่เท่ากับวิดีโอพอดี */
+      object-fit: cover !important;
+      display: block;
+      border-radius: 0 !important;
+      /* ลบขอบมนออกเพื่อให้รอยต่อสนิท */
+    }
 
-  .video-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    /* ให้วิดีโอเต็มพื้นที่ */
+    /* --- 2. จัดการส่วนวิดีโอให้ชิดขอบล่างของ Slider --- */
+    .video-section {
+      width: 100% !important;
+      margin-top: 0 !important;
+      /* บังคับให้ขอบบนติด Slider */
+      padding: 0 !important;
+      background: #000;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25% !important;
+      /* สัดส่วน 16:9 */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      display: block;
+    }
   }
 }
 
@@ -2343,8 +2371,10 @@ video {
   }
 
   .social-pills {
-    justify-content: flex-end;
-    /* ยังคงชิดขวาตามคำขอ */
+    /* ในมือถือ ถ้าปุ่มเยอะจนล้น จะเริ่มสกロールจากทางขวา */
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    /* บังคับให้ปุ่มเกาะกลุ่มชิดขวา แต่เรียงลำดับจากขวามาซ้าย */
     padding: 15px 20px;
     gap: 8px;
   }
@@ -2352,7 +2382,6 @@ video {
   .pill {
     padding: 6px 14px;
     font-size: 0.75rem;
-    /* ลดขนาดตัวอักษรบนมือถือเพื่อให้ไม่ล้น */
   }
 }
 
@@ -2369,57 +2398,82 @@ video {
   }
 }
 
+/* --- จัดการส่วนแผนที่ --- */
 @media (max-width: 900px) {
 
-  /* --- จัดการส่วนแผนที่ --- */
+  /* --- 1. แผนที่: ขยายให้เต็มขอบจอซ้าย-ขวา --- */
   .map-wrapper {
-    padding: 20px 15px !important;
+    padding: 20px 0 !important;
+    /* นำ padding ซ้ายขวาออกเพื่อให้แผนที่ชนขอบ */
+    width: 100% !important;
+  }
+
+  .address-title,
+  .address-detail {
+    padding: 0 20px;
+    /* เพิ่ม padding ให้ตัวอักษรแทน เพื่อไม่ให้ชิดขอบจอ */
+  }
+
+  .map-wrapper a {
+    display: block;
+    padding: 0 20px;
+    /* ให้ปุ่มมีระยะห่างจากขอบ */
+    margin-bottom: 15px;
   }
 
   .map-section {
     width: 100% !important;
     height: 300px !important;
-    /* ปรับความสูงให้พอดีกับหน้าจอมือถือ */
-    border-radius: 10px;
-    margin-top: 15px;
+    border-radius: 0 !important;
+    /* เอาขอบมนออกเพื่อให้ชนขอบจอแบบไร้รอยต่อ */
+    margin-top: 10px;
   }
 
-  .map-wrapper button {
-    width: 100%;
-    /* ปุ่มขยายเต็มจอให้กดง่ายขึ้น */
-    padding: 12px;
-    font-size: 16px;
+  .map-section img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    /* ให้รูปแผนที่เต็มพื้นที่โดยไม่เบี้ยว */
   }
 
-  /* --- จัดการขั้นตอนการทำงาน (เรียงแถวละ 2 อัน) --- */
+  /* --- 2. ขั้นตอนการทำงาน: ปรับขนาดวงกลมให้พอดี (แถวละ 2) --- */
   .process-container {
     display: flex;
     flex-wrap: wrap;
-    /* ยอมให้ขึ้นบรรทัดใหม่ */
     justify-content: center;
     gap: 20px 10px;
-    /* ระยะห่าง บน-ล่าง และ ซ้าย-ขวา */
     padding: 20px 10px;
   }
 
   .process-item {
     flex: 0 0 calc(50% - 20px);
-    /* บังคับให้ขนาดเป็น 50% ของหน้าจอ (แถวละ 2) */
     display: flex;
     justify-content: center;
   }
 
   .process-circle {
     width: 120px !important;
-    /* ปรับขนาดวงกลมให้เล็กลงพอดีกับมือถือ */
     height: 120px !important;
     font-size: 14px !important;
-    border-width: 3px !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    /* --- ส่วนที่แก้ไข: เอาเส้นขอบออก --- */
+    border: none !important;
+    /* ---------------------------- */
+
+    background-color: #f8f8f8;
+    /* เพิ่มสีพื้นหลังอ่อนๆ เพื่อให้วงกลมยังดูเป็นรูปทรง */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /* ปรับเงาให้นุ่มนวลขึ้น */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
   }
 
   .step-content strong {
     font-size: 16px;
+    color: #1f2b26;
+    /* สีตัวอักษรเข้มเพื่อให้เด่นชัด */
   }
 }
 
@@ -2513,62 +2567,54 @@ video {
 /* ========== ปรับ Grid/Layouts ให้ไม่ล้นบนมือถือ ========== */
 @media (max-width: 900px) {
 
-  /* 1. ปรับ Layout หลักให้เรียงต่อกันเป็นแนวตั้ง */
-  .content-layout {
-    flex-direction: column !important;
-    padding: 20px 0 !important;
-    text-align: center;
-    /* จัดตัวอักษรให้อยู่กึ่งกลางเพื่อให้อ่านง่ายบนมือถือ */
-  }
+  @media (max-width: 900px) {
 
-  /* 2. จัดการส่วนข้อความ */
-  .article-section {
-    padding-right: 0 !important;
-    width: 100%;
-    margin-bottom: 30px;
-  }
+    /* 1. จัด Layout หลักให้เป็นแนวตั้ง */
+    .content-layout {
+      flex-direction: column !important;
+      padding: 20px 0 !important;
+      /* ลด padding ซ้ายขวาเพื่อให้รูปชนขอบจอได้ถ้าต้องการ */
+      text-align: center;
+    }
 
-  .section-title {
-    font-size: 1.6rem !important;
-    /* ลดขนาดหัวข้อลงเล็กน้อย */
-    margin-bottom: 15px;
-  }
+    /* 2. ซ่อนเส้นแบ่ง (Vertical Divider) ไม่ให้แสดงบนมือถือ */
+    .vertical-divider {
+      display: none !important;
+    }
 
-  .feature-list {
-    display: inline-block;
-    /* ให้รายการเช็คลิสต์อยู่กึ่งกลาง */
-    text-align: left;
-    margin: 20px 0;
-  }
+    /* 3. จัดการส่วนบทความให้เต็มความกว้าง */
+    .article-section {
+      padding: 0 20px !important;
+      /* เพิ่มระยะห่างให้ตัวอักษรไม่ชิดขอบจอ */
+      width: 100%;
+      margin-bottom: 20px;
+    }
 
-  /* 3. ซ่อนเส้นแบ่งแนวตั้ง เพราะเปลี่ยนเป็นเรียงแนวดิ่งแล้ว */
-  .vertical-divider {
-    display: none;
-  }
+    /* 4. จัดการรูปภาพให้เรียงต่อกันสนิท (ขอบติดกัน) */
+    .article-image {
+      padding-left: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0 !important;
+      /* แก้เป็น 0 เพื่อให้ขอบรูปติดกันสนิท */
+      width: 100%;
+    }
 
-  /* 4. จัดการรูปภาพ 3 รูปให้ต่อกันสวยงาม */
-  .article-image {
-    padding-left: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    /* เปลี่ยนเป็นเรียงแนวตั้ง */
-    align-items: center !important;
-    gap: 15px;
-    /* ระยะห่างระหว่างรูปแต่ละรูป */
-    width: 100%;
-  }
-
-  .article-image img {
-    width: 90% !important;
-    /* ขยายรูปให้เกือบเต็มหน้าจอ */
-    max-width: 400px;
-    /* คุมขนาดไม่ให้ใหญ่เกินไปในแท็บเล็ต */
-    height: auto !important;
-    aspect-ratio: unset !important;
-    /* ปล่อยให้สัดส่วนเป็นตามรูปจริง */
-    border-radius: 12px !important;
-    /* เพิ่มความมนให้รูปดูนุ่มนวลขึ้น */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    .article-image img {
+      width: 100% !important;
+      /* ขยายเต็มความกว้างเพื่อให้ขอบชนกันพอดี */
+      max-width: 100%;
+      /* ปรับให้เต็มจอ */
+      height: auto !important;
+      display: block;
+      /* ป้องกันช่องว่างเล็กๆ ใต้รูป (Baseline gap) */
+      border-radius: 0 !important;
+      /* ยกเลิกขอบมนเพื่อให้รอยต่อเรียบสนิท */
+      box-shadow: none !important;
+      /* ยกเลิกเงาเพื่อไม่ให้เห็นรอยแยกระหว่างรูป */
+      margin: 0 !important;
+    }
   }
 
   .services-grid {
