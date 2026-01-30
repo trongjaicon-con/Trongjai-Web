@@ -91,9 +91,9 @@
             <div class="vertical-divider"></div>
 
             <div class="article-image">
-                <img src="/image/home index/Profile1.png" alt="Design Work">
-                <img src="/image/home index/Profile2.png" alt="Design Work">
-                <img src="/image/home index/Profile3.png" alt="Design Work">
+                <img src="/image/home index/Profile1.png" alt="Design Work" loading="lazy">
+                <img src="/image/home index/Profile2.png" alt="Design Work" loading="lazy">
+                <img src="/image/home index/Profile3.png" alt="Design Work" loading="lazy">
             </div>
         </div>
     </main>
@@ -102,15 +102,19 @@
 
         <div class="slider-inner" id="sliderInner">
             <div class="slide-item"><img src="/image/home index/1.png" alt="Work 1" draggable="false"></div>
-            <div class="slide-item"><img src="/image/home index/2.png" alt="Work 2" draggable="false"></div>
-            <div class="slide-item"><img src="/image/home index/3.png" alt="Work 3" draggable="false"></div>
-            <div class="slide-item"><img src="/image/home index/4.png" alt="Work 4" draggable="false"></div>
+            <div class="slide-item"><img src="/image/home index/2.png" alt="Work 2" draggable="false" loading="lazy">
+            </div>
+            <div class="slide-item"><img src="/image/home index/3.png" alt="Work 3" draggable="false" loading="lazy">
+            </div>
+            <div class="slide-item"><img src="/image/home index/4.png" alt="Work 4" draggable="false" loading="lazy">
+            </div>
         </div>
     </div>
 
     <aside class="video-section">
         <div class="video-container">
-            <video controls autoplay muted loop playsinline class="video-player">
+            <video controls autoplay muted loop playsinline preload="metadata" class="video-player"
+                poster="/image/home index/video-placeholder.jpg">
                 <source src="/image/video/index-h.mp4" type="video/mp4">
                 เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
             </video>
@@ -120,10 +124,10 @@
     <div class="why-trust-us-container">
         <h2 class="section-title">ทำไมต้อง TRONGJAI</h2>
         <div class="feature-highlights">
-            <img src="/image/home index/why1.png" alt="T R">
-            <img src="/image/home index/why2.png" alt="O N">
-            <img src="/image/home index/why3.png" alt="G J">
-            <img src="/image/home index/why4.png" alt="A I">
+            <img src="/image/home index/why1.png" alt="T R" loading="lazy">
+            <img src="/image/home index/why2.png" alt="O N" loading="lazy">
+            <img src="/image/home index/why3.png" alt="G J" loading="lazy">
+            <img src="/image/home index/why4.png" alt="A I" loading="lazy">
         </div>
     </div>
 
@@ -177,7 +181,7 @@
             <button>เปิดการนำทาง</button>
         </a>
         <div class="map-section">
-            <img src="/image/home index/map.png" alt="Location Map" class="static-map">
+            <img src="/image/home index/map.png" alt="Location Map" class="static-map" loading="lazy">
         </div>
     </div>
 
@@ -485,7 +489,7 @@
         });
     </script>
 
-     <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
