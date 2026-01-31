@@ -941,7 +941,6 @@ footer.site-footer {
 .map-wrapper button {
   /* ใช้สีเขียวเข้มแบรนด์เป็นพื้นหลัง */
   background: #1b4332;
-  font-family: "Chonburi", serif;
   color: #ffffff;
   border: 1px solid #d4af37;
   /* เพิ่มเส้นขอบทองบางๆ ให้ปุ่มดูมีมิติ */
