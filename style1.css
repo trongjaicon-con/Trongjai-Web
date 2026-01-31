@@ -11,13 +11,17 @@
   --max: 1100px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Chonburi", serif;
+  font-family: 'Kanit', sans-serif;
   background-color: #E5E4E2;
   color: var(--text);
 }
@@ -499,6 +503,7 @@ footer.site-footer {
   /* มั่นใจว่าไม่มี margin บน-ล่าง */
   margin: 0 !important;
 }
+
 .video-container .video-player {
   position: absolute;
   top: 0;
@@ -509,6 +514,7 @@ footer.site-footer {
   object-fit: cover;
   border: none;
 }
+
 /* Layer โปร่งใสทับวิดีโอ (กันคลิก) */
 
 .video-container::after {
@@ -524,6 +530,7 @@ footer.site-footer {
   /* เพิ่มมิติเล็กน้อย */
 
 }
+
 /* ซ่อน Controls สำหรับบราวเซอร์ต่างๆ */
 
 .video-player::-webkit-media-controls {
@@ -531,16 +538,19 @@ footer.site-footer {
   display: none !important;
 
 }
+
 .video-player::-webkit-media-controls-enclosure {
 
   display: none !important;
 
 }
+
 .video-player::-moz-media-controls {
 
   display: none !important;
 
 }
+
 .video-player::-ms-media-controls {
 
   display: none !important;
@@ -957,25 +967,22 @@ footer.site-footer {
   width: 92%;
   max-width: 1400px;
   margin: 0 auto;
-  height: 800px;
-  /* ปรับความสูงให้พอดีกับรูปภาพ (700px อาจจะสูงไปสำหรับรูปนิ่ง) */
+  /* ปรับความสูงลดลงให้ใกล้เคียงสัดส่วนรูปใหม่ */
+  height: 580px;
   overflow: hidden;
   position: relative;
   border-radius: 15px;
   border: 1px solid rgba(212, 175, 55, 0.4);
-  /* เส้นขอบทองที่ชัดขึ้นเล็กน้อย */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* ปรับสไตล์รูปภาพแผนที่ */
 .map-section img {
   width: 100%;
   height: 100%;
+  /* สั่งให้รูปยืดเต็มพื้นที่กรอบ 580px โดยสัดส่วนไม่เพี้ยน */
   object-fit: cover;
-  /* บังคับให้รูปเต็มพื้นที่โดยไม่เบี้ยว */
+  object-position: center;
   display: block;
-  /* ใส่ฟิลเตอร์ให้ออกโทนหรูๆ (Optional) */
-  filter: sepia(10%) contrast(1.05);
 }
 
 
@@ -1529,12 +1536,21 @@ footer.site-footer {
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* กำหนดความสูงของกรอบให้เท่ากัน (เลือกตัวเลขที่เหมาะสมกับดีไซน์ของคุณ) */
+  height: 350px;
+  display: flex;
+  /* ช่วยให้รูปภาพจัดวางได้ดีขึ้นในบางกรณี */
 }
 
 .info-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  /* บังคับให้รูปสูงเต็มกรอบ .info-image */
   display: block;
+  object-fit: cover;
+  /* สำคัญ: ทำให้รูปไม่เบี้ยวและเต็มกรอบ โดยการครอปส่วนเกินออก */
+  object-position: center;
+  /* จัดให้จุดกึ่งกลางของรูปอยู่ตรงกลางกรอบ */
   transition: transform 0.5s ease;
 }
 
@@ -1563,10 +1579,12 @@ footer.site-footer {
 /* --- ส่วนแกลเลอรี (Gallery Section) --- */
 .gallery-section {
   background-color: #E5E4E2;
-  /* ปรับ padding-bottom เป็น 0 เพื่อให้เนื้อหาชิดขอบล่างของเซกชัน */
   padding: 60px 0 0 0;
-  /* มั่นใจว่าไม่มี margin ด้านล่างที่จะไปดัน footer ออก */
+  /* คงไว้ตามเดิม */
   margin-bottom: 0;
+  display: flex;
+  /* ช่วยจัดการช่องว่างด้านล่างได้แม่นยำขึ้น */
+  flex-direction: column;
 }
 
 .gallery-grid {
@@ -1576,8 +1594,9 @@ footer.site-footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  /* ล้าง margin ล่างของ grid */
   margin-bottom: 0;
+  line-height: 0;
+  /* ป้องกันช่องว่างจิ๋วที่เกิดจาก inline elements */
 }
 
 .gallery-item {
@@ -1585,10 +1604,20 @@ footer.site-footer {
   overflow: hidden;
   border-radius: 0;
   height: 300px;
-  box-shadow: none;
-  /* ปรับเส้นขอบด้านล่างออกหากไม่อยากให้เห็นรอยต่อกับ footer */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: none;
+  /* บังคับความสูงให้เท่ากันทุกรูป */
+  border: none;
+  /* เอาเส้นขอบออกเพื่อให้ชิดกันสนิท */
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  /* บังคับให้รูปสูงเท่ากับ gallery-item */
+  object-fit: cover;
+  /* สำคัญ: ทำให้รูปเต็มกรอบโดยไม่เสียสัดส่วน */
+  display: block;
+  /* ลบช่องว่างด้านล่างของ tag <img> */
 }
 
 /* --- Modal ระบบขยายรูป --- */
