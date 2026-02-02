@@ -2879,41 +2879,43 @@ video {
     gap: 20px;
     margin-bottom: 50px;
     padding: 0 15px;
-    /* เพิ่ม padding ข้างนิดหน่อยเพื่อไม่ให้รูปชิดขอบจอเกินไป (ถ้าต้องการ) */
   }
 
   .info-row:nth-child(even) {
     flex-direction: column !important;
   }
 
+  /* 1. จัดการกรอบรูปให้เท่ากันทุกอัน */
   .info-image {
     width: 100%;
     height: 250px;
-    /* บังคับความสูงกรอบเท่ากันทุกรูป */
+    /* ล็อกความสูงกรอบให้เท่ากันเป๊ะทุกอัน */
     overflow: hidden;
     border-radius: 20px;
     display: block;
-    /* เปลี่ยนจาก flex เป็น block เพื่อความชัวร์ในมือถือ */
+    position: relative;
+    /* เพิ่มเพื่อให้มั่นใจว่าลูก (img) จะอ้างอิงขนาดได้ถูกต้อง */
   }
 
-  /* ส่วนสำคัญ: บังคับรูปข้างในให้เต็มกรอบที่กำหนดไว้ด้านบน */
+  /* 2. บังคับรูปข้างในให้ขยายเต็มกรอบโดยไม่เสียทรง */
   .info-image img {
     width: 100% !important;
     height: 100% !important;
+    /* บังคับให้รูปสูงเท่ากับกรอบ 250px */
     object-fit: cover !important;
-    /* บังคับครอบรูปให้เต็มพื้นที่โดยไม่เสียสัดส่วน */
+    /* หัวใจสำคัญ: ทำให้รูปเต็มกรอบและไม่เบี้ยว */
     object-position: center;
+    display: block;
   }
 
   .info-content {
     width: 100%;
     text-align: left;
-    /* เปลี่ยนเป็นชิดซ้ายตามรูปตัวอย่างที่ส่งมาจะดูเป็นระเบียบกว่าครับ */
     padding: 0 5px;
   }
 }
 
-/* index ส่วนร่นการไอคอนติ๊กถูก */
+/* index ส่วนไอคอนติ๊กถูก */
 @media (max-width: 900px) {
   .feature-list {
     list-style: none;
