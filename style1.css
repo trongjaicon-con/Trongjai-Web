@@ -2392,17 +2392,37 @@ video {
   }
 
   .social-pills {
-    /* ในมือถือ ถ้าปุ่มเยอะจนล้น จะเริ่มสกロールจากทางขวา */
-    justify-content: flex-start;
-    flex-direction: row-reverse;
-    /* บังคับให้ปุ่มเกาะกลุ่มชิดขวา แต่เรียงลำดับจากขวามาซ้าย */
-    padding: 15px 20px;
+    display: flex;
+    /* จัดเรียงแบบยืดหยุ่น */
+    flex-direction: row;
+    /* บังคับให้เรียงแนวนอน */
+    justify-content: center;
+    /* จัดให้อยู่กึ่งกลางหน้าจอ */
+    align-items: center;
     gap: 8px;
+    /* ระยะห่างระหว่างปุ่ม */
+    width: 100%;
+    padding: 15px 0;
+    /* ระยะห่างด้านบนและล่างปุ่ม */
+    background-color: #E5E4E2;
+    /* พื้นหลังให้กลืนกับ gallery หรือ footer */
+
+    /* ทำให้ติดกับ footer */
+    margin-bottom: 0;
+    /* ล้าง margin ด้านล่างออก */
   }
 
-  .pill {
-    padding: 6px 14px;
-    font-size: 0.75rem;
+  .social-pills .pill {
+    flex: 1;
+    /* ทำให้ทุกปุ่มกว้างเท่าๆ กัน */
+    max-width: 120px;
+    /* จำกัดความกว้างไม่ให้ใหญ่เกินไป */
+    font-size: 12px;
+    /* ปรับขนาดตัวอักษรให้พอดีจอมือถือ */
+    padding: 8px 5px;
+    text-align: center;
+    white-space: nowrap;
+    /* ป้องกันตัวอักษรตกบรรทัด */
   }
 }
 
